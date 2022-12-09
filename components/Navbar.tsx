@@ -55,10 +55,12 @@ const Navbar = () => {
     </div>
   ) : (
     <div
-      className={`w-full flex flex-col ${styles.flexCenter} ${isScrollUp ? "sticky top-0 " : ""}`}
+      className={`w-full flex flex-col ${styles.flexCenter} sticky navbar ${
+        isScrollUp ? "show" : "hide"
+      }`}
     >
       {/*The mutated navbar when page is scroll down*/}
-      <div className={`bg-white px-8 py-2 ${styles.flexCenter} nav-bar w-full`}>
+      <div className={`bg-white px-8 py-2 ${styles.flexCenter} w-full`}>
         <nav className={`w-full flex justify-between items-center`}>
           <Image src={"/logo_red.png"} alt="logo" width={75} height={59} />
           <ul className="flex flex-row flex-1 items-center justify-end">

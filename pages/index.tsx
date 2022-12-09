@@ -12,7 +12,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
-      <div className="w-full h-[1800px]"></div>
+      <div className="w-full h-[2800px]"></div>
     </div>
   )
 }

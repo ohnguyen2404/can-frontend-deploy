@@ -1,4 +1,5 @@
 /* Fonts */
+@use './navbar';
 @import url("https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300;400;500;600;700;800;900&display=swap");
 
 @tailwind base;
@@ -14,6 +15,3 @@
   scroll-behavior: smooth;
 }
 
-.nav-bar {
-  transition: top 0.3s;
-}
