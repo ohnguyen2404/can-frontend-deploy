@@ -55,7 +55,7 @@ const Navbar = () => {
     </div>
   ) : (
     <div
-      className={`w-full flex flex-col ${styles.flexCenter} sticky navbar ${
+      className={`z-10 w-full flex flex-col ${styles.flexCenter} sticky navbar ${
         isScrollUp ? "show" : "hide"
       }`}
     >

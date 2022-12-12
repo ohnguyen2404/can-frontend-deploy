@@ -1,5 +1,4 @@
-import Navbar from "./Navbar";
+import Navbar from "./Navbar"
+import TagInfoGroups from "./TagInfoGroups"
 
-export {
-  Navbar
-}
+export { Navbar, TagInfoGroups }
