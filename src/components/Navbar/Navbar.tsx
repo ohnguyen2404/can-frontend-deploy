@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { HEIGHT } from "../../utils/settings";
 import STYLE_GROUPS from "../../utils/styles";
-import { NAVBAR_HEIGHT } from "../../constants";
 import { TComponent } from "../../utils/types";
 import NavbarCore from "./NavbarCore";
 
@@ -29,7 +29,7 @@ const Navbar: TComponent & TSubComponent = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   });
 
-  return prevScrollPos <= (NAVBAR_HEIGHT / 10)
+  return prevScrollPos <= (HEIGHT / 10)
     ?
     ( // The initial navbar
       <div className={`bg-transparent px-8 py-2 ${STYLE_GROUPS.flexCenter} border-b-2 border-white`}>

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { navLinks } from "../../constants";
+import { LINKS } from "../../utils/settings";
+
 
 type TNavbarCore = {
     textColor: "white" | "black",
@@ -15,8 +16,8 @@ const NavbarCore = (props: TNavbarCore) => {
         <nav className={`w-full flex justify-between items-center`}>
             <Image src={`/logo_${props.logoColor}.png`} alt="logo" width={75} height={59} />
             <ul className="flex flex-row flex-1 items-center justify-end">
-                {navLinks.map((link, index) => (
-                    <li className={`uppercase cursor-pointer text-xl text-${props.textColor} ${props.textColor === "black" ? "font-semibold" : "font-normal"} ${index === navLinks.length - 1 ? "mr-0" : "mr-10"} ${currentPath.includes(link.id) && "underline underline-offset-8"}`}
+                {LINKS.map((link, index) => (
+                    <li className={`uppercase cursor-pointer text-xl text-${props.textColor} ${props.textColor === "black" ? "font-semibold" : "font-normal"} ${index === LINKS.length - 1 ? "mr-0" : "mr-10"} ${currentPath.includes(link.id) && "underline underline-offset-8"}`}
                         key={link.id}>
                         <a onClick={() => {
                             router.push(`#${link.id}`);
