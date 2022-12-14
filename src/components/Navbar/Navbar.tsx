@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import styles from "../styles";
-import { navLinks, NAVBAR_HEIGHT } from "../constants";
+import STYLE_GROUPS from "../../utils/styles";
+import { navLinks, NAVBAR_HEIGHT } from "../../constants";
 import { useRouter } from "next/router";
 
 const Navbar = () => {
@@ -37,18 +37,13 @@ const Navbar = () => {
       <ul className="flex flex-row flex-1 items-center justify-end">
         {navLinks.map((link, index) => (
           <li
-            className={`uppercase cursor-pointer text-xl text-${textColor} ${
-              textColor === "black" ? "font-semibold" : "font-normal"
-            } ${index === navLinks.length - 1 ? "mr-0" : "mr-10"} ${
-              currentPath.includes(link.id) && "underline underline-offset-8"
-            }`}
-            key={link.id}
-          >
-            <a
-              onClick={() => {
-                router.push(`#${link.id}`);
-              }}
-            >
+            className={`uppercase cursor-pointer text-xl text-${textColor} ${textColor === "black" ? "font-semibold" : "font-normal"
+              } ${index === navLinks.length - 1 ? "mr-0" : "mr-10"} ${currentPath.includes(link.id) && "underline underline-offset-8"
+              }`}
+            key={link.id}>
+            <a onClick={() => {
+              router.push(`#${link.id}`);
+            }}>
               {link.title}
             </a>
           </li>
@@ -60,21 +55,20 @@ const Navbar = () => {
   return prevScrollPos <= NAVBAR_HEIGHT / 10 ? (
     // The initial navbar
     <div
-      className={`bg-transparent px-8 py-2 ${styles.flexCenter} border-b-2 border-white`}
+      className={`bg-transparent px-8 py-2 ${STYLE_GROUPS.flexCenter} border-b-2 border-white`}
     >
       {renderNavbar("white", "white")}
     </div>
   ) : (
     <div
-      className={`z-10 w-full flex flex-col ${
-        styles.flexCenter
-      } sticky navbar ${isScrollUp ? "show" : "hide"}`}
+      className={`z-10 w-full flex flex-col ${STYLE_GROUPS.flexCenter
+        } sticky navbar ${isScrollUp ? "show" : "hide"}`}
     >
       {/*The mutated navbar when page is scroll down*/}
-      <div className={`bg-white px-8 py-2 ${styles.flexCenter} w-full`}>
+      <div className={`bg-white px-8 py-2 ${STYLE_GROUPS.flexCenter} w-full`}>
         {renderNavbar("black", "red")}
       </div>
-      <div className={`bg-red-600 w-[94%] h-[6px] ${styles.flexCenter}`}></div>
+      <div className={`bg-red-600 w-[94%] h-[6px] ${STYLE_GROUPS.flexCenter}`}></div>
     </div>
   );
 };

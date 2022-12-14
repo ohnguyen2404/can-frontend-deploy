@@ -1,14 +1,14 @@
 import React from "react"
-import styles from "../styles"
+import STYLE_GROUPS from "../../utils/styles"
 
 const TagInfoGroups = () => {
-  const containerStyle = `flex flex-col flex-1 justify-between ${styles.flexCenter} rounded-lg tag-info-group shadow-lg`
+  const containerStyle = `flex flex-col flex-1 justify-between ${STYLE_GROUPS.flexCenter} rounded-lg tag-info-group shadow-lg`
   const paragraphStyle =
     "text-center border-[1px] border-t-gray-400 border-transparent my-8 pt-2 w-[90%] text-xl truncate"
 
   const H2Style = "my-8 text-3xl font-semibold"
   return (
-    <section id="tag-info-groups" className={`w-full ${styles.flexCenter} px-6 py-10 bg-white`}>
+    <section id="tag-info-groups" className={`w-full ${STYLE_GROUPS.flexCenter} px-6 py-10 bg-white`}>
       <div className={`${containerStyle} bg-lightBlue blue-container mr-6 rounded-lg min-h-[260px]`}>
         <h2 className={H2Style}>Thị trường</h2>
         <img src="/market.png" className={`object-contain max-w-[300px] max-h-[260px]`} />

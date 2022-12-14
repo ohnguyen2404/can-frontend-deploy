@@ -1,6 +1,6 @@
 import Head from "next/head"
 import Image from "next/image"
-import styles from "../styles"
+import STYLE_GROUPS from "../utils/styles"
 import { Navbar, TagInfoGroups } from "../components"
 
 export default function Home() {
