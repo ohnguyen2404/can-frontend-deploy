@@ -22,7 +22,7 @@ const NavbarCore = (props: TNavbarCore) => {
 			<ul className="flex flex-row flex-1 items-center justify-end">
 				{LINKS.map((link, index) => (
 					<li
-						className={`uppercase cursor-pointer text-xl text-${props.textColor} ${props.textColor === "black" ? "font-semibold" : "font-normal"} ${index === LINKS.length - 1 ? "mr-0" : "mr-10"} ${currentPath.includes(link.id) && "underline underline-offset-8"}`}
+						className={`uppercase cursor-pointer text-xl text-${props.textColor} ${props.textColor === "black" ? "font-semibold" : "font-normal"} ${index === LINKS.length - 1 ? "mr-0" : "mr-10"} ${currentPath.includes(link.id) && `p-2 border-2 border-${props.textColor} rounded-full`}`}
 						key={link.id}>
 						<a
 							onClick={() => {

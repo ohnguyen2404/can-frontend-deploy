@@ -20,8 +20,8 @@ const bgStyles: TBgStyles = {
 
 const TagInfo = (props: TTagInfo) => {
 	const containerStyle = `${STYLE_GROUPS.flexCenter} flex flex-col flex-1 justify-between rounded-lg tag-info-group shadow-lg`;
-	const paragraphStyle = "text-center border-[1px] border-t-gray-400 border-transparent my-8 pt-2 w-[90%] text-xl truncate";
-	const H2Style = "my-8 text-3xl font-semibold";
+	const paragraphStyle = "text-center border-[1px] border-t-gray-400 border-transparent my-8 pt-2 w-[90%] text-xl truncate leading-5";
+	const H2Style = `my-8 text-3xl font-semibold ${props.bgColor === "blue" ? "text-strongBlue" : "text-strongPink"}`;
 	return (
 		<div className={`${containerStyle} ${bgStyles[props.bgColor]} mr-6 rounded-lg min-h-[260px]`}>
 			<h2 className={H2Style}>{props.header}</h2>
