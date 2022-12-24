@@ -9,8 +9,9 @@ type TSubComponent = {
 };
 
 const Navbar: TComponent & TSubComponent = () => {
-	const [prevScrollPos, setPrevScrollPos] = useState(0);
-	const [isScrollUp, setIsScrollUp] = useState(true);
+	const [isOutBound, setIsOutBound] = useState<boolean>(false);
+	const [prevScrollPos, setPrevScrollPos] = useState<number>(0);
+	const [isScrollUp, setIsScrollUp] = useState<boolean>(true);
 
 	const handleScroll = () => {
 		const currentScrollPos = window.scrollY;
@@ -22,6 +23,12 @@ const Navbar: TComponent & TSubComponent = () => {
 		}
 
 		setPrevScrollPos(currentScrollPos);
+
+		if (currentScrollPos <= HEIGHT / 10) {
+			setIsOutBound(false);
+		} else {
+			setIsOutBound(true);
+		}
 	};
 
 	useEffect(() => {
@@ -29,24 +36,14 @@ const Navbar: TComponent & TSubComponent = () => {
 		return () => window.removeEventListener("scroll", handleScroll);
 	});
 
-	return prevScrollPos <= HEIGHT / 10 ? (
-		// The initial navbar
-		<div className={`bg-transparent px-8 py-2 ${STYLE_GROUPS.flexCenter} border-b-2 border-white`}>
-			<Navbar.NavbarCore
-				textColor="white"
-				logoColor="white"
-			/>
-		</div>
-	) : (
-		<div className={`z-10 w-full flex flex-col ${STYLE_GROUPS.flexCenter} sticky navbar ${isScrollUp ? "show" : "hide"}`}>
-			{/*The mutated navbar when page is scroll down*/}
-			<div className={`bg-white px-8 py-2 ${STYLE_GROUPS.flexCenter} w-full`}>
+	return (
+		<div className={`z-10 w-full flex flex-col navbar ${isScrollUp ? "show" : "hide"} ${isOutBound ? "sticky" : "absolute"}`}>
+			<div className={`px-8 py-2 ${STYLE_GROUPS.flexCenter} ${isOutBound ? "bg-white" : "bg-transparent"}`}>
 				<Navbar.NavbarCore
-					textColor="black"
-					logoColor="red"
+					isOutBound={isOutBound}
 				/>
 			</div>
-			<div className={`bg-red-600 w-[94%] h-[6px] ${STYLE_GROUPS.flexCenter}`}></div>
+			<div className={` ${STYLE_GROUPS.flexCenter} ${isOutBound ? "bg-red-600 w-[94%] h-[6px] self-center" : "bg-white w-[100%] h-[2px]"}`}></div>
 		</div>
 	);
 };
