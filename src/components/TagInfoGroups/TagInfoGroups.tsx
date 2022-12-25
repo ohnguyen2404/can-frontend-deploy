@@ -15,28 +15,28 @@ const TagInfoGroups: TComponent & TSubComponent = () => {
 			<TagInfoGroups.TagInfo
 				key={"Thị trường"}
 				header="Thị trường"
-				imgSrc={"/market.png"}
+				imgSrc={"assets/tagInfoGroups/market.png"}
 				bgColor={"blue"}
 				listContent={["Việt Nam, Phillipine, Ấn Độ,", "Trung Quốc, Hong Kong"]}
 			/>
 			<TagInfoGroups.TagInfo
 				key={"Khách hàng"}
 				header="Khách hàng"
-				imgSrc={"/customer.png"}
+				imgSrc={"assets/tagInfoGroups/customer.png"}
 				bgColor={"pink"}
 				listContent={["Hỗ trợ hơn 10 000", "khách hàng"]}
 			/>
 			<TagInfoGroups.TagInfo
 				key={"Hồ sơ"}
 				header="Hồ sơ"
-				imgSrc={"/profile.png"}
+				imgSrc={"assets/tagInfoGroups/profile.png"}
 				bgColor={"blue"}
 				listContent={["Hơn 3000 hồ sơ", "nhận được PR"]}
 			/>
 			<TagInfoGroups.TagInfo
 				key={"Tỷ lệ"}
 				header="Tỷ lệ"
-				imgSrc={"/percent.png"}
+				imgSrc={"assets/tagInfoGroups/percent.png"}
 				bgColor={"pink"}
 				listContent={["97% tỷ lệ đậu hồ sơ PR", "và Visa du học"]}
 			/>
