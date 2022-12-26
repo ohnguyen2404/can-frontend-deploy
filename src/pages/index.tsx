@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import STYLE_GROUPS from "../utils/styles";
-import { Navbar, TagInfoGroups, SeasonalProjectGroups } from "../components";
+import { Banner, Navbar, TagInfoGroups, SeasonalProjectGroups } from "../components";
 
 export default function Home() {
 	return (
@@ -18,10 +18,12 @@ export default function Home() {
 				/>
 			</Head>
 			<Navbar />
-			<div className="bg-indigo-300 w-full h-[800px]"></div>
+			<Banner />
 			<TagInfoGroups />
 			<SeasonalProjectGroups />
-      <div id="tool-kit" className="text-white"></div>
+			<div
+				id="tool-kit"
+				className="text-white"></div>
 		</div>
 	);
 }
