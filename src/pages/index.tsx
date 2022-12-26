@@ -21,9 +21,7 @@ export default function Home() {
 			<Banner />
 			<TagInfoGroups />
 			<SeasonalProjectGroups />
-			<div
-				id="tool-kit"
-				className="text-white"></div>
+      <div id="tool-kit" className="hidden text-white mr-2"></div> {/*For pre-load conditional tailwind classes */}
 		</div>
 	);
 }
