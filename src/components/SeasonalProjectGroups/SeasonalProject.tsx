@@ -1,6 +1,6 @@
 import React from "react";
 import STYLE_GROUPS from "../../utils/styles";
-import { CircleArrow } from "../index";
+import CircleButton from "../Buttons/CircleButton";
 
 type TSeasonalProject = {
 	id: string;
@@ -16,12 +16,11 @@ const SeasonalProject = ({ id, title, imgSrc, isLastChild }: TSeasonalProject) =
 			className={`flex flex-col ${!isLastChild && "mr-3"} min-w-[680px]`}>
 			<div className="flex flex-row items-center">
 				<span className="text-4xl mb-2">{title}</span>
-				<CircleArrow />
+				<CircleButton />
 			</div>
 			<img
 				className="rounded-xl w-[680px] h-[460px] overflow-hidden"
-				//src={imgSrc}
-        src={'/project.png'}
+				src={imgSrc}
 			/>
 		</div>
 	);
