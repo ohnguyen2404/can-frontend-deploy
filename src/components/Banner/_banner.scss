@@ -1,13 +1,21 @@
 .banner {
-    &.sash-ribbon {
-        
-        @keyframes marquee {
-            0% {
-                transform: translateX(0%);
-            }
+    .sash-ribbon-wrap {
+        &:hover .sash-ribbon {
+            animation-play-state: paused;
+        }
 
-            100% {
-                transform: translateX(-100%);
+        .sash-ribbon {
+
+            animation: marquee 20s linear infinite;
+
+            @keyframes marquee {
+                0% {
+                    transform: translateX(0%);
+                }
+
+                100% {
+                    transform: translateX(-100%);
+                }
             }
         }
     }
