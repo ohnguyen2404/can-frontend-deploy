@@ -16,7 +16,7 @@ const Banner: TComponent & TSubComponent = () => {
 				muted
 				loop
 				playsInline></video>
-			<div className="w-full h-[5vw] bg-white absolute bottom-[4vw] flex flex-row">
+			<div className="sash-ribbon-wrap w-full h-[7vw] bg-white absolute bottom-[10%] flex flex-row overflow-hidden">
 				<Banner.SashRibbon />
 				<Banner.SashRibbon />
 			</div>
