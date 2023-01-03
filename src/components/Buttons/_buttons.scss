@@ -1,59 +1,31 @@
 @use '../../styles/variables' as *;
 
 .button {
+    transition-duration: 300ms;
+    transition-property: background-color,
+        border-color;
+    transition-timing-function: ease-in-out;
+
     .icon-container {
         svg path {
             stroke: black;
         }
     }
 
-    transition-duration: 300ms;
-    transition-property: background-color,
-    border-color;
-    transition-timing-function: ease-in-out;
-
     &:hover {
-        .icon-container {
-            svg {
-                path {
-                    stroke: white;
-                }
-            }
-        }
-
         background-color: $strongPink;
         border-color: $strongPink;
+        color: white;
+
+        .icon-container svg path {
+            stroke: white;
+        }
+
     }
 
-    &.circle-button:hover .icon-container {
-        svg {
-            animation: moveArrowTopRight 500ms ease-in-out;
-        }
 
-        @keyframes moveArrowTopRight {
-            0% {
-                transform: translate(0, 0);
-            }
-
-            50% {
-                transform: translate(110%, -110%);
-            }
-
-            51% {
-                opacity: 0;
-                transform: translate(-110%, 110%);
-            }
-
-            52% {
-                opacity: 1;
-            }
-        }
-    }
-
-    &.long-button:hover .icon-container {
-        svg {
-            animation: moveArrowLeft 500ms ease-in-out;
-        }
+    &.long-button:hover .icon-container svg {
+        animation: moveArrowLeft 500ms ease-in-out;
 
         @keyframes moveArrowLeft {
             0% {
@@ -72,6 +44,32 @@
             52% {
                 opacity: 1;
             }
+        }
+    }
+
+    &.circle-button,
+    &.title-button {
+        &:hover .icon-container svg {
+            animation: moveArrowTopRight 500ms ease-in-out;
+        }
+    }
+
+    @keyframes moveArrowTopRight {
+        0% {
+            transform: translate(0, 0);
+        }
+
+        50% {
+            transform: translate(110%, -110%);
+        }
+
+        51% {
+            opacity: 0;
+            transform: translate(-110%, 110%);
+        }
+
+        52% {
+            opacity: 1;
         }
     }
 }
