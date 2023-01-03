@@ -1,0 +1,51 @@
+@use '../../styles/variables' as *;
+
+.button {
+    &.circle-button {
+        .icon-container {
+            svg path {
+                stroke: black;
+            }
+        }
+
+        transition-duration: 300ms;
+        transition-property: background-color,
+        border-color;
+        transition-timing-function: ease-in-out;
+
+        &:hover {
+            .icon-container {
+                svg {
+                    path {
+
+                        stroke: white;
+                    }
+
+                    animation: moveArrow 500ms ease-in-out;
+                }
+
+                @keyframes moveArrow {
+                    0% {
+                        transform: translate(0, 0);
+                    }
+
+                    50% {
+                        transform: translate(110%, -110%);
+                    }
+
+                    51% {
+                        opacity: 0;
+                        transform: translate(-110%, 110%);
+                    }
+
+                    52% {
+                        opacity: 1;
+                    }
+                }
+            }
+
+            background-color: $strongPink;
+            border-color: $strongPink;
+        }
+    }
+}
