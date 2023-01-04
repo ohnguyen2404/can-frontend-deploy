@@ -14,11 +14,11 @@ const CircleButton = (props: TCircleButton) => {
                     xmlns="http://www.w3.org/2000/svg">
                     <path
                         d="M3 1H12V10"
-                        stroke-linejoin="round"
+                        strokeLinejoin="round"
                     />
                     <path
                         d="M12 1L0.5 12.5"
-                        stroke-linejoin="round"
+                        strokeLinejoin="round"
                     />
                 </svg>
             </div>

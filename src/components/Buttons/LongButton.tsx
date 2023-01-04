@@ -17,11 +17,11 @@ const LongButton = (props: TLongButton) => {
 					xmlns="http://www.w3.org/2000/svg">
 					<path
 						d="M7.60134 1L1 7.5L7.60134 14"
-						stroke-linejoin="round"
+						strokeLinejoin="round"
 					/>
 					<path
 						d="M1.21301 7.5H28.5001"
-						stroke-linejoin="round"
+						strokeLinejoin="round"
 					/>
 				</svg>
 			</div>
