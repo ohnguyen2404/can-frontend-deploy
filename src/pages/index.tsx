@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import STYLE_GROUPS from "../utils/styles";
-import { Banner, Navbar, TagInfoGroups, SeasonalProjectGroups } from "../components";
+import { Banner, Navbar, TagInfoGroups, SeasonalProjectGroups, ProgramGroups } from "../components";
 
 export default function Home() {
 	return (
@@ -21,7 +21,11 @@ export default function Home() {
 			<Banner />
 			<TagInfoGroups />
 			<SeasonalProjectGroups />
-      <div id="tool-kit" className="hidden text-white mr-2"></div> {/*For pre-load conditional tailwind classes */}
+			<ProgramGroups />
+			<div
+				id="tool-kit"
+				className="hidden text-white mr-2"></div>{" "}
+			{/*For pre-load conditional tailwind classes */}
 		</div>
 	);
 }
