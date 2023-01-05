@@ -15,7 +15,7 @@ const SeasonalProject = ({ id, title, imgSrc, isLastChild }: TSeasonalProject) =
 			key={id}
 			className={`flex flex-col ${!isLastChild && "mr-3"} min-w-[680px]`}>
 			<div className="flex flex-row items-center">
-				<span className="text-4xl mb-2">{title}</span>
+				<span className="text-4xl mb-3 mr-2">{title}</span>
 				<CircleButton />
 			</div>
 			<img

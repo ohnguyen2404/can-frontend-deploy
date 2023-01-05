@@ -5,7 +5,7 @@ import { Banner, Navbar, TagInfoGroups, SeasonalProjectGroups } from "../compone
 
 export default function Home() {
 	return (
-		<div className="bg-indigo-400 w-full h-[2800px]">
+		<div className="w-full h-[2800px]">
 			<Head>
 				<title>CANIMMVN</title>
 				<meta

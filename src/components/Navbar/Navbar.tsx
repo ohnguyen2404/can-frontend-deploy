@@ -37,7 +37,7 @@ const Navbar: TComponent & TSubComponent = () => {
 	});
 
 	return (
-		<div className={`z-10 w-full flex flex-col navbar ${isScrollUp ? "show" : "hide"} ${isOutBound ? "sticky" : "absolute"}`}>
+		<div className={`z-10 w-full flex flex-col navbar ${isScrollUp ? "show" : "hide"} ${isOutBound ? "fixed" : "absolute"}`}>
 			<div className={`px-8 py-2 ${STYLE_GROUPS.flexCenter} ${isOutBound ? "bg-white" : "bg-transparent"}`}>
 				<Navbar.NavbarCore
 					isOutBound={isOutBound}
