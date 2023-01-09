@@ -1,18 +1,29 @@
+import { CSSProperties } from "react";
 import CircleButton from "../Buttons/CircleButton";
 
-type TProgramCard = {
+export type TProgramInfo = {
 	imgSrc: string;
 	imgAlt?: string;
 	title?: string;
 };
 
+export type TProgramCard = TProgramInfo & {
+	width: CSSProperties["width"];
+	id: string | number;
+};
+
 const ProgramCard = (props: TProgramCard) => {
 	return (
-		<div className="program-card-container w-1/3 h-[55vw] relative">
+		<div
+			id={`card-${props.id}`}
+			className={`program-card-container aspect-[3/5] relative`}
+			style={{
+				width: props.width,
+			}}>
 			<img
 				src={props.imgSrc}
 				alt={props.imgAlt}
-				className="aspect-[3/5]"
+				className="w-full h-full object-fill"
 			/>
 			<div className="title-container flex flex-row justify-center items-center absolute bottom-[5%] left-[5%]">
 				<span className="title text-4xl font-bold uppercase text-white drop-shadow-[0_0_10px_rgba(0,0,0,0.9)] mx-1 mb-1">{props.title}</span>
