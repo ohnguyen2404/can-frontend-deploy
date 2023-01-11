@@ -91,9 +91,9 @@ const ProgramGroups: TComponent & TSubComponent = () => {
 				animation: timeline,
 				scrub: true,
 				start: "top 5%",
-				end: `+=${((window.innerHeight * 5) / 8) * 3}px 5%`,
+				endTrigger: "#EndTriggerTemp",
+				end: `bottom 5%`,
 				pin: true,
-				pinSpacing: false,
 			});
 		};
 		createScrollTrigger();

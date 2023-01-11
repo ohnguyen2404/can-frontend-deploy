@@ -23,6 +23,9 @@ export default function Home() {
 			<SeasonalProjectGroups />
 			<ProgramGroups />
 			<div
+				id="EndTriggerTemp"
+				className="w-full h-[2000px]"></div>
+			<div
 				id="tool-kit"
 				className="hidden text-white stroke-white mr-2"></div>
 		</div>
