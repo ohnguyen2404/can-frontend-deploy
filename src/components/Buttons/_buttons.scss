@@ -6,12 +6,6 @@
         border-color;
     transition-timing-function: ease-in-out;
 
-    .icon-container {
-        svg path {
-            stroke: black;
-        }
-    }
-
     &:hover {
         background-color: $strongPink;
         border-color: $strongPink;
@@ -20,7 +14,6 @@
         .icon-container svg path {
             stroke: white;
         }
-
     }
 
 

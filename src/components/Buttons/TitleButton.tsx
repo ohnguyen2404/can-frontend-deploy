@@ -9,7 +9,7 @@ const TitleButton = (props: TTitleButton) => {
 			className="button title-button w-fit h-10 px-7 rounded-full border-[1px] border-black flex items-center justify-center overflow-hidden"
 			onClick={props.handleOnClick}>
 			<span className="text-2xl align-middle mx-1 mb-1">{props.title}</span>
-			<div className="icon-container w-[0.875rem] h-[0.875rem] mx-1">
+			<div className="icon-container stroke-black w-[0.875rem] h-[0.875rem] mx-1">
 				<svg
 					viewBox="0 0 13 13"
 					fill="none"

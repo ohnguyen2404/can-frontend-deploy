@@ -24,8 +24,7 @@ export default function Home() {
 			<ProgramGroups />
 			<div
 				id="tool-kit"
-				className="hidden text-white mr-2"></div>{" "}
-			{/*For pre-load conditional tailwind classes */}
+				className="hidden text-white stroke-white mr-2"></div>
 		</div>
 	);
 }
