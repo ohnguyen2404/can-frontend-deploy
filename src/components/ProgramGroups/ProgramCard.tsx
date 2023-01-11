@@ -9,16 +9,17 @@ export type TProgramInfo = {
 
 export type TProgramCard = TProgramInfo & {
 	width: CSSProperties["width"];
-	id: string | number;
+	id: number;
 };
 
 const ProgramCard = (props: TProgramCard) => {
 	return (
 		<div
 			id={`card-${props.id}`}
-			className={`program-card-container aspect-[3/5] relative`}
+			className="program-card-container aspect-[3/5] relative"
 			style={{
 				width: props.width,
+				zIndex: props.id + 1,
 			}}>
 			<img
 				src={props.imgSrc}
@@ -28,7 +29,7 @@ const ProgramCard = (props: TProgramCard) => {
 			<div className="title-container flex flex-row justify-center items-center absolute bottom-[5%] left-[5%]">
 				<span className="title text-4xl font-bold uppercase text-white drop-shadow-[0_0_10px_rgba(0,0,0,0.9)] mx-1 mb-1">{props.title}</span>
 				<div className="button-container mx-2">
-					<CircleButton />
+					<CircleButton buttonColor="white" />
 				</div>
 			</div>
 		</div>
