@@ -5,7 +5,7 @@ import { Banner, Navbar, TagInfoGroups, SeasonalProjectGroups, ProgramGroups } f
 
 export default function Home() {
 	return (
-		<div className="w-full h-[2800px]">
+		<div className="w-full">
 			<Head>
 				<title>CANIMMVN</title>
 				<meta
