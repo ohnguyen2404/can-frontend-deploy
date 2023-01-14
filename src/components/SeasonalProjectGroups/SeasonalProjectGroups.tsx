@@ -3,6 +3,7 @@ import { TComponent } from "../../utils/types";
 import STYLE_GROUPS from "../../utils/styles";
 import gsap from "gsap/dist/gsap";
 import Draggable from "gsap/dist/Draggable";
+import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import SeasonalProject from "./SeasonalProject";
 import { PROJECTS, PROJECT_MIN_WIDTH } from "../../utils/settings";
 import TitleButton from "../Buttons/TitleButton";
@@ -26,29 +27,45 @@ const SeasonalProjectGroups: TComponent & TSubComponent = () => {
 			},
 		});
 	}, []);
+
+	useLayoutEffect(() => {
+		gsap.registerPlugin(ScrollTrigger);
+		gsap.to("#seasonal-project-groups", {
+			scrollTrigger: {
+				trigger: "#seasonal-project-groups",
+				scrub: true,
+				start: "top 70%",
+				end: `center 15%`,
+			},
+			paddingLeft: 0,
+			paddingRight: 0,
+		});
+	});
 	return (
 		<section
-			id="tag-info-groups"
-			className={`flex flex-col w-full ${STYLE_GROUPS.flexStart} py-10 bg-lightBlue rounded-[30px] overflow-hidden`}>
-			<div className={`mx-6 pb-1`}>
-				<TitleButton title="Chi tiết" />
-			</div>
-			<div className="mx-6 text-8xl text-strongBlue font-bold mt-8">
-				<h1>HOẠT ĐỘNG THEO MÙA</h1>
-			</div>
+			id="seasonal-project-groups"
+			className="px-36 my-10">
+			<div className={`tag-info-groups-container ${STYLE_GROUPS.flexStart} flex-col w-full py-36 bg-lightBlue rounded-[30px] overflow-hidden`}>
+				<div className="mx-6 pb-1">
+					<TitleButton title="Chi tiết" />
+				</div>
+				<div className="mx-6 text-8xl text-strongBlue font-bold mt-8">
+					<h1>HOẠT ĐỘNG THEO MÙA</h1>
+				</div>
 
-			<div
-				className="flex flex-row mt-4 mx-6"
-				id="slider"
-				ref={sliderRef}>
-				{PROJECTS.map((project, index) => (
-					<SeasonalProject
-						id={project.id}
-						title={project.title}
-						imgSrc={project.imgSrc}
-						isLastChild={index === PROJECTS.length - 1}
-					/>
-				))}
+				<div
+					className="flex flex-row mt-4 mx-6"
+					id="slider"
+					ref={sliderRef}>
+					{PROJECTS.map((project, index) => (
+						<SeasonalProject
+							id={project.id}
+							title={project.title}
+							imgSrc={project.imgSrc}
+							isLastChild={index === PROJECTS.length - 1}
+						/>
+					))}
+				</div>
 			</div>
 		</section>
 	);
