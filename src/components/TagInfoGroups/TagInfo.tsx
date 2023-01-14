@@ -1,10 +1,9 @@
-import STYLE_GROUPS from "../../utils/styles";
-
 export type supportBgColors = "blue" | "pink";
 
 export type TTagInfo = {
 	header: string;
 	imgSrc: string;
+	imgAlt?: string;
 	bgColor: supportBgColors;
 	listContent: string[];
 };
@@ -19,17 +18,17 @@ const bgStyles: TBgStyles = {
 };
 
 const TagInfo = (props: TTagInfo) => {
-	const containerStyle = `${STYLE_GROUPS.flexCenter} flex flex-col flex-1 justify-between rounded-lg tag-info-group shadow-lg`;
-	const paragraphStyle = "text-center border-[1px] border-t-gray-400 border-transparent my-8 pt-2 w-[90%] text-xl truncate leading-5";
-	const H2Style = `my-8 text-3xl font-semibold ${props.bgColor === "blue" ? "text-strongBlue" : "text-strongPink"}`;
 	return (
-		<div className={`${containerStyle} ${bgStyles[props.bgColor]} mr-6 rounded-lg min-h-[260px]`}>
-			<h2 className={H2Style}>{props.header}</h2>
-			<img
-				src={`${props.imgSrc}`}
-				className={`object-contain max-w-[300px] max-h-[260px]`}
-			/>
-			<div className={paragraphStyle}>
+		<div className={`tag-info ${bgStyles[props.bgColor]} flex flex-col justify-between items-center mx-3 rounded-lg shadow-lg`}>
+			<h2 className={`${props.bgColor === "blue" ? "text-strongBlue" : "text-strongPink"} my-8 text-3xl font-semibold`}>{props.header}</h2>
+			<div className="image-container w-3/4">
+				<img
+					src={props.imgSrc}
+					alt={props.imgAlt}
+					className="object-scale-down"
+				/>
+			</div>
+			<div className="paragraph-container text-center border-[1px] border-t-gray-400 border-transparent my-8 pt-2 w-[90%] text-xl leading-5">
 				{props.listContent.map((item, idx) => {
 					return <p key={idx}>{item}</p>;
 				})}
