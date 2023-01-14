@@ -1,5 +1,4 @@
 import React from "react";
-import STYLE_GROUPS from "../../utils/styles";
 import { TComponent } from "../../utils/types";
 import TagInfo from "./TagInfo";
 
@@ -20,6 +19,7 @@ const TagInfoGroups: TComponent & TSubComponent = () => {
 						key="Thị trường"
 						header="Thị trường"
 						imgSrc="assets/tagInfoGroups/market.png"
+						imgAlt="market.png"
 						bgColor="blue"
 						listContent={["Việt Nam, Phillipine, Ấn Độ,", "Trung Quốc, Hong Kong"]}
 					/>
@@ -29,6 +29,7 @@ const TagInfoGroups: TComponent & TSubComponent = () => {
 						key="Khách hàng"
 						header="Khách hàng"
 						imgSrc="assets/tagInfoGroups/customer.png"
+						imgAlt="customer.png"
 						bgColor="pink"
 						listContent={["Hỗ trợ hơn 10 000", "khách hàng"]}
 					/>
@@ -40,6 +41,7 @@ const TagInfoGroups: TComponent & TSubComponent = () => {
 						key="Hồ sơ"
 						header="Hồ sơ"
 						imgSrc="assets/tagInfoGroups/profile.png"
+						imgAlt="profile.png"
 						bgColor="blue"
 						listContent={["Hơn 3000 hồ sơ", "nhận được PR"]}
 					/>
@@ -49,6 +51,7 @@ const TagInfoGroups: TComponent & TSubComponent = () => {
 						key="Tỷ lệ"
 						header="Tỷ lệ"
 						imgSrc="assets/tagInfoGroups/percent.png"
+						imgAlt="percent.png"
 						bgColor="pink"
 						listContent={["97% tỷ lệ đậu hồ sơ PR", "và Visa du học"]}
 					/>

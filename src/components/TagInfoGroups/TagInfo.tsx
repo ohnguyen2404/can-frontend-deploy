@@ -1,10 +1,9 @@
-import STYLE_GROUPS from "../../utils/styles";
-
 export type supportBgColors = "blue" | "pink";
 
 export type TTagInfo = {
 	header: string;
 	imgSrc: string;
+	imgAlt?: string;
 	bgColor: supportBgColors;
 	listContent: string[];
 };
