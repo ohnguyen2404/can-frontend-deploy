@@ -107,7 +107,7 @@ const ProgramGroups: TComponent & TSubComponent = () => {
 			className={`program-group-container relative`}>
 			<div
 				id="container-1"
-				className="flex flex-row absolute top-0 left-0">
+				className="flex flex-row absolute top-0 left-0 right-0">
 				{listCard.slice(0, itemInRow).map((card) => {
 					return (
 						<ProgramGroups.ProgramCard
@@ -123,7 +123,7 @@ const ProgramGroups: TComponent & TSubComponent = () => {
 			</div>
 			<div
 				id="container-2"
-				className="flex flex-row absolute top-0 left-0">
+				className="flex flex-row absolute top-0 left-0 right-0">
 				{listCard.slice(itemInRow).map((card) => {
 					return (
 						<ProgramGroups.ProgramCard
