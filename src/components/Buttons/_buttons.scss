@@ -5,6 +5,7 @@
     transition-property: background-color,
         border-color;
     transition-timing-function: ease-in-out;
+    cursor: pointer;
 
     &:hover {
         background-color: $strongPink;

@@ -45,7 +45,7 @@ const SeasonalProjectGroups: TComponent & TSubComponent = () => {
 		<section
 			id="seasonal-project-groups"
 			className="px-36 my-10">
-			<div className={`tag-info-groups-container ${STYLE_GROUPS.flexStart} flex-col w-full py-36 bg-lightBlue rounded-[30px] overflow-hidden`}>
+			<div className={`tag-info-groups-container ${STYLE_GROUPS.flexStart} flex-col w-full py-36 bg-lightBlue rounded-[1.875rem] overflow-hidden`}>
 				<div className="mx-6 pb-1">
 					<TitleButton title="Chi tiết" />
 				</div>

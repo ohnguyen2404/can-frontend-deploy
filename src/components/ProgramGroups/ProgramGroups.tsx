@@ -86,7 +86,6 @@ const ProgramGroups: TComponent & TSubComponent = () => {
 			ScrollTrigger.getById(ID)?.kill();
 			ScrollTrigger.create({
 				id: ID,
-				markers: true,
 				trigger: "#program-group",
 				animation: timeline,
 				scrub: true,
