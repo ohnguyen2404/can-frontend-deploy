@@ -12,34 +12,34 @@ const ProgramGroups: TComponent & TSubComponent = () => {
 	const ID = "ProgramGroups_ST";
 	const array: TProgramInfo[] = [
 		{
-			imgSrc: "assets/example.jpg",
-			imgAlt: "example.jpg",
-			title: "he he",
+			imgSrc: "assets/traihe.png",
+			imgAlt: "traihe.png",
+			title: "Trại hè",
 		},
 		{
-			imgSrc: "assets/example-2.jpg",
-			imgAlt: "example.jpg",
-			title: "he he",
+			imgSrc: "assets/vieclam.png",
+			imgAlt: "vieclam.png",
+			title: "Việc làm",
 		},
 		{
-			imgSrc: "assets/example.jpg",
-			imgAlt: "example.jpg",
-			title: "he he",
+			imgSrc: "assets/dulich.png",
+			imgAlt: "dulich.png",
+			title: "Du lịch",
 		},
 		{
-			imgSrc: "assets/example-2.jpg",
-			imgAlt: "example.jpg",
-			title: "he he",
+			imgSrc: "assets/dinhcu.jpg",
+			imgAlt: "dinhcu.jpg",
+			title: "Định cư",
 		},
 		{
-			imgSrc: "assets/example.jpg",
-			imgAlt: "example.jpg",
-			title: "he he",
+			imgSrc: "assets/duhoc.png",
+			imgAlt: "duhoc.png",
+			title: "Du học",
 		},
 		{
-			imgSrc: "assets/example-2.jpg",
-			imgAlt: "example.jpg",
-			title: "he he",
+			imgSrc: "assets/pathway.png",
+			imgAlt: "pathway.png",
+			title: "Pathway",
 		},
 	];
 	const itemInRow = 3;
