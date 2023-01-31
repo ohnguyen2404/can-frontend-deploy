@@ -56,28 +56,15 @@ const ProgramGroups: TComponent & TSubComponent = () => {
 	const timeline = gsap.timeline();
 
 	useEffect(() => {
-		listCard.forEach((card, index) => {
-			if (index === 0) {
-				return;
-			}
-			const indexFloor = Math.floor(index / itemInRow);
+		for (let index = itemInRow; index < listCard.length; index++) {
+			const card = listCard[index];
 			gsap.set(`#card-${card.id}`, {
-				y: `${34 * (index % itemInRow) + 100 * indexFloor}%`,
+				y: "100%",
 			});
-			if (index === 1) {
-				timeline.to(`#card-${card.id}`, {
-					y: 0,
-				});
-				return;
-			}
-			timeline.to(
-				`#card-${card.id}`,
-				{
-					y: 0,
-				},
-				`<${100 / (2 * (indexFloor + 1))}%`,
-			);
-		});
+			timeline.to(`#card-${card.id}`, {
+				y: 0,
+			});
+		}
 	}, []);
 
 	useLayoutEffect(() => {
@@ -103,10 +90,10 @@ const ProgramGroups: TComponent & TSubComponent = () => {
 	return (
 		<div
 			id="program-group"
-			className={`program-group-container relative`}>
+			className="program-group-container relative">
 			<div
 				id="container-1"
-				className="flex flex-row absolute top-0 left-0 right-0">
+				className="flex flex-row justify-center absolute top-0 left-0 right-0">
 				{listCard.slice(0, itemInRow).map((card) => {
 					return (
 						<ProgramGroups.ProgramCard
@@ -122,7 +109,7 @@ const ProgramGroups: TComponent & TSubComponent = () => {
 			</div>
 			<div
 				id="container-2"
-				className="flex flex-row absolute top-0 left-0 right-0">
+				className="flex flex-row justify-center absolute top-0 left-0 right-0">
 				{listCard.slice(itemInRow).map((card) => {
 					return (
 						<ProgramGroups.ProgramCard

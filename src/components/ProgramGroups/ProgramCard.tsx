@@ -16,7 +16,7 @@ const ProgramCard = (props: TProgramCard) => {
 	return (
 		<div
 			id={`card-${props.id}`}
-			className="program-card-container aspect-[3/5] relative"
+			className="program-card-container aspect-[3/4] relative"
 			style={{
 				width: props.width,
 				zIndex: props.id + 1,

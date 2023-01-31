@@ -34,8 +34,8 @@ const SeasonalProjectGroups: TComponent & TSubComponent = () => {
 			scrollTrigger: {
 				trigger: "#seasonal-project-groups",
 				scrub: true,
-				start: "top 70%",
-				end: `center 15%`,
+				start: "top 80%",
+				end: "top 25%",
 			},
 			paddingLeft: 0,
 			paddingRight: 0,
@@ -44,7 +44,7 @@ const SeasonalProjectGroups: TComponent & TSubComponent = () => {
 	return (
 		<section
 			id="seasonal-project-groups"
-			className="px-36 my-10">
+			className="px-[10%] my-10">
 			<div className={`tag-info-groups-container ${STYLE_GROUPS.flexStart} flex-col w-full py-36 bg-lightBlue rounded-[1.875rem] overflow-hidden`}>
 				<div className="mx-6 pb-1">
 					<TitleButton title="Chi tiết" />
