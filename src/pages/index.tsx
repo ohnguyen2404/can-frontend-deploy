@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import STYLE_GROUPS from "../utils/styles";
-import { Banner, Navbar, TagInfoGroups, SeasonalProjectGroups, ProgramGroups, Footer } from "../components";
+import { Banner, Navbar, TagInfoGroups, SeasonalProjectGroups, ProgramGroups, Footer, NewsGroup } from "../components";
 
 export default function Home() {
 	return (
@@ -21,6 +21,7 @@ export default function Home() {
 			<Banner />
 			<TagInfoGroups />
 			<SeasonalProjectGroups />
+			<NewsGroup />
 			<ProgramGroups />
 			<div
 				id="EndTriggerTemp"
