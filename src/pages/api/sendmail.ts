@@ -5,13 +5,14 @@ const test = async (request: NextApiRequest, response: NextApiResponse) => {
 	if (request.method !== "POST") {
 		return response.status(400).json({ message: "Bad request" });
 	}
+	const data = request.body;
 	try {
 		trans
 			.sendMail({
-				from: "pham.giahuy.9041@gmail.com",
-				to: "pham.giahuy.9041@gmail.com",
-				text: "test text",
-				subject: "test subject",
+				from: process.env['MAIL_USER'],
+				to: process.env['MAIL_USER'],
+				html: data.html,
+				subject: data.subject,
 			})
 			.then((res) => {
 				console.log(res);
