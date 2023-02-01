@@ -4,17 +4,28 @@ type TInputField = {
 	placeHolder?: string;
 	type: HTMLInputTypeAttribute;
 	isRequired?: boolean;
+	errorMessage?: string;
+	isDisplayErrorMessage?: boolean;
 	handleChangeValue: Dispatch<React.SetStateAction<any | undefined>>;
 };
 
 const InputField = (props: TInputField) => {
 	return (
-		<input
-			type={props.type}
-			placeholder={props.placeHolder}
-			onChange={(event) => props.handleChangeValue(event.target.value)}
-			className="w-full border-b-[1px] border-strongPink text-strongPink placeholder-strongPink text-xl font-medium focus:outline-none focus:placeholder:text-transparent"
-		/>
+		<div className="input-field-container w-full">
+			<input
+				type={props.type}
+				placeholder={props.placeHolder}
+				onChange={(event) => props.handleChangeValue(event.target.value)}
+				className="w-full border-b-[1px] border-strongPink text-strongPink placeholder-strongPink text-xl font-medium focus:outline-none focus:placeholder:text-transparent"
+			/>
+			{props.isRequired && props.errorMessage && props.isDisplayErrorMessage ? (
+				<div className="error-message-container flex items-center">
+					<span className="font-bold">{props.errorMessage}</span>
+				</div>
+			) : (
+				<></>
+			)}
+		</div>
 	);
 };
 
