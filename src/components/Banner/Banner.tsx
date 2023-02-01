@@ -10,7 +10,7 @@ const Banner: TComponent & TSubComponent = () => {
 	return (
 		<div className="banner w-full relative">
 			<video
-				src="http://canimmvn.com/welcome.mp4"
+				src="assets/videos/canada-video.mp4"
 				className="w-full"
 				autoPlay
 				muted
