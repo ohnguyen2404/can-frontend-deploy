@@ -3,14 +3,15 @@ import StepCard from "./StepCard";
 import { TAdvisoryStep } from "../../utils/settings";
 
 export type TStepRows = {
-	rowIdx: number;
 	bgColor: string;
 	steps: TAdvisoryStep[];
+	rowIdx: number;
+	rowCounts: number;
 };
 
-const StepsRow = ({ bgColor, steps, rowIdx }: TStepRows) => {
+const StepsRow = ({ bgColor, steps, rowIdx, rowCounts }: TStepRows) => {
 	return (
-		<div className={`w-full flex flex-row bg-${bgColor} ${(rowIdx + 1) % 2 === 0 && 'border-gray-400 border-y-[1px]'}`}>
+		<div className={`w-full flex flex-row bg-${bgColor} ${(rowIdx + 1) % 2 === 0 && "border-gray-400 border-y-[1px]"} ${rowIdx === 0 && "rounded-tl-3xl"} ${rowIdx === rowCounts - 1 && "rounded-bl-3xl"}`}>
 			<div className="w-[8%] text-2xl pl-8 pt-8">*</div>
 			<div className={`w-[90%] flex flex-row bg-${bgColor}`}>
 				{steps.map((step, idx) => (

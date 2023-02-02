@@ -16,6 +16,7 @@ const AdvisoryGroup = ({ type }: TAdvisoryGroup) => {
 		<>
 			{tripleSetCounts.map((count, idx) => (
 				<StepsRow
+          rowCounts={tripleSetCounts.length}
 					rowIdx={idx}
 					bgColor={(count + 1) % 2 === 0 ? "white" : bgColor}
 					steps={dataArray.slice(count * 3, count * 3 + 3)}
