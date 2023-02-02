@@ -1,18 +1,19 @@
 @use '../../styles/variables' as *;
 
 .button {
+    cursor: pointer;
     transition-duration: 300ms;
     transition-property: background-color,
         border-color;
     transition-timing-function: ease-in-out;
-    cursor: pointer;
 
     &:hover {
         background-color: $strongPink;
         border-color: $strongPink;
-        color: white;
 
-        .icon-container svg path {
+        .icon-container svg path,
+        span {
+            color: white;
             stroke: white;
         }
     }

@@ -1,8 +1,8 @@
 import { CSSProperties } from "react";
 
 type TCircleButton = {
+	buttonColor?: "white" | "black";
 	handleOnClick?: () => void;
-	buttonColor?: CSSProperties["color"];
 };
 
 const CircleButton = (props: TCircleButton) => {

@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import STYLE_GROUPS from "../utils/styles";
-import { Banner, Navbar, TagInfoGroups, SeasonalProjectGroups, ProgramGroups, Footer, NewsGroup } from "../components";
+import { Banner, Navbar, TagInfoGroups, SeasonalProjectGroups, NewsGroup, ProgramGroups, Consultation, Footer } from "../components";
 
 export default function Home() {
 	return (
@@ -26,10 +26,11 @@ export default function Home() {
 			<div
 				id="EndTriggerTemp"
 				className="w-full h-[2000px]"></div>
+			<Consultation />
 			<Footer />
 			<div
 				id="tool-kit"
-				className="hidden text-white stroke-white mr-2"></div>
+				className="hidden text-white stroke-white stroke-strongPink mr-2"></div>
 		</div>
 	);
 }
