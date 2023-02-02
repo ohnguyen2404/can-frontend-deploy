@@ -5,5 +5,6 @@ import SeasonalProjectGroups from "./SeasonalProjectGroups/SeasonalProjectGroups
 import ProgramGroups from "./ProgramGroups/ProgramGroups";
 import Footer from "./Footer/Footer";
 import NewsGroup from "./NewsGroup/NewsGroup";
+import AdvisoryGroups from "./AdvisoryGroups/AdvisoryGroups";
 
-export { Navbar, TagInfoGroups, Banner, SeasonalProjectGroups, ProgramGroups, Footer, NewsGroup };
+export { Navbar, TagInfoGroups, Banner, SeasonalProjectGroups, ProgramGroups, Footer, NewsGroup, AdvisoryGroups };

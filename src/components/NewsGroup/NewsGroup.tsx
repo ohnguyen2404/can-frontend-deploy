@@ -80,8 +80,6 @@ const NewsGroup: TComponent = () => {
 		setCurIdx(idx);
 	};
 
-	console.log(curIdx);
-
 	return (
 		<section
 			id="news"
