@@ -1,23 +1,29 @@
 import React, { Dispatch, HTMLInputTypeAttribute } from "react";
 
-type TInputField = {
+type TDataListField = {
+	idList: string;
+	list: string[];
 	placeHolder?: string;
-	type: "text" | "email" | "tel";
 	isRequired?: boolean;
 	errorMessage?: string;
 	isDisplayErrorMessage?: boolean;
 	handleChangeValue: Dispatch<React.SetStateAction<any | undefined>>;
 };
 
-const InputField = (props: TInputField) => {
+const DataListField = (props: TDataListField) => {
 	return (
-		<div className="input-field-container w-full">
+		<div className="datalist-field-container w-full">
 			<input
-				type={props.type}
+				list={props.idList}
 				placeholder={props.placeHolder}
 				onChange={(event) => props.handleChangeValue(event.target.value)}
 				className="w-full border-b-[1px] border-strongPink text-strongPink placeholder-strongPink text-xl font-medium focus:outline-none focus:placeholder:text-transparent"
 			/>
+			<datalist id={props.idList}>
+				{props.list.map((item) => (
+					<option value={item}>{item}</option>
+				))}
+			</datalist>
 			{props.isRequired && props.errorMessage && props.isDisplayErrorMessage ? (
 				<div className="error-message-container flex items-center">
 					<span className="font-bold">{props.errorMessage}</span>
@@ -29,4 +35,4 @@ const InputField = (props: TInputField) => {
 	);
 };
 
-export default InputField;
+export default DataListField;

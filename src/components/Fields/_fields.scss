@@ -1,6 +1,16 @@
-.input-field-container {
-    .error-message-container::before {
-        content: "\002A";
-        font-weight: 700;
+.input-field-container .error-message-container::before {
+    content: "\002A";
+    font-weight: 700;
+}
+
+.checkbox-field-container input[type=checkbox] {
+    // -moz-appearance: none;
+    // -webkit-appearance: none;
+    // -o-appearance: none;
+}
+
+.input-file-field-container {
+    .input-file-button::after {
+        content: attr(label-content-input-file-button);
     }
 }
