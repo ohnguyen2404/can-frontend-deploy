@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { Banner, Navbar, TagInfoGroups, SeasonalProjectGroups, NewsGroup, ProgramGroups, Consultation, Footer, AdvisoryGroups, ModalPortal } from "../components";
+import { Banner, Navbar, TagInfoGroups, SeasonalProjectGroups, NewsGroup, ProgramGroups, ServiceGroups, Consultation, Footer, AdvisoryGroups, ModalPortal } from "../components";
 import { useState } from "react";
 import ModalContext from "../components/Toolkits/Modal/ModalContext";
 
@@ -30,6 +30,9 @@ export default function Home() {
 				<div
 					id="EndTriggerTemp"
 					className="w-full h-[1600px]"></div>
+				<ModalContext.Provider value={{ isOpenModal, handleOpenModal: setIsOpenModal, setModalComponent }}>
+					<ServiceGroups />
+				</ModalContext.Provider>
 				<AdvisoryGroups />
 				<Consultation />
 				<Footer />
@@ -37,7 +40,6 @@ export default function Home() {
 					id="tool-kit"
 					className="hidden text-white stroke-white stroke-strongPink mr-2"></div>
 			</div>
-
 			{isOpenModal ? <ModalPortal handleOpenModal={setIsOpenModal} /> : <></>}
 		</>
 	);

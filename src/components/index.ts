@@ -6,7 +6,8 @@ import ProgramGroups from "./ProgramGroups/ProgramGroups";
 import Consultation from "./Consultation/Consultation";
 import Footer from "./Footer/Footer";
 import NewsGroup from "./NewsGroup/NewsGroup";
+import ServiceGroups from "./ServiceGroups/ServiceGroups";
 import AdvisoryGroups from "./AdvisoryGroups/AdvisoryGroups";
 import ModalPortal from "./Toolkits/Modal/ModalPortal";
 
-export { Navbar, TagInfoGroups, Banner, SeasonalProjectGroups, NewsGroup, ProgramGroups, AdvisoryGroups, Consultation, Footer, ModalPortal };
+export { Navbar, TagInfoGroups, Banner, SeasonalProjectGroups, NewsGroup, ProgramGroups, ServiceGroups, AdvisoryGroups, Consultation, Footer, ModalPortal };
