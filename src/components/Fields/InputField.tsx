@@ -1,8 +1,8 @@
-import React, { Dispatch, HTMLInputTypeAttribute } from "react";
+import React, { Dispatch } from "react";
 
 type TInputField = {
 	placeHolder?: string;
-	type: "text" | "email" | "tel";
+	type: "text" | "email" | "tel" | "date";
 	isRequired?: boolean;
 	errorMessage?: string;
 	isDisplayErrorMessage?: boolean;
