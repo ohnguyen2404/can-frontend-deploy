@@ -1,6 +1,7 @@
 import { useState } from "react";
 import InputField from "../../Fields/InputField";
 import TitleButton from "../../Buttons/TitleButton";
+import DateField from "../../Fields/DateField";
 
 const InternationalInsuranceForm = () => {
 	const [name, setName] = useState<string>("");
@@ -8,7 +9,7 @@ const InternationalInsuranceForm = () => {
 	const [birthday, setBirthday] = useState<string>("");
 	const [isDisplayBirthdayError, setIsDisplayBirthdayError] = useState<boolean>(false);
 	const [insurancePeriod, setInsurancePeriod] = useState<string>("");
-	const [isDIsplayinsurancePeriodError, setIsDisplayinsurancePeriodError] = useState<boolean>(false);
+	const [isDisplayinsurancePeriodError, setIsDisplayinsurancePeriodError] = useState<boolean>(false);
 	const [phone, setPhone] = useState<string>("");
 	const [isDisplayPhoneError, setIsDisplayPhoneError] = useState<boolean>(false);
 	const [address, setAddress] = useState<string>("");
@@ -40,8 +41,7 @@ const InternationalInsuranceForm = () => {
 							/>
 						</div>
 						<div className={fieldContainer}>
-							<InputField
-								type="date"
+							<DateField
 								placeHolder="Ngày sinh"
 								errorMessage="Ngày sinh chưa phù hợp"
 								isRequired={true}
@@ -50,12 +50,11 @@ const InternationalInsuranceForm = () => {
 							/>
 						</div>
 						<div className={fieldContainer}>
-							<InputField
-								type="date"
+							<DateField
 								placeHolder="Thời gian bảo hiểm"
 								errorMessage="Thời gian bảo hiểm chưa phù hợp"
 								isRequired={true}
-								isDisplayErrorMessage={isDIsplayinsurancePeriodError}
+								isDisplayErrorMessage={isDisplayinsurancePeriodError}
 								handleChangeValue={setInsurancePeriod}
 							/>
 						</div>
