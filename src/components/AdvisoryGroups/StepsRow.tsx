@@ -12,8 +12,8 @@ export type TStepRows = {
 const StepsRow = ({ bgColor, steps, rowIdx, rowCounts }: TStepRows) => {
 	return (
 		<div className={`w-full flex flex-row bg-${bgColor} ${(rowIdx + 1) % 2 === 0 && "border-gray-400 border-y-[1px]"} ${rowIdx === 0 && "rounded-tl-3xl"} ${rowIdx === rowCounts - 1 && "rounded-bl-3xl"}`}>
-			<div className="w-[8%] text-2xl pl-8 pt-8">*</div>
-			<div className={`w-[90%] flex flex-row bg-${bgColor}`}>
+			<div className="w-[15%] text-2xl pl-8 pt-8">*</div>
+			<div className={`w-[85%] bg-${bgColor} grid grid-cols-3 gap-4`}>
 				{steps.map((step, idx) => (
 					<StepCard
 						order={idx + 3 * rowIdx}
