@@ -7,5 +7,6 @@ import Consultation from "./Consultation/Consultation";
 import Footer from "./Footer/Footer";
 import NewsGroup from "./NewsGroup/NewsGroup";
 import AdvisoryGroups from "./AdvisoryGroups/AdvisoryGroups";
+import ApprovalCases from "./ApprovalCases/ApprovalCases";
 
-export { Navbar, TagInfoGroups, Banner, SeasonalProjectGroups, NewsGroup, ProgramGroups, AdvisoryGroups, Consultation, Footer };
+export { Navbar, TagInfoGroups, Banner, SeasonalProjectGroups, NewsGroup, ProgramGroups, AdvisoryGroups, Consultation, Footer, ApprovalCases };
