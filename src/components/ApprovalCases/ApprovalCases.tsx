@@ -1,5 +1,5 @@
 import React from "react";
-import SashRibbon from "./SashRibbon";
+import ImageRunner from "./ImageRunner";
 
 const ApprovalCases = () => {
 	return (
@@ -7,8 +7,8 @@ const ApprovalCases = () => {
 			<p className="my-16 px-6 text-4xl font-bold text-strongPink">HÌNH ẢNH</p>
 
 			<div className="w-full bg-white flex flex-row overflow-hidden">
-				<SashRibbon />
-				<SashRibbon />
+				<ImageRunner />
+				<ImageRunner />
 			</div>
 		</div>
 	);
