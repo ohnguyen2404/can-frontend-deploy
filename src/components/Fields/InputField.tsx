@@ -2,7 +2,7 @@ import React, { Dispatch } from "react";
 
 type TInputField = {
 	placeHolder?: string;
-	type: "text" | "email" | "tel" | "date";
+	type: "text" | "email" | "tel";
 	isRequired?: boolean;
 	errorMessage?: string;
 	isDisplayErrorMessage?: boolean;

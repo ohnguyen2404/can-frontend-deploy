@@ -3,11 +3,12 @@ export type TComponent<T = undefined> = T extends undefined ? { (): JSX.Element 
 export const Assert = <T>(element: T) => element;
 
 export enum Direction {
-  "Left",
-  "Right"
+	"Left",
+	"Center",
+	"Right",
 }
 
 export enum AdvisoryType {
-  "Settled",
-  "StudyAbroad",
+	"Settled",
+	"StudyAbroad",
 }
