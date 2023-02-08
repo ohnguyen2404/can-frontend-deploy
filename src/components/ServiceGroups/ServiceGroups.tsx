@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
-import { TComponent } from "../../utils/types";
+import { Direction, TComponent } from "../../utils/types";
 import SubServiceSection from "./SubServiceSection";
-import ModalContext from "../Toolkits/Modal/ModalContext";
+import ModalContext from "../Toolkits/Modal/ModalContext"; 
 
 type TSubComponent = {
 	SubServiceSection: typeof SubServiceSection;
@@ -9,13 +9,49 @@ type TSubComponent = {
 
 const ServiceGroups: TComponent & TSubComponent = () => {
 	const modalContext = useContext(ModalContext);
+
+	const subSection = "sub-section border-b-2 border-solid border-silver"
 	return (
 		<section id="service-groups">
 			<div className="sub-section title-section uppercase">Dịch vụ</div>
-			<div className="sub-section school-registration"></div>
-			<div className="sub-section settlement-job"></div>
-			<div className="sub-section international-insurance"></div>
-			<SubServiceSection/>
+			<div className="sub-section-container">
+				<div className={`${subSection} school-registration border-t-2`}>
+					<SubServiceSection
+						order="01"
+						title="Đăng ký trường học"
+						subtitle="Đăng ký"
+						direction={Direction.Left}
+						firstImgSrc="assets/serviceGroups/section/SchoolRegistration-1.jpg"
+						firstImgAlt="SchoolRegistration-1.jpg"
+						secondImgSrc="assets/serviceGroups/section/SchoolRegistration-2.jpg"
+						secondImgAlt="SchoolRegistration-2.jpg"
+					/>
+				</div>
+				<div className={`${subSection} settlement-job`}>
+					<SubServiceSection
+						order="02"
+						title="Đăng ký việc làm định cư"
+						subtitle="Đăng ký"
+						direction={Direction.Center}
+						firstImgSrc="assets/serviceGroups/section/SettlementJob-1.jpg"
+						firstImgAlt="SettlementJob-1.jpg"
+						secondImgSrc="assets/serviceGroups/section/SettlementJob-2.jpg"
+						secondImgAlt="SettlementJob-2.jpg"
+					/>
+				</div>
+				<div className={`${subSection} international-insurance`}>
+					<SubServiceSection
+						order="03"
+						title="Bảo hiểm quốc tế"
+						subtitle="Đăng ký"
+						direction={Direction.Right}
+						firstImgSrc="assets/serviceGroups/section/InternationalInsurance-1.jpg"
+						firstImgAlt="InternationalInsurance-1.jpg"
+						secondImgSrc="assets/serviceGroups/section/InternationalInsurance-2.jpg"
+						secondImgAlt="InternationalInsurance-2.jpg"
+					/>
+				</div>
+			</div>
 		</section>
 	);
 };
