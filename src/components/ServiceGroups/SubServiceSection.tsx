@@ -157,9 +157,10 @@ const SubServiceSection = (props: TSubServiceSection) => {
 
 	return (
 		<div
-			className="sub-service-section relative overflow-hidden"
+			className="sub-service-section relative overflow-hidden cursor-pointer select-none"
 			onMouseEnter={handleMouseEnter}
-			onMouseLeave={handleMouseLeave}>
+			onMouseLeave={handleMouseLeave}
+			onClick={props.handleOnClick}>
 			<div className="title-container flex flex-col justify-center mx-8 absolute top-0 left-0 bottom-0 right-0 z-[2]">
 				<div className="inner-title-container overflow-hidden">
 					{props.order ? (
