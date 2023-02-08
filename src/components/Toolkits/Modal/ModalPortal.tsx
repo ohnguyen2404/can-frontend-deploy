@@ -8,15 +8,12 @@ const ModalPortal = (props: PropsWithChildren<TModalPortal>) => {
 	return (
 		<div className="modal-portal-container z-20 absolute top-0 bottom-0 right-0 left-0">
 			<div
-				className="modal-wrap h-full w-full"
+				className="modal-wrap fixed flex h-full w-full justify-center items-center bg-black bg-opacity-50"
 				onClick={() => props.handleOpenModal(false)}>
 				<div
-					className="modal-inner z-30 fixed left-1/2 top-1/2 translate-x-[-50%] translate-y-[-50%]"
+					className="modal-container z-30 w-3/4"
 					onClick={(event) => event.stopPropagation()}>
-					<span
-						className="close-button"
-						onClick={() => props.handleOpenModal(false)}></span>
-					<div className="modal-container">{props.children}</div>
+					{props.children}
 				</div>
 			</div>
 		</div>
