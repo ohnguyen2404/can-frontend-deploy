@@ -40,7 +40,7 @@ export default function Home() {
 					id="tool-kit"
 					className="hidden text-white stroke-white stroke-strongPink mr-2"></div>
 			</div>
-			{isOpenModal ? <ModalPortal handleOpenModal={setIsOpenModal} /> : <></>}
+			{isOpenModal ? <ModalPortal handleOpenModal={setIsOpenModal}>{modalComponent}</ModalPortal> : <></>}
 		</>
 	);
 }

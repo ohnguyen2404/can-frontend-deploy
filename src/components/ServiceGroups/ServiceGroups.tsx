@@ -1,7 +1,10 @@
 import React, { useContext } from "react";
 import { Direction, TComponent } from "../../utils/types";
 import SubServiceSection from "./SubServiceSection";
-import ModalContext from "../Toolkits/Modal/ModalContext"; 
+import ModalContext from "../Toolkits/Modal/ModalContext";
+import SchoolRegistrationForm from "./Forms/SchoolRegistrationForm";
+import SettlementJobForm from "./Forms/SettlementJobForm";
+import InternationalInsuranceForm from "./Forms/InternationalInsuranceForm";
 
 type TSubComponent = {
 	SubServiceSection: typeof SubServiceSection;
@@ -10,7 +13,21 @@ type TSubComponent = {
 const ServiceGroups: TComponent & TSubComponent = () => {
 	const modalContext = useContext(ModalContext);
 
-	const subSection = "sub-section border-b-2 border-solid border-silver"
+	const handleSchoolRegistration = () => {
+		modalContext?.setModalComponent(<SchoolRegistrationForm />);
+		modalContext?.handleOpenModal(true);
+	};
+
+	const handleSettlementJob = () => {
+		modalContext?.setModalComponent(<SettlementJobForm />);
+		modalContext?.handleOpenModal(true);
+	};
+	const handleInternationalInsurance = () => {
+		modalContext?.setModalComponent(<InternationalInsuranceForm />);
+		modalContext?.handleOpenModal(true);
+	};
+
+	const subSection = "sub-section border-b-2 border-solid border-silver";
 	return (
 		<section id="service-groups">
 			<div className="sub-section title-section uppercase">Dịch vụ</div>
@@ -25,6 +42,7 @@ const ServiceGroups: TComponent & TSubComponent = () => {
 						firstImgAlt="SchoolRegistration-1.jpg"
 						secondImgSrc="assets/serviceGroups/section/SchoolRegistration-2.jpg"
 						secondImgAlt="SchoolRegistration-2.jpg"
+						handleOnClick={handleSchoolRegistration}
 					/>
 				</div>
 				<div className={`${subSection} settlement-job`}>
@@ -37,6 +55,7 @@ const ServiceGroups: TComponent & TSubComponent = () => {
 						firstImgAlt="SettlementJob-1.jpg"
 						secondImgSrc="assets/serviceGroups/section/SettlementJob-2.jpg"
 						secondImgAlt="SettlementJob-2.jpg"
+						handleOnClick={handleSettlementJob}
 					/>
 				</div>
 				<div className={`${subSection} international-insurance`}>
@@ -49,6 +68,7 @@ const ServiceGroups: TComponent & TSubComponent = () => {
 						firstImgAlt="InternationalInsurance-1.jpg"
 						secondImgSrc="assets/serviceGroups/section/InternationalInsurance-2.jpg"
 						secondImgAlt="InternationalInsurance-2.jpg"
+						handleOnClick={handleInternationalInsurance}
 					/>
 				</div>
 			</div>
