@@ -1,13 +1,19 @@
-#service-groups {
-    .sub-service-section {
-        .school-registration-form-container .image-container {
-            background-image: url("../../../public/assets/serviceGroups/SchoolRegistration.jpg");
-        }
-        .settlement-job-form-container .image-container {
-            background-image: url("../../../public/assets/serviceGroups/SettlemenJob.jpg");
-        }
-        .international-insurance-form-container .image-container {
-            background-image: url("../../../public/assets/serviceGroups/InternationalInsurance.jpg");
-        }
+#service-groups {}
+
+#school-registration {
+    .school-registration-form-container .image-container {
+        background-image: url("../../../public/assets/serviceGroups/form/SchoolRegistration.jpg");
+    }
+}
+
+#settlement-job {
+    .settlement-job-form-container .image-container {
+        background-image: url("../../../public/assets/serviceGroups/form/SettlemenJob.jpg");
+    }
+}
+
+#international-insurance {
+    .international-insurance-form-container .image-container {
+        background-image: url("../../../public/assets/serviceGroups/form/InternationalInsurance.jpg");
     }
 }
