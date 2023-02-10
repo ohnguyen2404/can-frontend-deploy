@@ -26,7 +26,7 @@ const SchoolRegistrationForm = () => {
 	const [transcriptsCollegeFileList, setTranscriptsCollegeFileList] = useState<FileList | null>(null);
 
 	const listSchoolId = "school-registration-list";
-	const listSchool: string[] = ["hehe", "hoho", "haha"];
+	const listSchool: string[] = ["Abbotsford School District, High school (Public),Abbotsford, BC", "hoho", "haha"];
 
 	const fieldContainer = "field-container my-5";
 
@@ -35,8 +35,8 @@ const SchoolRegistrationForm = () => {
 	return (
 		<div id="school-registration">
 			<div className="school-registration-form-container flex flex-row justify-center">
-				<div className="image-container w-[35%] bg-no-repeat bg-center bg-cover rounded-[30px] -mr-[1.5%]"></div>
-				<div className="form-container w-[65%] px-[5%] py-8 bg-white rounded-[30px] -ml-[1.5%]">
+				<div className="image-container w-[35%] bg-no-repeat bg-center bg-cover rounded-[30px] -mr-[2%]"></div>
+				<div className="form-container w-[65%] px-[5%] py-8 bg-white rounded-[30px] -ml-[2%]">
 					<div className="title-container">
 						<span className="title font-extrabold text-5xl text-strongPink uppercase">Đăng ký trường học</span>
 					</div>
