@@ -11,21 +11,45 @@ type TInputFileField = {
 
 const InputFileField = (props: TInputFileField) => {
 	const labelContentAttrName = "label-content-input-file-button";
-	const defaultLabelContent = "Không có tệp nào được chọn"
+	const defaultLabelContent = "Không có tệp nào được chọn";
 	const ref_inputFileButton = useRef<HTMLLabelElement>(null);
 
 	useEffect(() => {
 		ref_inputFileButton.current?.setAttribute(labelContentAttrName, defaultLabelContent);
 	}, []);
 
+	// formatBytes credit goes to the community "https://stackoverflow.com/questions/15900485/correct-way-to-convert-size-in-bytes-to-kb-mb-gb-in-javascript"
+	function formatBytes(bytes: number, decimals = 2) {
+		if (!bytes) return "0 Bytes";
+
+		const k = 1024;
+		const dm = decimals < 0 ? 0 : decimals;
+		const sizes = ["Bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
+
+		const i = Math.floor(Math.log(bytes) / Math.log(k));
+
+		return `${parseFloat((bytes / Math.pow(k, i)).toFixed(dm))} ${sizes[i]}`;
+	}
+
 	const handleOnChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
-		const fileList = event.target.files;
-		if (!fileList || fileList.length === 0) {
-			ref_inputFileButton.current?.setAttribute(labelContentAttrName, defaultLabelContent)
-		} else if (fileList.length === 1) {
-			ref_inputFileButton.current?.setAttribute(labelContentAttrName, fileList[0].name);
-		} else if (fileList.length > 1 ) {
-			ref_inputFileButton.current?.setAttribute(labelContentAttrName, `${fileList.length} files`)
+		const listFile = event.target.files;
+		if (!listFile || listFile.length === 0) {
+			ref_inputFileButton.current?.setAttribute(labelContentAttrName, defaultLabelContent);
+			return;
+		}
+		let listFileSize = 0;
+		for (let index = 0; index < listFile.length; index++) {
+			const fileSize = listFile.item(index)?.size;
+			if (!fileSize) {
+				return;
+			}
+			listFileSize += fileSize;
+		}
+		const listFileSizeFormated = formatBytes(listFileSize);
+		if (listFile.length === 1) {
+			ref_inputFileButton.current?.setAttribute(labelContentAttrName, `${listFile[0].name}, ${listFileSizeFormated}`);
+		} else if (listFile.length > 1) {
+			ref_inputFileButton.current?.setAttribute(labelContentAttrName, `${listFile.length} files, ${listFileSizeFormated}`);
 		}
 		props.handleChangeValue(event.target.files);
 	};
