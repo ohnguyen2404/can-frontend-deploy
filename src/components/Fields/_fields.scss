@@ -1,4 +1,6 @@
-.input-field-container .error-message-container::before, .date-field-container .error-message-container::before {
+.input-field-container .error-message-container::before,
+.date-field-container .error-message-container::before,
+.select-field-container .error-message-container::before {
     content: "\002A";
     font-weight: 700;
 }

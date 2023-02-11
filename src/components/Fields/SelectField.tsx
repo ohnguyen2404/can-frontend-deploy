@@ -18,7 +18,7 @@ const SelectField = (props: TSelectField) => {
 			<select
 				id={props.id}
 				onChange={(event) => props.handleChangeValue(event.target.value)}>
-				<option value={props.placeHolder}>{props.placeHolder}</option>
+				<option value={""}>{props.placeHolder}</option>
 				{props.list.map((item) => (
 					<option value={item}>{item}</option>
 				))}
