@@ -7,17 +7,17 @@ import TitleButton from "../../Buttons/TitleButton";
 import { LIST_COLLEGE_SCHOOL, LIST_HIGH_SCHOOL_PRIVATE, LIST_HIGH_SCHOOL_PUBLIC, LIST_LANGUAGES_SCHOOL, LIST_UNIVERSITY_SCHOOL } from "../../../utils/settings";
 
 const SchoolRegistrationForm = () => {
-	const [name, setName] = useState<string>("");
+	const [name, setName] = useState<string>();
 	const [isDisplayNameError, setIsDisplayNameError] = useState<boolean>(false);
-	const [email, setEmail] = useState<string>("");
+	const [email, setEmail] = useState<string>();
 	const [isDisplayEmailError, setIsDisplayEmailError] = useState<boolean>(false);
-	const [phone, setPhone] = useState<string>("");
+	const [phone, setPhone] = useState<string>();
 	const [isDisplayPhoneError, setIsDisplayPhoneError] = useState<boolean>(false);
 	const [semesterFirst, setSemesterFirst] = useState<boolean>(false);
 	const [semesterSecond, setSemesterSecond] = useState<boolean>(false);
 	const [semesterThird, setSemesterThird] = useState<boolean>(false);
 	const [semesterFourth, setSemesterFourth] = useState<boolean>(false);
-	const [major, setMajor] = useState<string>("");
+	const [major, setMajor] = useState<string>();
 	const [isDisplayMajorError, setIsDisplayMajorError] = useState<boolean>(false);
 	const [passportFileList, setPassportFileList] = useState<FileList | null>(null);
 	const [ieltsFileList, setIeltsFileList] = useState<FileList | null>(null);
@@ -36,6 +36,35 @@ const SchoolRegistrationForm = () => {
 	const listInstitutionTypeSchool: InstitutionTypeSchool[] = Object.entries(InstitutionTypeSchool).map(([item, value]) => value);
 	const [institutionTypeSchool, setInstitutionTypeSchool] = useState<string>();
 	const [isDisplayInstitutionTypeSchoolError, setIsDisplayInstitutionTypeSchoolError] = useState<boolean>(false);
+
+	const handleSetInstitutionTypeSchool = (value: string) => {
+		setIsDisplaySchoolError(false);
+		setInstitutionTypeSchool(value);
+		console.log(value);
+		if (value === InstitutionTypeSchool.COLLEGE) {
+			setListSchool(LIST_COLLEGE_SCHOOL);
+			return;
+		}
+		if (value === InstitutionTypeSchool.UNIVERSITY) {
+			setListSchool(LIST_UNIVERSITY_SCHOOL);
+			return;
+		}
+		if (value === InstitutionTypeSchool.LANGUAGES_SCHOOL) {
+			setListSchool(LIST_LANGUAGES_SCHOOL);
+			return;
+		}
+		if (value === InstitutionTypeSchool.HIGH_SCHOOL_PUBLIC) {
+			setListSchool(LIST_HIGH_SCHOOL_PUBLIC);
+			return;
+		}
+		if (value === InstitutionTypeSchool.HIGH_SCHOOL_PRIVATE) {
+			setListSchool(LIST_HIGH_SCHOOL_PRIVATE);
+			return;
+		}
+		setListSchool([]);
+		setIsDisplaySchoolError(true);
+	};
+
 	const listSchoolId = "school-registration-list";
 	const [listSchool, setListSchool] = useState<string[]>([]);
 	const [school, setSchool] = useState<string>("");
