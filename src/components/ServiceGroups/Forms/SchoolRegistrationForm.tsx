@@ -1,9 +1,10 @@
 import { useState } from "react";
 import InputField from "../../Fields/InputField";
-import DataListField from "../../Fields/DatalistField";
 import CheckboxField from "../../Fields/CheckboxField";
+import SelectField from "../../Fields/SelectField";
 import InputFileField from "../../Fields/InputFileField";
 import TitleButton from "../../Buttons/TitleButton";
+import { LIST_COLLEGE_SCHOOL, LIST_HIGH_SCHOOL_PRIVATE, LIST_HIGH_SCHOOL_PUBLIC, LIST_LANGUAGES_SCHOOL, LIST_UNIVERSITY_SCHOOL } from "../../../utils/settings";
 
 const SchoolRegistrationForm = () => {
 	const [name, setName] = useState<string>("");
@@ -12,8 +13,6 @@ const SchoolRegistrationForm = () => {
 	const [isDisplayEmailError, setIsDisplayEmailError] = useState<boolean>(false);
 	const [phone, setPhone] = useState<string>("");
 	const [isDisplayPhoneError, setIsDisplayPhoneError] = useState<boolean>(false);
-	const [school, setSchool] = useState<string>("");
-	const [isDisplaySchoolError, setIsDisplaySchoolError] = useState<boolean>(false);
 	const [semesterFirst, setSemesterFirst] = useState<boolean>(false);
 	const [semesterSecond, setSemesterSecond] = useState<boolean>(false);
 	const [semesterThird, setSemesterThird] = useState<boolean>(false);
@@ -25,8 +24,22 @@ const SchoolRegistrationForm = () => {
 	const [transcriptsHighSchoolFileList, setTranscriptsHighSchoolFileList] = useState<FileList | null>(null);
 	const [transcriptsCollegeFileList, setTranscriptsCollegeFileList] = useState<FileList | null>(null);
 
+	enum InstitutionTypeSchool {
+		COLLEGE = "College",
+		UNIVERSITY = "University",
+		LANGUAGES_SCHOOL = "Languages School",
+		HIGH_SCHOOL_PUBLIC = "High School Public",
+		HIGH_SCHOOL_PRIVATE = "High School Private",
+	}
+
+	const listInstitutionTypeSchoolId = "institution-type-school";
+	const listInstitutionTypeSchool: InstitutionTypeSchool[] = Object.entries(InstitutionTypeSchool).map(([item, value]) => value);
+	const [institutionTypeSchool, setInstitutionTypeSchool] = useState<string>();
+	const [isDisplayInstitutionTypeSchoolError, setIsDisplayInstitutionTypeSchoolError] = useState<boolean>(false);
 	const listSchoolId = "school-registration-list";
-	const listSchool: string[] = ["Abbotsford School District, High school (Public),Abbotsford, BC", "hoho", "haha"];
+	const [listSchool, setListSchool] = useState<string[]>([]);
+	const [school, setSchool] = useState<string>("");
+	const [isDisplaySchoolError, setIsDisplaySchoolError] = useState<boolean>(false);
 
 	const fieldContainer = "field-container my-5";
 
@@ -73,10 +86,23 @@ const SchoolRegistrationForm = () => {
 								/>
 							</div>
 							<div className={fieldContainer}>
-								<DataListField
-									idList={listSchoolId}
+								<SelectField
+									id={listInstitutionTypeSchoolId}
+									list={listInstitutionTypeSchool}
+									label="Chương trình học"
+									placeHolder="--Chọn chương trình--"
+									errorMessage="Chương trình học chưa phù hợp"
+									isRequired={true}
+									isDisplayErrorMessage={isDisplayInstitutionTypeSchoolError}
+									handleChangeValue={handleSetInstitutionTypeSchool}
+								/>
+							</div>
+							<div className={fieldContainer}>
+								<SelectField
+									id={listSchoolId}
 									list={listSchool}
-									placeHolder="Trường"
+									label="Trường"
+									placeHolder="--Chọn trường--"
 									errorMessage="Trường chưa phù hợp"
 									isRequired={true}
 									isDisplayErrorMessage={isDisplaySchoolError}

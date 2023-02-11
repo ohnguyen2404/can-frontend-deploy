@@ -43,7 +43,7 @@ const InternationalInsuranceForm = () => {
 							</div>
 							<div className={fieldContainer}>
 								<DateField
-									placeHolder="Ngày sinh"
+									label="Ngày sinh"
 									errorMessage="Ngày sinh chưa phù hợp"
 									isRequired={true}
 									isDisplayErrorMessage={isDisplayBirthdayError}
@@ -52,7 +52,7 @@ const InternationalInsuranceForm = () => {
 							</div>
 							<div className={fieldContainer}>
 								<DateField
-									placeHolder="Thời gian bảo hiểm"
+									label="Thời gian bảo hiểm"
 									errorMessage="Thời gian bảo hiểm chưa phù hợp"
 									isRequired={true}
 									isDisplayErrorMessage={isDisplayinsurancePeriodError}

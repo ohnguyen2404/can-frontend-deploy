@@ -1,6 +1,6 @@
 import { useState } from "react";
 import InputField from "../../Fields/InputField";
-import DataListField from "../../Fields/DatalistField";
+import SelectField from "../../Fields/SelectField";
 import InputFileField from "../../Fields/InputFileField";
 import TitleButton from "../../Buttons/TitleButton";
 
@@ -66,10 +66,11 @@ const SettlementJobForm = () => {
 								/>
 							</div>
 							<div className={fieldContainer}>
-								<DataListField
-									idList={listJobId}
+								<SelectField
+									id={listJobId}
 									list={listJob}
-									placeHolder="Danh sách công việc"
+									label="Danh sách công việc"
+									placeHolder="--Chọn công việc--"
 									errorMessage="Danh sách công việc chưa phù hợp"
 									isRequired={true}
 									isDisplayErrorMessage={isDisplayJobError}

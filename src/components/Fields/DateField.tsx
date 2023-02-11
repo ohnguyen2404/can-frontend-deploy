@@ -1,7 +1,7 @@
 import React, { Dispatch } from "react";
 
 type TDateField = {
-	placeHolder?: string;
+	label: string;
 	isRequired?: boolean;
 	errorMessage?: string;
 	isDisplayErrorMessage?: boolean;
@@ -11,7 +11,7 @@ type TDateField = {
 const DateField = (props: TDateField) => {
 	return (
 		<div className="date-field-container w-full">
-			{props.placeHolder ? <label className="label w-fit font-medium text-strongPink text-xl after:content-[':'] after:ml-[0.125rem] after:mr-1">{props.placeHolder}</label> : <></>}
+			<label className="label w-fit font-medium text-strongPink text-xl after:content-[':'] after:ml-[0.125rem] after:mr-1">{props.label}</label>
 			<input
 				type="date"
 				onChange={(event) => props.handleChangeValue(event.target.value)}

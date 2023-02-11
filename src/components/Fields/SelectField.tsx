@@ -1,29 +1,28 @@
 import React, { Dispatch, HTMLInputTypeAttribute } from "react";
 
-type TDataListField = {
-	idList: string;
+type TSelectField = {
+	id: string;
 	list: string[];
-	placeHolder?: string;
+	label: string;
+	placeHolder: string;
 	isRequired?: boolean;
 	errorMessage?: string;
 	isDisplayErrorMessage?: boolean;
 	handleChangeValue: Dispatch<React.SetStateAction<any | undefined>>;
 };
 
-const DataListField = (props: TDataListField) => {
+const SelectField = (props: TSelectField) => {
 	return (
-		<div className="datalist-field-container w-full">
-			<input
-				list={props.idList}
-				placeholder={props.placeHolder}
-				onChange={(event) => props.handleChangeValue(event.target.value)}
-				className="w-full border-b-[1px] border-strongPink text-strongPink placeholder-strongPink text-xl font-medium focus:outline-none focus:placeholder:text-transparent"
-			/>
-			<datalist id={props.idList}>
+		<div className="select-field-container w-full">
+			<label className="label w-fit font-medium text-strongPink text-xl after:content-[':'] after:ml-[0.125rem] after:mr-1">{props.label}</label>
+			<select
+				id={props.id}
+				onChange={(event) => props.handleChangeValue(event.target.value)}>
+				<option value={props.placeHolder}>{props.placeHolder}</option>
 				{props.list.map((item) => (
 					<option value={item}>{item}</option>
 				))}
-			</datalist>
+			</select>
 			{props.isRequired && props.errorMessage && props.isDisplayErrorMessage ? (
 				<div className="error-message-container flex items-center">
 					<span className="font-bold">{props.errorMessage}</span>
@@ -35,4 +34,4 @@ const DataListField = (props: TDataListField) => {
 	);
 };
 
-export default DataListField;
+export default SelectField;
