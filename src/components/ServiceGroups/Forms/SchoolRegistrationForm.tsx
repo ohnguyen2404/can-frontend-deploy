@@ -5,6 +5,8 @@ import SelectField from "../../Fields/SelectField";
 import InputFileField from "../../Fields/InputFileField";
 import TitleButton from "../../Buttons/TitleButton";
 import { LIST_COLLEGE_SCHOOL, LIST_HIGH_SCHOOL_PRIVATE, LIST_HIGH_SCHOOL_PUBLIC, LIST_LANGUAGES_SCHOOL, LIST_UNIVERSITY_SCHOOL } from "../../../utils/settings";
+import { isEmailValid, isPhoneValid } from "../../../utils/validator";
+import { formatBytes } from "../../../utils/converter";
 
 const SchoolRegistrationForm = () => {
 	const [name, setName] = useState<string>();
@@ -17,12 +19,17 @@ const SchoolRegistrationForm = () => {
 	const [semesterSecond, setSemesterSecond] = useState<boolean>(false);
 	const [semesterThird, setSemesterThird] = useState<boolean>(false);
 	const [semesterFourth, setSemesterFourth] = useState<boolean>(false);
+	const [isDisplaySemesterError, setIsDisplaySemesterError] = useState<boolean>(false);
 	const [major, setMajor] = useState<string>();
 	const [isDisplayMajorError, setIsDisplayMajorError] = useState<boolean>(false);
+
+	const maxListFileSize = 26214000;
 	const [passportFileList, setPassportFileList] = useState<FileList | null>(null);
 	const [ieltsFileList, setIeltsFileList] = useState<FileList | null>(null);
 	const [transcriptsHighSchoolFileList, setTranscriptsHighSchoolFileList] = useState<FileList | null>(null);
 	const [transcriptsCollegeFileList, setTranscriptsCollegeFileList] = useState<FileList | null>(null);
+	const [fileListErrorMessage, setFileListErrorMessage] = useState<string>();
+	const [isDisplayFileListError, setIsDisplayFileListError] = useState<boolean>(false);
 
 	enum InstitutionTypeSchool {
 		COLLEGE = "College",
@@ -38,9 +45,7 @@ const SchoolRegistrationForm = () => {
 	const [isDisplayInstitutionTypeSchoolError, setIsDisplayInstitutionTypeSchoolError] = useState<boolean>(false);
 
 	const handleSetInstitutionTypeSchool = (value: string) => {
-		setIsDisplaySchoolError(false);
 		setInstitutionTypeSchool(value);
-		console.log(value);
 		if (value === InstitutionTypeSchool.COLLEGE) {
 			setListSchool(LIST_COLLEGE_SCHOOL);
 			return;
@@ -62,17 +67,76 @@ const SchoolRegistrationForm = () => {
 			return;
 		}
 		setListSchool([]);
-		setIsDisplaySchoolError(true);
 	};
 
 	const listSchoolId = "school-registration-list";
 	const [listSchool, setListSchool] = useState<string[]>([]);
-	const [school, setSchool] = useState<string>("");
+	const [school, setSchool] = useState<string>();
+	const [schoolErrorMessage, setSchoolErrorMessage] = useState<string>("Trường chưa phù hợp");
 	const [isDisplaySchoolError, setIsDisplaySchoolError] = useState<boolean>(false);
 
-	const fieldContainer = "field-container my-5";
+	const handleSubmit = () => {
+		setIsDisplayNameError(false);
+		setIsDisplayEmailError(false);
+		setIsDisplayPhoneError(false);
+		setIsDisplayInstitutionTypeSchoolError(false);
+		setIsDisplaySchoolError(false);
+		setIsDisplaySemesterError(false);
+		setIsDisplayMajorError(false);
+		setIsDisplayFileListError(false);
+		if (!name) {
+			setIsDisplayNameError(true);
+			return;
+		}
+		if (!email || !isEmailValid(email)) {
+			setIsDisplayEmailError(true);
+			return;
+		}
+		if (!phone || !isPhoneValid(phone)) {
+			setIsDisplayPhoneError(true);
+			return;
+		}
+		if (!institutionTypeSchool) {
+			setIsDisplayInstitutionTypeSchoolError(true);
+			return;
+		}
+		if (!school) {
+			setIsDisplaySchoolError(true);
+			return;
+		}
+		const totalFile = (passportFileList ? passportFileList.length : 0) + (ieltsFileList ? ieltsFileList.length : 0) + (transcriptsHighSchoolFileList ? transcriptsHighSchoolFileList.length : 0) + (transcriptsCollegeFileList ? transcriptsCollegeFileList.length : 0);
+		if (totalFile > 5) {
+			setFileListErrorMessage(`Tổng số file nên ít hơn 5. Tổng số file hiện tại: ${totalFile}`);
+			setIsDisplayFileListError(true);
+			return;
+		}
 
-	const handleSubmit = () => {};
+		const sumTotalListFileSize = (fileList: FileList) => {
+			let totalListFileSize = 0;
+			for (let index = 0; index < fileList.length; index++) {
+				const fileSize = fileList.item(index)?.size;
+				if (!fileSize) {
+					continue;
+				}
+				totalListFileSize += fileSize;
+			}
+			return totalListFileSize;
+		};
+
+		let totalListFileSize = 0;
+		passportFileList ? (totalListFileSize += sumTotalListFileSize(passportFileList)) : null;
+		ieltsFileList ? (totalListFileSize += sumTotalListFileSize(ieltsFileList)) : null;
+		transcriptsHighSchoolFileList ? (totalListFileSize += sumTotalListFileSize(transcriptsHighSchoolFileList)) : null;
+		transcriptsCollegeFileList ? (totalListFileSize += sumTotalListFileSize(transcriptsCollegeFileList)) : null;
+
+		if (totalListFileSize > maxListFileSize) {
+			setFileListErrorMessage(`Tổng dung lượng các file nên ít hơn 25MB. Tống dung lượng các file hiện tại: ${formatBytes(totalListFileSize)}`);
+			setIsDisplayFileListError(true);
+			return;
+		}
+	};
+
+	const fieldContainer = "field-container my-5";
 
 	return (
 		<div id="school-registration">
@@ -132,7 +196,7 @@ const SchoolRegistrationForm = () => {
 									list={listSchool}
 									label="Trường"
 									placeHolder="--Chọn trường--"
-									errorMessage="Trường chưa phù hợp"
+									errorMessage={schoolErrorMessage}
 									isRequired={true}
 									isDisplayErrorMessage={isDisplaySchoolError}
 									handleChangeValue={setSchool}
@@ -211,6 +275,13 @@ const SchoolRegistrationForm = () => {
 									handleChangeValue={setTranscriptsCollegeFileList}
 								/>
 							</div>
+							{isDisplayFileListError && fileListErrorMessage ? (
+								<div className={`${fieldContainer} error-message-container before:content-['\\002A'] before:font-bold`}>
+									<span className="font-bold">{fileListErrorMessage}</span>
+								</div>
+							) : (
+								<></>
+							)}
 						</div>
 						<div className={fieldContainer}>
 							<TitleButton

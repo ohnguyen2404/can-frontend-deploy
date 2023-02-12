@@ -24,7 +24,7 @@ const SelectField = (props: TSelectField) => {
 				))}
 			</select>
 			{props.isRequired && props.errorMessage && props.isDisplayErrorMessage ? (
-				<div className="error-message-container flex items-center">
+				<div className="error-message-container flex items-center before:content-['\002A'] before:font-bold">
 					<span className="font-bold">{props.errorMessage}</span>
 				</div>
 			) : (
