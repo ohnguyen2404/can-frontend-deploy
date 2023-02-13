@@ -301,7 +301,7 @@ export const LIST_HIGH_SCHOOL_PUBLIC = [
 ];
 
 export const LIST_HIGH_SCHOOL_PRIVATE = [
-	"Albert College, Belleville, Ontario",
+	"Albert College, Belleville, Ontario", //
 	"Birmingham International College of Canada (BICC), Toronto, Ontario",
 	"Bodwell High School, Toronto, Ontario",
 	"Bronte College, Mississauga, Ontario",
@@ -318,3 +318,10 @@ export const LIST_HIGH_SCHOOL_PRIVATE = [
 	"Upper Madison College – High School, Toronto, Ontario",
 	"Urban International School, Toronto, Ontario",
 ];
+
+// in bytes - 25MB = 25000000B
+export const MAX_LISTFILE_SIZE = 25000000;
+export const MAX_NUMBER_FILE = 5;
+
+export const ERROR_UNKNOWN = "Unkown error occurred";
+export const ERROR_CONTENT_LENGTH = "Content length too large";
