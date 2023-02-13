@@ -1,5 +1,5 @@
 // formatBytes credit goes to the community "https://stackoverflow.com/questions/15900485/correct-way-to-convert-size-in-bytes-to-kb-mb-gb-in-javascript"
-function formatBytes(bytes: number, decimals = 2) {
+export const formatBytes = (bytes: number, decimals = 2) => {
 	if (!bytes) return "0 Bytes";
 
 	const k = 1000;
@@ -9,6 +9,12 @@ function formatBytes(bytes: number, decimals = 2) {
 	const i = Math.floor(Math.log(bytes) / Math.log(k));
 
 	return `${parseFloat((bytes / Math.pow(k, i)).toFixed(dm))} ${sizes[i]}`;
-}
+};
 
-export { formatBytes };
+export const totalListFileSize = (listFile: FileList): number => {
+	let total = 0;
+	Array.from(listFile).forEach((file) => {
+		total += file.size;
+	});
+	return total;
+};

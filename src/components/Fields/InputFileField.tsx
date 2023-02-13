@@ -1,5 +1,5 @@
 import React, { Dispatch, useEffect, useRef } from "react";
-import { formatBytes } from "../../utils/converter";
+import { formatBytes, totalListFileSize } from "../../utils/helper";
 
 type TInputFileField = {
 	id: string;
@@ -25,15 +25,7 @@ const InputFileField = (props: TInputFileField) => {
 			ref_inputFileButton.current?.setAttribute(labelContentAttrName, defaultLabelContent);
 			return;
 		}
-		let listFileSize = 0;
-		for (let index = 0; index < listFile.length; index++) {
-			const fileSize = listFile.item(index)?.size;
-			if (!fileSize) {
-				return;
-			}
-			listFileSize += fileSize;
-		}
-		const listFileSizeFormated = formatBytes(listFileSize);
+		const listFileSizeFormated = formatBytes(totalListFileSize(listFile));
 		if (listFile.length === 1) {
 			ref_inputFileButton.current?.setAttribute(labelContentAttrName, `${listFile[0].name}, ${listFileSizeFormated}`);
 		} else if (listFile.length > 1) {
