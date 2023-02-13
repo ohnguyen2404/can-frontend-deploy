@@ -4,9 +4,10 @@ import CheckboxField from "../../Fields/CheckboxField";
 import SelectField from "../../Fields/SelectField";
 import InputFileField from "../../Fields/InputFileField";
 import TitleButton from "../../Buttons/TitleButton";
-import { LIST_COLLEGE_SCHOOL, LIST_HIGH_SCHOOL_PRIVATE, LIST_HIGH_SCHOOL_PUBLIC, LIST_LANGUAGES_SCHOOL, LIST_UNIVERSITY_SCHOOL } from "../../../utils/settings";
+import { LIST_COLLEGE_SCHOOL, LIST_HIGH_SCHOOL_PRIVATE, LIST_HIGH_SCHOOL_PUBLIC, LIST_LANGUAGES_SCHOOL, LIST_UNIVERSITY_SCHOOL, MAX_LISTFILE_SIZE, MAX_NUMBER_FILE } from "../../../utils/settings";
 import { isEmailValid, isPhoneValid } from "../../../utils/validator";
-import { formatBytes } from "../../../utils/converter";
+import { formatBytes, totalFileSize } from "../../../utils/helper";
+import axios from "axios";
 
 const SchoolRegistrationForm = () => {
 	const [name, setName] = useState<string>();
@@ -23,7 +24,6 @@ const SchoolRegistrationForm = () => {
 	const [major, setMajor] = useState<string>();
 	const [isDisplayMajorError, setIsDisplayMajorError] = useState<boolean>(false);
 
-	const maxListFileSize = 26214000;
 	const [passportFileList, setPassportFileList] = useState<FileList | null>(null);
 	const [ieltsFileList, setIeltsFileList] = useState<FileList | null>(null);
 	const [transcriptsHighSchoolFileList, setTranscriptsHighSchoolFileList] = useState<FileList | null>(null);
@@ -75,7 +75,7 @@ const SchoolRegistrationForm = () => {
 	const [schoolErrorMessage, setSchoolErrorMessage] = useState<string>("Trường chưa phù hợp");
 	const [isDisplaySchoolError, setIsDisplaySchoolError] = useState<boolean>(false);
 
-	const handleSubmit = () => {
+	const handleSubmit = async () => {
 		setIsDisplayNameError(false);
 		setIsDisplayEmailError(false);
 		setIsDisplayPhoneError(false);
@@ -105,35 +105,61 @@ const SchoolRegistrationForm = () => {
 			return;
 		}
 		const totalFile = (passportFileList ? passportFileList.length : 0) + (ieltsFileList ? ieltsFileList.length : 0) + (transcriptsHighSchoolFileList ? transcriptsHighSchoolFileList.length : 0) + (transcriptsCollegeFileList ? transcriptsCollegeFileList.length : 0);
-		if (totalFile > 5) {
+		if (totalFile > MAX_NUMBER_FILE) {
 			setFileListErrorMessage(`Tổng số file nên ít hơn 5. Tổng số file hiện tại: ${totalFile}`);
 			setIsDisplayFileListError(true);
 			return;
 		}
 
-		const sumTotalListFileSize = (fileList: FileList) => {
-			let totalListFileSize = 0;
-			for (let index = 0; index < fileList.length; index++) {
-				const fileSize = fileList.item(index)?.size;
-				if (!fileSize) {
-					continue;
-				}
-				totalListFileSize += fileSize;
-			}
-			return totalListFileSize;
-		};
+		const _totalFileSize = (passportFileList ? totalFileSize(passportFileList) : 0) + (ieltsFileList ? totalFileSize(ieltsFileList) : 0) + (transcriptsHighSchoolFileList ? totalFileSize(transcriptsHighSchoolFileList) : 0) + (transcriptsCollegeFileList ? totalFileSize(transcriptsCollegeFileList) : 0);
 
-		let totalListFileSize = 0;
-		passportFileList ? (totalListFileSize += sumTotalListFileSize(passportFileList)) : null;
-		ieltsFileList ? (totalListFileSize += sumTotalListFileSize(ieltsFileList)) : null;
-		transcriptsHighSchoolFileList ? (totalListFileSize += sumTotalListFileSize(transcriptsHighSchoolFileList)) : null;
-		transcriptsCollegeFileList ? (totalListFileSize += sumTotalListFileSize(transcriptsCollegeFileList)) : null;
-
-		if (totalListFileSize > maxListFileSize) {
-			setFileListErrorMessage(`Tổng dung lượng các file nên ít hơn 25MB. Tống dung lượng các file hiện tại: ${formatBytes(totalListFileSize)}`);
+		if (_totalFileSize > MAX_LISTFILE_SIZE) {
+			setFileListErrorMessage(`Tổng dung lượng các file nên ít hơn 25MB. Tống dung lượng các file hiện tại: ${formatBytes(_totalFileSize)}`);
 			setIsDisplayFileListError(true);
 			return;
 		}
+		const formData = new FormData();
+		if (!!passportFileList) {
+			Array.from(passportFileList).forEach((file) => {
+				formData.append("image", file);
+			});
+		}
+		if (!!ieltsFileList) {
+			Array.from(ieltsFileList).forEach((file) => {
+				formData.append("image", file);
+			});
+		}
+		if (!!transcriptsHighSchoolFileList) {
+			Array.from(transcriptsHighSchoolFileList).forEach((file) => {
+				formData.append("image", file);
+			});
+		}
+		if (!!transcriptsCollegeFileList) {
+			Array.from(transcriptsCollegeFileList).forEach((file) => {
+				formData.append("image", file);
+			});
+		}
+
+		await axios
+			.post("api/image", formData, {
+				headers: {
+					"content-type": "multipart/form-data",
+				},
+				onUploadProgress: (process) => {
+					if (!process.total) {
+						return;
+					}
+					console.log((process.loaded * 100) / process.total);
+				},
+			})
+			.then((res) => {
+				console.log("res");
+				console.log(res);
+			})
+			.catch((err) => {
+				console.log("err");
+				console.log(err);
+			});
 	};
 
 	const fieldContainer = "field-container my-5";
