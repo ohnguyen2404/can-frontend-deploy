@@ -16,6 +16,7 @@ const StepsRow = ({ bgColor, steps, rowIdx, rowCounts }: TStepRows) => {
 			<div className={`w-[85%] bg-${bgColor} grid grid-cols-3 gap-4`}>
 				{steps.map((step, idx) => (
 					<StepCard
+						key={idx}
 						order={idx + 3 * rowIdx}
 						title={step.title}
 						imgSrc={step.imgSrc}

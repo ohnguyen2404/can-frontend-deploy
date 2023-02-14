@@ -6,6 +6,7 @@ const ImageRunner = () => {
 			{[...Array(59).keys()].map((idx) => (
 				<span className="h-full w-fit flex shrink-0 items-center mx-[2vw]">
 					<Image
+						key={idx}
 						src={`/assets/approvalCases/image-${idx}.jpg`}
 						alt={`approvalCases/image-${idx}.jpg`}
 						width={382}

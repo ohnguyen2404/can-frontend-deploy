@@ -59,6 +59,7 @@ const SeasonalProjectGroups: TComponent & TSubComponent = () => {
 					ref={sliderRef}>
 					{PROJECTS.map((project, index) => (
 						<SeasonalProject
+							key={index}
 							id={project.id}
 							title={project.title}
 							imgSrc={project.imgSrc}
