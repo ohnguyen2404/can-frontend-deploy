@@ -11,6 +11,7 @@ module.exports = {
         lightBlue: "#ECF6F6",
         strongBlue: "#3E9598",
         strongPink: "#CE3832",
+        silver: "#B9B7B7"
       }
     },
   },
