@@ -4,11 +4,11 @@ import TitleButton from "../Buttons/TitleButton";
 import InputField from "../Fields/InputField";
 
 const Consultation = () => {
-	const [name, setName] = useState<string>("");
+	const [name, setName] = useState<string>();
 	const [isDisplayNameError, setIsDisplayNameError] = useState<boolean>(false);
-	const [email, setEmail] = useState<string>("");
+	const [email, setEmail] = useState<string>();
 	const [isDisplayEmailError, setIsDisplayEmailError] = useState<boolean>(false);
-	const [phone, setPhone] = useState<string>("");
+	const [phone, setPhone] = useState<string>();
 	const [isDisplayPhoneError, setIsDisplayPhoneError] = useState<boolean>(false);
 
 	const fieldContainer = "field-container my-8";
@@ -21,11 +21,11 @@ const Consultation = () => {
 			setIsDisplayNameError(true);
 			return;
 		}
-		if (!isEmailValid(email)) {
+		if (!email || !isEmailValid(email)) {
 			setIsDisplayEmailError(true);
 			return;
 		}
-		if (!isPhoneValid(phone)) {
+		if (!phone || !isPhoneValid(phone)) {
 			setIsDisplayPhoneError(true);
 			return;
 		}
@@ -36,7 +36,7 @@ const Consultation = () => {
 				"Content-Type": "application/json",
 			},
 			body: JSON.stringify({
-				subject:`Yêu cầu Tư vấn miễn phí của "${name}"`,
+				subject: `Yêu cầu Tư vấn miễn phí của "${name}"`,
 				html: `<!DOCTYPE html>
 				<html>
 				<head>
