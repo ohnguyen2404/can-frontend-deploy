@@ -11,10 +11,17 @@ export const formatBytes = (bytes: number, decimals = 2) => {
 	return `${parseFloat((bytes / Math.pow(k, i)).toFixed(dm))} ${sizes[i]}`;
 };
 
-export const totalListFileSize = (listFile: FileList): number => {
+export const totalFileSize = (listFile: FileList): number => {
 	let total = 0;
 	Array.from(listFile).forEach((file) => {
 		total += file.size;
 	});
 	return total;
+};
+
+export const renameFile = (originalFile: File, newName: string) => {
+	return new File([originalFile], newName, {
+		type: originalFile.type,
+		lastModified: originalFile.lastModified,
+	});
 };

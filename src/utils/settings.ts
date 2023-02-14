@@ -325,3 +325,11 @@ export const MAX_NUMBER_FILE = 5;
 
 export const ERROR_UNKNOWN = "Unkown error occurred";
 export const ERROR_CONTENT_LENGTH = "Content length too large";
+
+export const FILE_FORM_UPLOAD_NAME = "files-upload";
+export const FILE_FORM_UPLOAD_TYPE = {
+	PASSPORT: "passort",
+	IELTS: "ielts",
+	TRANSCRIPT_HIGH_SCHOOL: "transcript-high-school",
+	TRANSCRIPT_COLLEGE: "transcript-college",
+};
