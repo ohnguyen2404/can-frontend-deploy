@@ -1,5 +1,5 @@
 import React, { Dispatch, useEffect, useRef } from "react";
-import { formatBytes, totalListFileSize } from "../../utils/helper";
+import { formatBytes, totalFileSize } from "../../utils/helper";
 
 type TInputFileField = {
 	id: string;
@@ -7,7 +7,7 @@ type TInputFileField = {
 	maxFile: number;
 	accept: string;
 	label: string;
-	handleChangeValue: Dispatch<React.SetStateAction<FileList | null>>;
+	handleChangeValue: Dispatch<React.SetStateAction<FileList | undefined>>;
 };
 
 const InputFileField = (props: TInputFileField) => {
@@ -25,13 +25,13 @@ const InputFileField = (props: TInputFileField) => {
 			ref_inputFileButton.current?.setAttribute(labelContentAttrName, defaultLabelContent);
 			return;
 		}
-		const listFileSizeFormated = formatBytes(totalListFileSize(listFile));
+		const listFileSizeFormated = formatBytes(totalFileSize(listFile));
 		if (listFile.length === 1) {
 			ref_inputFileButton.current?.setAttribute(labelContentAttrName, `${listFile[0].name}, ${listFileSizeFormated}`);
 		} else if (listFile.length > 1) {
 			ref_inputFileButton.current?.setAttribute(labelContentAttrName, `${listFile.length} files, ${listFileSizeFormated}`);
 		}
-		props.handleChangeValue(event.target.files);
+		props.handleChangeValue(listFile);
 	};
 	return (
 		<div className="input-file-field-container flex flex-col w-fit">

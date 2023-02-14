@@ -12,3 +12,17 @@ export enum AdvisoryType {
 	"Settled",
 	"StudyAbroad",
 }
+
+export type TSchoolRegistrationForm = {
+	name: string;
+	email: string;
+	phone: string;
+	semester: {
+		semesterFirst: boolean;
+		semesterSecond: boolean;
+		semesterThird: boolean;
+		semesterFourth: boolean;
+	};
+	major: string;
+	files: FileList;
+};

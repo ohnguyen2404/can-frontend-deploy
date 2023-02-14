@@ -4,30 +4,32 @@ import CheckboxField from "../../Fields/CheckboxField";
 import SelectField from "../../Fields/SelectField";
 import InputFileField from "../../Fields/InputFileField";
 import TitleButton from "../../Buttons/TitleButton";
-import { LIST_COLLEGE_SCHOOL, LIST_HIGH_SCHOOL_PRIVATE, LIST_HIGH_SCHOOL_PUBLIC, LIST_LANGUAGES_SCHOOL, LIST_UNIVERSITY_SCHOOL, MAX_LISTFILE_SIZE, MAX_NUMBER_FILE } from "../../../utils/settings";
+import { FILE_FORM_UPLOAD_NAME, FILE_FORM_UPLOAD_TYPE, LIST_COLLEGE_SCHOOL, LIST_HIGH_SCHOOL_PRIVATE, LIST_HIGH_SCHOOL_PUBLIC, LIST_LANGUAGES_SCHOOL, LIST_UNIVERSITY_SCHOOL, MAX_LISTFILE_SIZE, MAX_NUMBER_FILE } from "../../../utils/settings";
 import { isEmailValid, isPhoneValid } from "../../../utils/validator";
-import { formatBytes, totalFileSize } from "../../../utils/helper";
+import { formatBytes, renameFile, totalFileSize } from "../../../utils/helper";
 import axios from "axios";
+import { v4 as uuidv4 } from "uuid";
+import { TSchoolRegistrationForm } from "../../../utils/types";
 
 const SchoolRegistrationForm = () => {
-	const [name, setName] = useState<string>();
+	const [name, setName] = useState<TSchoolRegistrationForm["name"]>();
 	const [isDisplayNameError, setIsDisplayNameError] = useState<boolean>(false);
-	const [email, setEmail] = useState<string>();
+	const [email, setEmail] = useState<TSchoolRegistrationForm["email"]>();
 	const [isDisplayEmailError, setIsDisplayEmailError] = useState<boolean>(false);
-	const [phone, setPhone] = useState<string>();
+	const [phone, setPhone] = useState<TSchoolRegistrationForm["phone"]>();
 	const [isDisplayPhoneError, setIsDisplayPhoneError] = useState<boolean>(false);
-	const [semesterFirst, setSemesterFirst] = useState<boolean>(false);
-	const [semesterSecond, setSemesterSecond] = useState<boolean>(false);
-	const [semesterThird, setSemesterThird] = useState<boolean>(false);
-	const [semesterFourth, setSemesterFourth] = useState<boolean>(false);
+	const [semesterFirst, setSemesterFirst] = useState<TSchoolRegistrationForm["semester"]["semesterFirst"]>(false);
+	const [semesterSecond, setSemesterSecond] = useState<TSchoolRegistrationForm["semester"]["semesterSecond"]>(false);
+	const [semesterThird, setSemesterThird] = useState<TSchoolRegistrationForm["semester"]["semesterThird"]>(false);
+	const [semesterFourth, setSemesterFourth] = useState<TSchoolRegistrationForm["semester"]["semesterFourth"]>(false);
 	const [isDisplaySemesterError, setIsDisplaySemesterError] = useState<boolean>(false);
-	const [major, setMajor] = useState<string>();
+	const [major, setMajor] = useState<TSchoolRegistrationForm["major"]>();
 	const [isDisplayMajorError, setIsDisplayMajorError] = useState<boolean>(false);
 
-	const [passportFileList, setPassportFileList] = useState<FileList | null>(null);
-	const [ieltsFileList, setIeltsFileList] = useState<FileList | null>(null);
-	const [transcriptsHighSchoolFileList, setTranscriptsHighSchoolFileList] = useState<FileList | null>(null);
-	const [transcriptsCollegeFileList, setTranscriptsCollegeFileList] = useState<FileList | null>(null);
+	const [passportFileList, setPassportFileList] = useState<TSchoolRegistrationForm["files"]>();
+	const [ieltsFileList, setIeltsFileList] = useState<TSchoolRegistrationForm["files"]>();
+	const [transcriptsHighSchoolFileList, setTranscriptsHighSchoolFileList] = useState<TSchoolRegistrationForm["files"]>();
+	const [transcriptsCollegeFileList, setTranscriptsCollegeFileList] = useState<TSchoolRegistrationForm["files"]>();
 	const [fileListErrorMessage, setFileListErrorMessage] = useState<string>();
 	const [isDisplayFileListError, setIsDisplayFileListError] = useState<boolean>(false);
 
@@ -106,39 +108,60 @@ const SchoolRegistrationForm = () => {
 		}
 		const totalFile = (passportFileList ? passportFileList.length : 0) + (ieltsFileList ? ieltsFileList.length : 0) + (transcriptsHighSchoolFileList ? transcriptsHighSchoolFileList.length : 0) + (transcriptsCollegeFileList ? transcriptsCollegeFileList.length : 0);
 		if (totalFile > MAX_NUMBER_FILE) {
-			setFileListErrorMessage(`Tổng số file nên ít hơn 5. Tổng số file hiện tại: ${totalFile}`);
+			setFileListErrorMessage(`Tổng số file nên ít hơn ${MAX_NUMBER_FILE}. Tổng số file hiện tại: ${totalFile}`);
 			setIsDisplayFileListError(true);
 			return;
 		}
 
 		const _totalFileSize = (passportFileList ? totalFileSize(passportFileList) : 0) + (ieltsFileList ? totalFileSize(ieltsFileList) : 0) + (transcriptsHighSchoolFileList ? totalFileSize(transcriptsHighSchoolFileList) : 0) + (transcriptsCollegeFileList ? totalFileSize(transcriptsCollegeFileList) : 0);
-
 		if (_totalFileSize > MAX_LISTFILE_SIZE) {
 			setFileListErrorMessage(`Tổng dung lượng các file nên ít hơn 25MB. Tống dung lượng các file hiện tại: ${formatBytes(_totalFileSize)}`);
 			setIsDisplayFileListError(true);
 			return;
 		}
+
+		const id = uuidv4();
 		const formData = new FormData();
 		if (!!passportFileList) {
 			Array.from(passportFileList).forEach((file) => {
-				formData.append("image", file);
+				file = renameFile(file, `${id}_${FILE_FORM_UPLOAD_TYPE.PASSPORT}_${file.name}`);
+				formData.append(FILE_FORM_UPLOAD_NAME, file);
 			});
 		}
 		if (!!ieltsFileList) {
 			Array.from(ieltsFileList).forEach((file) => {
-				formData.append("image", file);
+				file = renameFile(file, `${id}_${FILE_FORM_UPLOAD_TYPE.IELTS}_${file.name}`);
+				formData.append(FILE_FORM_UPLOAD_NAME, file);
 			});
 		}
 		if (!!transcriptsHighSchoolFileList) {
 			Array.from(transcriptsHighSchoolFileList).forEach((file) => {
-				formData.append("image", file);
+				file = renameFile(file, `${id}_${FILE_FORM_UPLOAD_TYPE.TRANSCRIPT_HIGH_SCHOOL}_${file.name}`);
+				formData.append(FILE_FORM_UPLOAD_NAME, file);
 			});
 		}
 		if (!!transcriptsCollegeFileList) {
 			Array.from(transcriptsCollegeFileList).forEach((file) => {
-				formData.append("image", file);
+				file = renameFile(file, `${id}_${FILE_FORM_UPLOAD_TYPE.TRANSCRIPT_COLLEGE}_${file.name}`);
+				formData.append(FILE_FORM_UPLOAD_NAME, file);
 			});
 		}
+
+		formData.append("name", name);
+		formData.append("email", email);
+		formData.append("phone", phone);
+		formData.append("institutionTypeSchool", institutionTypeSchool);
+		formData.append("school", school);
+		formData.append(
+			"semester",
+			JSON.stringify({
+				semesterFirst: semesterFirst,
+				semesterSecond: semesterSecond,
+				semesterThird: semesterThird,
+				semesterFourth: semesterFourth,
+			}),
+		);
+		major ? formData.append("major", major) : null;
 
 		await axios
 			.post("api/image", formData, {
@@ -152,13 +175,13 @@ const SchoolRegistrationForm = () => {
 					console.log((process.loaded * 100) / process.total);
 				},
 			})
-			.then((res) => {
-				console.log("res");
-				console.log(res);
+			.then((response) => {
+				console.log("response");
+				console.log(response);
 			})
-			.catch((err) => {
-				console.log("err");
-				console.log(err);
+			.catch((error) => {
+				console.log("error");
+				console.log(error);
 			});
 	};
 
