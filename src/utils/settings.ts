@@ -326,6 +326,21 @@ export const MAX_NUMBER_FILE = 5;
 export const ERROR_UNKNOWN = "Unkown error occurred";
 export const ERROR_CONTENT_LENGTH = "Content length too large";
 
+export enum InstitutionTypeSchool {
+	COLLEGE = "College",
+	UNIVERSITY = "University",
+	LANGUAGES_SCHOOL = "Languages School",
+	HIGH_SCHOOL_PUBLIC = "High School Public",
+	HIGH_SCHOOL_PRIVATE = "High School Private",
+}
+
+export enum Semester {
+	FIRST = "Tháng 1",
+	SECOND = "Tháng 5",
+	THIRD = "Tháng 9",
+	FOURTH = "Khác",
+}
+
 export const FILE_FORM_UPLOAD_NAME = "files-upload";
 export const FILE_FORM_UPLOAD_TYPE = {
 	PASSPORT: "passort",
