@@ -8,7 +8,7 @@ type TLongButton = {
 const LongButton = (props: TLongButton) => {
 	return (
 		<div
-			className={`${props.direction === Direction.Right ? "rotate-180" : undefined} button long-button h-8 w-20 rounded-full border-[1px] border-black flex items-center justify-center overflow-hidden`}
+			className={`${props.direction === Direction.Right ? "rotate-180" : undefined} button long-button h-8 w-20 rounded-full border border-black flex items-center justify-center overflow-hidden`}
 			onClick={props.handleOnClick}>
 			<div className="icon-container stroke-black w-1/2">
 				<svg

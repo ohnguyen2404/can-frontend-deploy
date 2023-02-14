@@ -9,7 +9,7 @@ const CircleButton = (props: TCircleButton) => {
     const buttonColor = props.buttonColor ? props.buttonColor : "black"
 	return (
 		<div
-			className={`button circle-button border-${buttonColor} h-8 w-8 rounded-full border-[1px] flex items-center justify-center overflow-hidden`}
+			className={`button circle-button border-${buttonColor} h-8 w-8 rounded-full border flex items-center justify-center overflow-hidden`}
 			onClick={props.handleOnClick}>
 			<div className={`icon-container stroke-${buttonColor} w-2/5 h-2/5`}>
 				<svg

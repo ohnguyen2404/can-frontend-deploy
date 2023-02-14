@@ -9,7 +9,7 @@ const TitleButton = (props: TTitleButton) => {
 
 	return (
 		<div
-			className={`button title-button border-${buttonColor} w-fit h-10 px-7 rounded-full border-[1px] flex items-center justify-center overflow-hidden`}
+			className={`button title-button border-${buttonColor} w-fit h-10 px-7 rounded-full border flex items-center justify-center overflow-hidden`}
 			onClick={props.handleOnClick}>
 			<span className={`text-${buttonColor} text-2xl align-middle mx-1 mb-1`}>{props.title}</span>
 			<div className={`icon-container stroke-${buttonColor} w-[0.875rem] h-[0.875rem] mx-1`}>

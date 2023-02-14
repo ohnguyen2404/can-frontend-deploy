@@ -49,7 +49,7 @@ const SeasonalProjectGroups: TComponent & TSubComponent = () => {
 				<div className="mx-6 pb-1">
 					<TitleButton title="Chi tiết" />
 				</div>
-				<div className="mx-6 text-8xl text-strongBlue font-bold mt-8">
+				<div className="mx-6 text-[80px] text-strongBlue font-bold mt-8">
 					<h1>HOẠT ĐỘNG THEO MÙA</h1>
 				</div>
 

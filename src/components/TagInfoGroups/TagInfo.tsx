@@ -28,7 +28,7 @@ const TagInfo = (props: TTagInfo) => {
 					className="object-scale-down"
 				/>
 			</div>
-			<div className="paragraph-container text-center border-[1px] border-t-gray-400 border-transparent my-8 pt-2 w-[90%] text-xl leading-5">
+			<div className="paragraph-container text-center border border-t-gray-400 border-transparent my-8 pt-2 w-[90%] text-xl leading-5">
 				{props.listContent.map((item, idx) => {
 					return <p key={idx}>{item}</p>;
 				})}

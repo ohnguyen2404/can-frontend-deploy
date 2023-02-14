@@ -11,7 +11,7 @@ const AdvisoryGroups = () => {
 			className="w-full">
 			<div className="w-full pl-6 flex flex-row justify-between items-center">
 				<p className="text-4xl font-bold text-strongBlue">LỘ TRÌNH TƯ VẤN</p>
-				<div className="flex flex-row border-b-gray-400 border-b-[1px]">
+				<div className="flex flex-row border-b-gray-400 border-b">
 					<span
 						className={`text-4xl font-bold px-10 py-4 rounded-t-3xl cursor-pointer hover:text-lightPink hover:bg-strongPink ${curTab === AdvisoryType.Settled ? "text-lightPink bg-strongPink" : "text-strongPink bg-lightPink"} `}
 						onClick={() => setCurTab(AdvisoryType.Settled)}>

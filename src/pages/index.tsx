@@ -36,8 +36,8 @@ export default function Home() {
 				<AdvisoryGroups />
 				<Consultation />
 				<ApprovalCases />
-			<Consultation />
-			<Footer />
+				<Consultation />
+				<Footer />
 				<div
 					id="tool-kit"
 					className="hidden text-white stroke-white stroke-strongPink mr-2"></div>
