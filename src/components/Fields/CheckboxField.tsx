@@ -13,7 +13,7 @@ const CheckboxField = (props: TCheckboxField) => {
 				type="checkbox"
 				id={props.id}
 				name={props.label}
-				onChange={(event) => props.handleChangeValue(event.target.value)}
+				onChange={(event) => props.handleChangeValue(event.target.checked)}
 				className="w-4 h-4"
 			/>
 			<label

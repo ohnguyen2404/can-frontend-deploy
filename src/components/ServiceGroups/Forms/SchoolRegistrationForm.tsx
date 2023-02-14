@@ -4,7 +4,7 @@ import CheckboxField from "../../Fields/CheckboxField";
 import SelectField from "../../Fields/SelectField";
 import InputFileField from "../../Fields/InputFileField";
 import TitleButton from "../../Buttons/TitleButton";
-import { FILE_FORM_UPLOAD_NAME, FILE_FORM_UPLOAD_TYPE, LIST_COLLEGE_SCHOOL, LIST_HIGH_SCHOOL_PRIVATE, LIST_HIGH_SCHOOL_PUBLIC, LIST_LANGUAGES_SCHOOL, LIST_UNIVERSITY_SCHOOL, MAX_LISTFILE_SIZE, MAX_NUMBER_FILE } from "../../../utils/settings";
+import { FILE_FORM_UPLOAD_NAME, FILE_FORM_UPLOAD_TYPE, InstitutionTypeSchool, LIST_COLLEGE_SCHOOL, LIST_HIGH_SCHOOL_PRIVATE, LIST_HIGH_SCHOOL_PUBLIC, LIST_LANGUAGES_SCHOOL, LIST_UNIVERSITY_SCHOOL, MAX_LISTFILE_SIZE, MAX_NUMBER_FILE, Semester } from "../../../utils/settings";
 import { isEmailValid, isPhoneValid } from "../../../utils/validator";
 import { formatBytes, renameFile, totalFileSize } from "../../../utils/helper";
 import axios from "axios";
@@ -22,9 +22,7 @@ const SchoolRegistrationForm = () => {
 	const [semesterSecond, setSemesterSecond] = useState<TSchoolRegistrationForm["semester"]["semesterSecond"]>(false);
 	const [semesterThird, setSemesterThird] = useState<TSchoolRegistrationForm["semester"]["semesterThird"]>(false);
 	const [semesterFourth, setSemesterFourth] = useState<TSchoolRegistrationForm["semester"]["semesterFourth"]>(false);
-	const [isDisplaySemesterError, setIsDisplaySemesterError] = useState<boolean>(false);
 	const [major, setMajor] = useState<TSchoolRegistrationForm["major"]>();
-	const [isDisplayMajorError, setIsDisplayMajorError] = useState<boolean>(false);
 
 	const [passportFileList, setPassportFileList] = useState<TSchoolRegistrationForm["files"]>();
 	const [ieltsFileList, setIeltsFileList] = useState<TSchoolRegistrationForm["files"]>();
@@ -33,20 +31,12 @@ const SchoolRegistrationForm = () => {
 	const [fileListErrorMessage, setFileListErrorMessage] = useState<string>();
 	const [isDisplayFileListError, setIsDisplayFileListError] = useState<boolean>(false);
 
-	enum InstitutionTypeSchool {
-		COLLEGE = "College",
-		UNIVERSITY = "University",
-		LANGUAGES_SCHOOL = "Languages School",
-		HIGH_SCHOOL_PUBLIC = "High School Public",
-		HIGH_SCHOOL_PRIVATE = "High School Private",
-	}
-
 	const listInstitutionTypeSchoolId = "institution-type-school";
 	const listInstitutionTypeSchool: InstitutionTypeSchool[] = Object.entries(InstitutionTypeSchool).map(([item, value]) => value);
-	const [institutionTypeSchool, setInstitutionTypeSchool] = useState<string>();
+	const [institutionTypeSchool, setInstitutionTypeSchool] = useState<TSchoolRegistrationForm["institutionTypeSchool"]>();
 	const [isDisplayInstitutionTypeSchoolError, setIsDisplayInstitutionTypeSchoolError] = useState<boolean>(false);
 
-	const handleSetInstitutionTypeSchool = (value: string) => {
+	const handleSetInstitutionTypeSchool = (value: TSchoolRegistrationForm["institutionTypeSchool"]) => {
 		setInstitutionTypeSchool(value);
 		if (value === InstitutionTypeSchool.COLLEGE) {
 			setListSchool(LIST_COLLEGE_SCHOOL);
@@ -73,7 +63,7 @@ const SchoolRegistrationForm = () => {
 
 	const listSchoolId = "school-registration-list";
 	const [listSchool, setListSchool] = useState<string[]>([]);
-	const [school, setSchool] = useState<string>();
+	const [school, setSchool] = useState<TSchoolRegistrationForm["school"]>();
 	const [schoolErrorMessage, setSchoolErrorMessage] = useState<string>("Trường chưa phù hợp");
 	const [isDisplaySchoolError, setIsDisplaySchoolError] = useState<boolean>(false);
 
@@ -83,8 +73,6 @@ const SchoolRegistrationForm = () => {
 		setIsDisplayPhoneError(false);
 		setIsDisplayInstitutionTypeSchoolError(false);
 		setIsDisplaySchoolError(false);
-		setIsDisplaySemesterError(false);
-		setIsDisplayMajorError(false);
 		setIsDisplayFileListError(false);
 		if (!name) {
 			setIsDisplayNameError(true);
@@ -122,6 +110,23 @@ const SchoolRegistrationForm = () => {
 
 		const id = uuidv4();
 		const formData = new FormData();
+		formData.append("id", id);
+		formData.append("name", name);
+		formData.append("email", email);
+		formData.append("phone", phone);
+		formData.append("institutionTypeSchool", institutionTypeSchool);
+		formData.append("school", school);
+		formData.append(
+			"semester",
+			JSON.stringify({
+				semesterFirst: semesterFirst,
+				semesterSecond: semesterSecond,
+				semesterThird: semesterThird,
+				semesterFourth: semesterFourth,
+			}),
+		);
+		major ? formData.append("major", major) : null;
+
 		if (!!passportFileList) {
 			Array.from(passportFileList).forEach((file) => {
 				file = renameFile(file, `${id}_${FILE_FORM_UPLOAD_TYPE.PASSPORT}_${file.name}`);
@@ -146,22 +151,6 @@ const SchoolRegistrationForm = () => {
 				formData.append(FILE_FORM_UPLOAD_NAME, file);
 			});
 		}
-
-		formData.append("name", name);
-		formData.append("email", email);
-		formData.append("phone", phone);
-		formData.append("institutionTypeSchool", institutionTypeSchool);
-		formData.append("school", school);
-		formData.append(
-			"semester",
-			JSON.stringify({
-				semesterFirst: semesterFirst,
-				semesterSecond: semesterSecond,
-				semesterThird: semesterThird,
-				semesterFourth: semesterFourth,
-			}),
-		);
-		major ? formData.append("major", major) : null;
 
 		await axios
 			.post("api/image", formData, {
@@ -259,22 +248,22 @@ const SchoolRegistrationForm = () => {
 							<div className="list-checkbox-field-container flex flex-row justify-between w-1/2 my-1">
 								<CheckboxField
 									id="setSemesterFirst"
-									label="Tháng 1"
+									label={Semester.FIRST}
 									handleChangeValue={setSemesterFirst}
 								/>
 								<CheckboxField
 									id="setSemesterSecond"
-									label="Tháng 5"
+									label={Semester.SECOND}
 									handleChangeValue={setSemesterSecond}
 								/>
 								<CheckboxField
 									id="setSemesterThird"
-									label="Tháng 9"
+									label={Semester.THIRD}
 									handleChangeValue={setSemesterThird}
 								/>
 								<CheckboxField
 									id="setSemesterFourth"
-									label="Khác"
+									label={Semester.FOURTH}
 									handleChangeValue={setSemesterFourth}
 								/>
 							</div>
@@ -284,8 +273,6 @@ const SchoolRegistrationForm = () => {
 								type="text"
 								placeHolder="Ngành học và ghi chú"
 								errorMessage="Ngành học và ghi chú chưa phù hợp"
-								isRequired={true}
-								isDisplayErrorMessage={isDisplayMajorError}
 								handleChangeValue={setMajor}
 							/>
 						</div>
