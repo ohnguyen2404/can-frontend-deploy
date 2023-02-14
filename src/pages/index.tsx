@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { Banner, Navbar, TagInfoGroups, SeasonalProjectGroups, NewsGroup, ProgramGroups, Consultation, Footer, AdvisoryGroups } from "../components";
+import { Banner, Navbar, TagInfoGroups, SeasonalProjectGroups, NewsGroup, ProgramGroups, Consultation, AdvisoryGroups, ApprovalCases, Footer } from "../components";
 
 export default function Home() {
 	return (
@@ -25,6 +25,8 @@ export default function Home() {
 				id="EndTriggerTemp"
 				className="w-full h-[1600px]"></div>
 			<AdvisoryGroups />
+			<ApprovalCases />
+			<Consultation />
 			<Footer />
 			<div
 				id="tool-kit"

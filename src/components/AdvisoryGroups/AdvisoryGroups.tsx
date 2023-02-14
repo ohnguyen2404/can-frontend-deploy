@@ -24,11 +24,7 @@ const AdvisoryGroups = () => {
 					</span>
 				</div>
 			</div>
-
 			<AdvisoryGroup type={curTab} />
-
-			<div className="w-full bg-white h-[200px]"></div>
-			<div className="w-full bg-lightBlue h-[200px]"></div>
 		</section>
 	);
 };
