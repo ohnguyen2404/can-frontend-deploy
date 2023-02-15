@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { isEmailValid, isPhoneValid } from "../../utils/validator";
 import TitleButton from "../Buttons/TitleButton";
 import InputField from "../Fields/InputField";
+import axios from "axios";
+import { TConsultationForm } from "./types";
+import { v4 as uuidv4 } from "uuid";
 
 const Consultation = () => {
 	const [name, setName] = useState<string>();
@@ -29,86 +32,22 @@ const Consultation = () => {
 			setIsDisplayPhoneError(true);
 			return;
 		}
-		await fetch("api/submitConsultation", {
-			method: "POST",
-			headers: {
-				Accept: "application/json, text/plain",
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify({
-				subject: `Yêu cầu Tư vấn miễn phí của "${name}"`,
-				html: `<!DOCTYPE html>
-				<html>
-				<head>
-					<title></title>
-					<meta charset="utf-8" />
-					<meta name="viewport" content="width=device-width, initial-scale=1" />
-					<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-					<style type="text/css">
-						body {
-							height: 100% !important;
-							margin: 0 !important;
-							padding: 0 !important;
-							width: 100% !important;
-						}
-						.title-form {
-							text-align: center;
-							font-weight: 700;
-							font-size: 36px;
-							text-transform: uppercase;
-							color: rgb(206, 56, 50);
-						}
-						.form-container {
-							border-style: dashed;
-							border-width: 1px;
-							border-color: rgb(206, 56, 50);
-							max-width: 500px;
-							margin: auto;
-							display: grid;
-							padding: 16px;
-							font-size: 18px;
-							font-weight: 400;
-							line-height: 28px;
-						}
-						.form-container tr {
-							padding: 4px;
-						}
-					</style>
-				</head>
-				<body>
-					<h2 class="title-form">TƯ VẤN MIỄN PHÍ</h2>
-					<div class="form-container">
-						<table>
-							<tr>
-								<td class="name">
-									Họ & tên:
-								</td>
-								<td class="info-name">
-									${name}
-								</td>
-							</tr>
-							<tr>
-								<td class="email">
-									Email:
-								</td>
-								<td class="info-email">
-									${email}
-								</td>
-							</tr>
-							<tr>
-								<td class="phone">
-									Số điện thoại:
-								</td>
-								<td class="info-phone">
-									${phone}
-								</td>
-							</tr>
-						</table>
-					</div>
-				</body>
-				</html>`,
-			}),
-		});
+
+		await axios
+			.post("api/submitConsultation", {
+				id: uuidv4(),
+				name: name,
+				email: email,
+				phone: phone,
+			} as TConsultationForm)
+			.then((response) => {
+				console.log("response");
+				console.log(response);
+			})
+			.catch((error) => {
+				console.log("error");
+				console.log(error);
+			});
 	};
 
 	return (

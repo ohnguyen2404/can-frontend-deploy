@@ -1,18 +1,19 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import nodemailerTransporter from "../../utils/nodemailer";
+import _nextConnect from "../../middlewares/nextConnect";
+import { ConsultationFormBody } from "../../components/Consultation/setting";
+import { html } from "../../utils/settings/setting";
+import { TConsultationForm } from "../../components/Consultation/types";
 
-export default async (request: NextApiRequest, response: NextApiResponse) => {
-	if (request.method !== "POST") {
-		return response.status(400).json({ message: "Bad request" });
-	}
-	const data = request.body;
+export default _nextConnect.post(async (request: NextApiRequest, response: NextApiResponse) => {
+	const data: TConsultationForm = request.body;
 	try {
 		nodemailerTransporter
 			.sendMail({
 				from: process.env["MAIL_USER"],
 				to: process.env["MAIL_USER"],
-				html: data.html,
-				subject: data.subject,
+				html: html(ConsultationFormBody(data)),
+				subject: `Yêu cầu Tư vấn miễn phí của "${data.name}"`,
 			})
 			.then((res) => {
 				console.log(res);
@@ -22,4 +23,4 @@ export default async (request: NextApiRequest, response: NextApiResponse) => {
 		console.log(error);
 		return response.status(400).json({ message: "Bad request" });
 	}
-};
+});
