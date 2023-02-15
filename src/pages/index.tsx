@@ -34,7 +34,6 @@ export default function Home() {
 					<ServiceGroups />
 				</ModalContext.Provider>
 				<AdvisoryGroups />
-				<Consultation />
 				<ApprovalCases />
 				<Consultation />
 				<Footer />
