@@ -8,8 +8,8 @@ import { isEmailValid, isPhoneValid } from "../../../utils/validator";
 import { formatBytes, renameFile, totalFileSize } from "../../../utils/helper";
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
-import { TSchoolRegistrationForm } from "../../../utils/types";
 import { FILE_FORM_UPLOAD_NAME, FILE_FORM_UPLOAD_TYPE, InstitutionTypeSchool, LIST_COLLEGE_SCHOOL, LIST_HIGH_SCHOOL_PRIVATE, LIST_HIGH_SCHOOL_PUBLIC, LIST_LANGUAGES_SCHOOL, LIST_UNIVERSITY_SCHOOL, MAX_CONTENT_FILE_SIZE, MAX_NUMBER_FILE, Semester } from "../setting";
+import { TSchoolRegistrationForm } from "../types";
 
 const SchoolRegistrationForm = () => {
 	const [name, setName] = useState<TSchoolRegistrationForm["name"]>();
@@ -153,7 +153,7 @@ const SchoolRegistrationForm = () => {
 		}
 
 		await axios
-			.post("api/image", formData, {
+			.post("api/submitSchoolRegistrationForm", formData, {
 				headers: {
 					"content-type": "multipart/form-data",
 				},

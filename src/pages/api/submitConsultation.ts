@@ -1,27 +1,25 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { trans } from "../../utils/nodemailer";
+import nodemailerTransporter from "../../utils/nodemailer";
 
-const test = async (request: NextApiRequest, response: NextApiResponse) => {
+export default async (request: NextApiRequest, response: NextApiResponse) => {
 	if (request.method !== "POST") {
 		return response.status(400).json({ message: "Bad request" });
 	}
 	const data = request.body;
 	try {
-		trans
+		nodemailerTransporter
 			.sendMail({
-				from: process.env['MAIL_USER'],
-				to: process.env['MAIL_USER'],
+				from: process.env["MAIL_USER"],
+				to: process.env["MAIL_USER"],
 				html: data.html,
 				subject: data.subject,
 			})
 			.then((res) => {
 				console.log(res);
 			});
-			return response.status(200).json({ success: true });
+		return response.status(200).json({ success: true });
 	} catch (error) {
 		console.log(error);
 		return response.status(400).json({ message: "Bad request" });
 	}
 };
-
-export default test;

@@ -29,7 +29,7 @@ const Consultation = () => {
 			setIsDisplayPhoneError(true);
 			return;
 		}
-		await fetch("api/sendmail", {
+		await fetch("api/submitConsultation", {
 			method: "POST",
 			headers: {
 				Accept: "application/json, text/plain",

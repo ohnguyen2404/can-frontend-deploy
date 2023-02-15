@@ -1,5 +1,6 @@
 import { MAX_NUMBER_FILE, MAX_CONTENT_FILE_SIZE, FILE_FORM_UPLOAD_NAME } from "../../utils/settings/setting";
 export { MAX_NUMBER_FILE, MAX_CONTENT_FILE_SIZE, FILE_FORM_UPLOAD_NAME };
+import { TSchoolRegistrationForm } from "./types";
 
 export const FILE_FORM_UPLOAD_TYPE = {
 	PASSPORT: "passort",
@@ -22,6 +23,70 @@ export enum Semester {
 	THIRD = "Tháng 9",
 	FOURTH = "Khác",
 }
+
+export const SchoolRegistrationFormBody = (data: TSchoolRegistrationForm) => {
+	return `<h2 class="title-form">ĐĂNG KÝ TRƯỜNG HỌC</h2>
+    <div class="form-container">
+        <table>
+            <tr>
+                <td class="name">
+                    Họ & tên:
+                </td>
+                <td class="info-name">
+                    ${data.name}
+                </td>
+            </tr>
+            <tr>
+                <td class="email">
+                    Email:
+                </td>
+                <td class="info-email">
+                    ${data.email}
+                </td>
+            </tr>
+            <tr>
+                <td class="phone">
+                    Số điện thoại:
+                </td>
+                <td class="info-phone">
+                    ${data.phone}
+                </td>
+            </tr>
+            <tr>
+                <td class="institution-type-school">
+                    Chương trình học:
+                </td>
+                <td class="info-institution-type-school">
+                    ${data.institutionTypeSchool}
+                </td>
+            </tr>
+            <tr>
+                <td class="semester">
+                    Kì nhập học:
+                </td>
+                <td class="info-semester">
+                    ${data.semester.semesterFirst ? `${Semester.FIRST},` : ""}
+                    ${data.semester.semesterSecond ? `${Semester.SECOND},` : ""}
+                    ${data.semester.semesterThird ? `${Semester.THIRD},` : ""}
+                    ${data.semester.semesterFourth ? `${Semester.FOURTH},` : ""}
+                </td>
+            </tr>
+            ${
+				data.major
+					? `<tr>
+                            <td class="major">
+                                Ngành học và ghi chú:
+                            </td>
+                            <td class="info-major">
+                                ${data.major}
+                            </td>
+                        </tr>`
+					: ``
+			}
+            
+        </table>
+    </div>`;
+};
 
 export const LIST_COLLEGE_SCHOOL = [
 	"Bow Valley College, Calgary, Alberta",
