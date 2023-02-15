@@ -1,6 +1,6 @@
 import React from "react";
 import StepCard from "./StepCard";
-import { TAdvisoryStep } from "../../utils/settings";
+import { TAdvisoryStep } from "./setting";
 
 export type TStepRows = {
 	bgColor: string;

@@ -7,8 +7,3 @@ export enum Direction {
 	"Center",
 	"Right",
 }
-
-export enum AdvisoryType {
-	"Settled",
-	"StudyAbroad",
-}

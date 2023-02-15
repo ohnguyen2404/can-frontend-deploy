@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import AdvisoryGroup from "./AdvisoryGroup";
-import { AdvisoryType } from "../../utils/types";
+import { AdvisoryType } from "./types";
 
 const AdvisoryGroups = () => {
 	const [curTab, setCurTab] = useState(AdvisoryType.StudyAbroad);

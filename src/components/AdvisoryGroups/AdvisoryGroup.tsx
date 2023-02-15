@@ -1,7 +1,7 @@
 import React from "react";
 import StepsRow from "./StepsRow";
 import { STUDY_ABOARD_ADVISORY_STEPS, SETTLED_ADVISORY_STEPS } from "./setting";
-import { AdvisoryType } from "../../utils/types";
+import { AdvisoryType } from "./types";
 
 export type TAdvisoryGroup = {
 	type: AdvisoryType;
