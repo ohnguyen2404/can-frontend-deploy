@@ -5,7 +5,7 @@ import gsap from "gsap/dist/gsap";
 import Draggable from "gsap/dist/Draggable";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import SeasonalProject from "./SeasonalProject";
-import { PROJECTS, PROJECT_MIN_WIDTH } from "../../utils/settings";
+import { LIST_PROJECT, PROJECT_MIN_WIDTH } from "./setting";
 import TitleButton from "../Buttons/TitleButton";
 
 type TSubComponent = {
@@ -22,7 +22,7 @@ const SeasonalProjectGroups: TComponent & TSubComponent = () => {
 			zIndexBoost: false,
 			duration: 0.2,
 			bounds: {
-				minX: window.innerWidth - PROJECTS.length * PROJECT_MIN_WIDTH - 8 * PROJECTS.length,
+				minX: window.innerWidth - LIST_PROJECT.length * PROJECT_MIN_WIDTH - 8 * LIST_PROJECT.length,
 				maxX: 0,
 			},
 		});
@@ -57,13 +57,13 @@ const SeasonalProjectGroups: TComponent & TSubComponent = () => {
 					className="flex flex-row mt-4 mx-6"
 					id="slider"
 					ref={sliderRef}>
-					{PROJECTS.map((project, index) => (
+					{LIST_PROJECT.map((project, index) => (
 						<SeasonalProject
 							key={index}
 							id={project.id}
 							title={project.title}
 							imgSrc={project.imgSrc}
-							isLastChild={index === PROJECTS.length - 1}
+							isLastChild={index === LIST_PROJECT.length - 1}
 						/>
 					))}
 				</div>

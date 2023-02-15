@@ -4,12 +4,12 @@ import CheckboxField from "../../Fields/CheckboxField";
 import SelectField from "../../Fields/SelectField";
 import InputFileField from "../../Fields/InputFileField";
 import TitleButton from "../../Buttons/TitleButton";
-import { FILE_FORM_UPLOAD_NAME, FILE_FORM_UPLOAD_TYPE, InstitutionTypeSchool, LIST_COLLEGE_SCHOOL, LIST_HIGH_SCHOOL_PRIVATE, LIST_HIGH_SCHOOL_PUBLIC, LIST_LANGUAGES_SCHOOL, LIST_UNIVERSITY_SCHOOL, MAX_LISTFILE_SIZE, MAX_NUMBER_FILE, Semester } from "../../../utils/settings";
 import { isEmailValid, isPhoneValid } from "../../../utils/validator";
 import { formatBytes, renameFile, totalFileSize } from "../../../utils/helper";
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 import { TSchoolRegistrationForm } from "../../../utils/types";
+import { FILE_FORM_UPLOAD_NAME, FILE_FORM_UPLOAD_TYPE, InstitutionTypeSchool, LIST_COLLEGE_SCHOOL, LIST_HIGH_SCHOOL_PRIVATE, LIST_HIGH_SCHOOL_PUBLIC, LIST_LANGUAGES_SCHOOL, LIST_UNIVERSITY_SCHOOL, MAX_CONTENT_FILE_SIZE, MAX_NUMBER_FILE, Semester } from "../setting";
 
 const SchoolRegistrationForm = () => {
 	const [name, setName] = useState<TSchoolRegistrationForm["name"]>();
@@ -102,7 +102,7 @@ const SchoolRegistrationForm = () => {
 		}
 
 		const _totalFileSize = (passportFileList ? totalFileSize(passportFileList) : 0) + (ieltsFileList ? totalFileSize(ieltsFileList) : 0) + (transcriptsHighSchoolFileList ? totalFileSize(transcriptsHighSchoolFileList) : 0) + (transcriptsCollegeFileList ? totalFileSize(transcriptsCollegeFileList) : 0);
-		if (_totalFileSize > MAX_LISTFILE_SIZE) {
+		if (_totalFileSize > MAX_CONTENT_FILE_SIZE) {
 			setFileListErrorMessage(`Tổng dung lượng các file nên ít hơn 25MB. Tống dung lượng các file hiện tại: ${formatBytes(_totalFileSize)}`);
 			setIsDisplayFileListError(true);
 			return;

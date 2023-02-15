@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { LINKS } from "../../utils/settings";
+import { LINKS } from "./setting";
 
 type TNavbarCore = {
 	isOutBound: boolean;

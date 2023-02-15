@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { HEIGHT } from "../../utils/settings";
+import { HEIGHT } from "./setting";
 import STYLE_GROUPS from "../../utils/styles";
 import { TComponent } from "../../utils/types";
 import NavbarCore from "./NavbarCore";

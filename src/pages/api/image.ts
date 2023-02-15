@@ -1,8 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import nextConnect from "next-connect";
 import multer from "multer";
-import { ERROR_CONTENT_LENGTH, ERROR_UNKNOWN, MAX_LISTFILE_SIZE, MAX_NUMBER_FILE, FILE_FORM_UPLOAD_NAME } from "../../utils/settings";
 import { trans } from "../../utils/nodemailer";
+import { ERROR_CONTENT_LENGTH, ERROR_UNKNOWN, MAX_CONTENT_FILE_SIZE, MAX_NUMBER_FILE, FILE_FORM_UPLOAD_NAME } from "../../utils/settings";
 import { unlink } from "fs";
 import { TSchoolRegistrationForm } from "../../utils/types";
 import html, { SchoolRegistrationFormBody } from "../../utils/html";
@@ -19,7 +19,7 @@ type NextConnectApiRequest = NextApiRequest & {
 
 const upload = multer({
 	limits: {
-		fileSize: MAX_LISTFILE_SIZE,
+		fileSize: MAX_CONTENT_FILE_SIZE,
 		files: MAX_NUMBER_FILE,
 	},
 	storage: multer.diskStorage({
@@ -48,7 +48,7 @@ export default nextConnect<NextApiRequest, NextApiResponse>({
 		if (!contentLength || typeof Number(contentLength) !== "number") {
 			throw new Error(ERROR_UNKNOWN);
 		}
-		if (parseInt(contentLength) > MAX_LISTFILE_SIZE) {
+		if (parseInt(contentLength) > MAX_CONTENT_FILE_SIZE) {
 			throw new Error(ERROR_CONTENT_LENGTH);
 		}
 		next();
