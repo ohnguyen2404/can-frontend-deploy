@@ -43,7 +43,7 @@ export default _nextConnect
 				from: process.env["MAIL_USER"],
 				to: process.env["MAIL_USER"],
 				html: html(SchoolRegistrationFormBody(data)),
-				subject: `Đăng ký trường học của "${data.name}"`,
+				subject: `Yêu cầu Đăng ký trường học của "${data.name}"`,
 				attachments: attachments,
 			})
 			.then((res) => {
