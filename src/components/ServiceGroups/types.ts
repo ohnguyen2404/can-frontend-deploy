@@ -32,3 +32,13 @@ export type TSettlementJobForm = {
 	job: string;
 	files: FileList;
 };
+
+export type TInternationalInsuranceForm = {
+	id: string;
+	name: string;
+	email: string;
+	phone: string;
+	doB?: string;
+	insurancePeriod?: string;
+	address?: string;
+};
