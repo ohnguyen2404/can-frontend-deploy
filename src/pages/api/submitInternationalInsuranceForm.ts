@@ -7,20 +7,19 @@ import { InternationalInsuranceFormBody } from "../../components/ServiceGroups/s
 
 export default _nextConnect.post(async (request: NextApiRequest, response: NextApiResponse) => {
 	const data: TInternationalInsuranceForm = request.body;
-	try {
-		nodemailerTransporter
-			.sendMail({
-				from: process.env["MAIL_USER"],
-				to: process.env["MAIL_USER"],
-				html: html(InternationalInsuranceFormBody(data)),
-				subject: `Yêu cầu Đăng ký việc làm định cư của "${data.name}"`,
-			})
-			.then((res) => {
-				console.log(res);
-			});
-		return response.status(200).json({ success: true });
-	} catch (error) {
-		console.log(error);
-		return response.status(400).json({ message: "Bad request" });
-	}
+	nodemailerTransporter
+		.sendMail({
+			from: process.env["MAIL_USER"],
+			to: process.env["MAIL_USER"],
+			html: html(InternationalInsuranceFormBody(data)),
+			subject: `Yêu cầu Đăng ký việc làm định cư của "${data.name}"`,
+		})
+		.then((result) => {
+			console.log(result);
+			return response.status(200).json({ success: true });
+		})
+		.catch((error) => {
+			console.log(error);
+			return response.status(400).json({ message: "Bad request" });
+		});
 });

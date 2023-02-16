@@ -45,7 +45,7 @@ export default _nextConnect
 				subject: `Yêu cầu Đăng ký việc làm định cư của "${data.name}"`,
 				attachments: attachments,
 			})
-			.then((res) => {
+			.then((result) => {
 				files.forEach((file) => {
 					unlink(file.path, (error) => {
 						if (error) {
@@ -55,7 +55,7 @@ export default _nextConnect
 						console.log(`${file.path} was deleted`);
 					});
 				});
-				console.log(res);
+				console.log(result);
 				return response.status(200).json({ success: true });
 			})
 			.catch((error) => {
