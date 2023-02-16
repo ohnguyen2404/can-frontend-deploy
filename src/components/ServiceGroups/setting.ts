@@ -1,6 +1,6 @@
 import { MAX_NUMBER_FILE, MAX_CONTENT_FILE_SIZE, FILE_FORM_UPLOAD_NAME } from "../../utils/settings/setting";
 export { MAX_NUMBER_FILE, MAX_CONTENT_FILE_SIZE, FILE_FORM_UPLOAD_NAME };
-import { TSchoolRegistrationForm } from "./types";
+import { TSchoolRegistrationForm, TSettlementJobForm } from "./types";
 
 export const FILE_FORM_UPLOAD_TYPE = {
 	PASSPORT: "passort",
@@ -84,6 +84,46 @@ export const SchoolRegistrationFormBody = (data: TSchoolRegistrationForm) => {
 					: ``
 			}
             
+        </table>
+    </div>`;
+};
+
+export const SettlementJobFormBody = (data: TSettlementJobForm) => {
+	return `<h2 class="title-form">ĐĂNG KÝ TRƯỜNG HỌC</h2>
+    <div class="form-container">
+        <table>
+            <tr>
+                <td class="name">
+                    Họ & tên:
+                </td>
+                <td class="info-name">
+                    ${data.name}
+                </td>
+            </tr>
+            <tr>
+                <td class="email">
+                    Email:
+                </td>
+                <td class="info-email">
+                    ${data.email}
+                </td>
+            </tr>
+            <tr>
+                <td class="phone">
+                    Số điện thoại:
+                </td>
+                <td class="info-phone">
+                    ${data.phone}
+                </td>
+            </tr>
+            <tr>
+                <td class="job">
+                    Công việc:
+                </td>
+                <td class="info-job">
+                    ${data.job}
+                </td>
+            </tr>
         </table>
     </div>`;
 };
@@ -256,3 +296,5 @@ export const LIST_HIGH_SCHOOL_PRIVATE = [
 	"Upper Madison College – High School, Toronto, Ontario",
 	"Urban International School, Toronto, Ontario",
 ];
+
+export const LIST_JOB = ["job 1", "job 2", "job 3"];
