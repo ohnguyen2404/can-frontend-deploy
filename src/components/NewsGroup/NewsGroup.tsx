@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { TComponent } from "../../utils/types";
 import CircleButton from "../Buttons/CircleButton";
 import LongButton from "../Buttons/LongButton";
 import { Direction } from "../../utils/types";
 import NewsCard from "./NewsCard";
+import axios from "axios";
+import { formatNewsTitle } from "../../utils/helper";
 
 const MOCK_NEWS = [
 	{
@@ -58,6 +60,30 @@ const MOCK_NEWS = [
 
 const NewsGroup: TComponent = () => {
 	const [curIdx, setCurIdx] = useState(2);
+
+	useEffect(() => {
+		const getPageFeeds = async () => {
+			try {
+				const accessToken = "EAAJZA84zioeEBANZCzUmEozFuwUvxZC0d2B4OBH34v0b1Be8ZAb0KAA2T2ZA9VImg41ynsxbosCVwRqLQyhnq6JtlAlKceZBCZBtRGZAqkfnemwBlI6PJQbdzgrnYCvHwtPl3ZBh0mfDiZBw4vNey3PwD7MZAE2VjincINaVkOv8VKGsztGEqZCOzR6FmfZB7ou3HEZAJK4bAwTaSk0QZDZD";
+				const FB_URL = `https://graph.facebook.com/v16.0/100184219613847/feed?fields=attachments%2Cmessage&access_token=${accessToken}`;
+				const response = (await axios.get(FB_URL)).data;
+
+				const posts = response.data.map((data: any) => {
+					if (data.message && data.attachments) {
+						const title = formatNewsTitle(data.message);
+						const media = data.attachments?.data[0]?.media?.image?.src;
+						console.log("data", data);
+						console.log("title", title);
+						console.log("media", media);
+					}
+				});
+			} catch (err) {
+				console.log("getPageFeeds error: ", err);
+			}
+		};
+		getPageFeeds();
+	}, []);
+
 	const onClickPrev = () => {
 		if (curIdx > 0) {
 			setCurIdx((curIdx) => curIdx - 1);
