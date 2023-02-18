@@ -179,8 +179,8 @@ const SchoolRegistrationForm = () => {
 	return (
 		<div id="school-registration">
 			<div className="school-registration-form-container flex flex-row justify-center">
-				<div className="image-container w-[35%] bg-no-repeat bg-center bg-cover rounded-[30px] -mr-[2%]"></div>
-				<div className="form-container w-[65%] px-[5%] py-8 bg-white rounded-[30px] -ml-[2%]">
+				<div className="image-container w-[35%] bg-no-repeat bg-center bg-cover rounded-[30px] -mr-[3%]"></div>
+				<div className="form-container w-[65%] px-[5%] py-8 bg-white rounded-[30px] -ml-[3%]">
 					<div className="title-container">
 						<span className="title font-extrabold text-5xl text-strongPink uppercase">Đăng ký trường học</span>
 					</div>
