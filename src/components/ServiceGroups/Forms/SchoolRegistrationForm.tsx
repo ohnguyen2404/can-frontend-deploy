@@ -245,7 +245,7 @@ const SchoolRegistrationForm = () => {
 							<div className="sub-title-container">
 								<span className="text-strongPink font-bold text-xl">Kỳ nhập học</span>
 							</div>
-							<div className="list-checkbox-field-container flex flex-row justify-between w-1/2 my-1">
+							<div className="list-checkbox-field-container flex flex-row justify-between w-10/12 my-1">
 								<CheckboxField
 									id="setSemesterFirst"
 									label={Semester.FIRST}

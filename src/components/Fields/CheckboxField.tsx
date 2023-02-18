@@ -18,7 +18,7 @@ const CheckboxField = (props: TCheckboxField) => {
 			/>
 			<label
 				htmlFor={props.id}
-				className="label font-medium text-strongPink text-xl mx-2">
+				className="label font-medium text-strongPink text-xl mx-2 whitespace-nowrap">
 				{props.label}
 			</label>
 		</div>
