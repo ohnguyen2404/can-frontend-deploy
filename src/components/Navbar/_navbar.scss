@@ -1,0 +1,12 @@
+.navbar {
+  $NAVBAR_HEIGHT: 80;
+  transition: top 0.3s ease-in-out;
+
+  &.show {
+    top: 0;
+  }
+
+  &.hide {
+    top: -($NAVBAR_HEIGHT - 4px);
+  }
+}
