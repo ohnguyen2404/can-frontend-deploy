@@ -1,18 +1,18 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import nodemailerTransporter from "../../utils/nodemailer";
 import _nextConnect from "../../middlewares/nextConnect";
-import { ConsultationFormBody } from "../../components/Consultation/setting";
 import { html } from "../../utils/settings/setting";
-import { TConsultationForm } from "../../components/Consultation/types";
+import { TInternationalInsuranceForm } from "../../components/ServiceGroups/types";
+import { InternationalInsuranceFormBody } from "../../components/ServiceGroups/setting";
 
 export default _nextConnect.post(async (request: NextApiRequest, response: NextApiResponse) => {
-	const data: TConsultationForm = request.body;
+	const data: TInternationalInsuranceForm = request.body;
 	nodemailerTransporter
 		.sendMail({
 			from: process.env["MAIL_USER"],
 			to: process.env["MAIL_USER"],
-			html: html(ConsultationFormBody(data)),
-			subject: `Yêu cầu Tư vấn miễn phí của "${data.name}"`,
+			html: html(InternationalInsuranceFormBody(data)),
+			subject: `Yêu cầu Đăng ký việc làm định cư của "${data.name}"`,
 		})
 		.then((result) => {
 			console.log(result);

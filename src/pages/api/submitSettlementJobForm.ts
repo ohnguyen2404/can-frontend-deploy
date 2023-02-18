@@ -5,8 +5,8 @@ import { FILE_FORM_UPLOAD_NAME, html } from "../../utils/settings/setting";
 import _nextConnect from "../../middlewares/nextConnect";
 import guardContentLength from "../../middlewares/guardContentLength";
 import handleFiles from "../../middlewares/handleFiles";
-import { TSchoolRegistrationForm } from "../../components/ServiceGroups/types";
-import { SchoolRegistrationFormBody } from "../../components/ServiceGroups/setting";
+import { SettlementJobFormBody } from "../../components/ServiceGroups/setting";
+import { TSettlementJobForm } from "../../components/ServiceGroups/types";
 
 export const config = {
 	api: {
@@ -24,8 +24,7 @@ export default _nextConnect
 	.post(async (request: NextConnectApiRequest, response) => {
 		// request.emit("close");
 		const files = request.files;
-		const data: TSchoolRegistrationForm = request.body;
-		data.semester = JSON.parse((<unknown>data.semester) as string);
+		const data: TSettlementJobForm = request.body;
 
 		if (!data.id) {
 			return response.status(400).json({ message: "Bad request" });
@@ -42,8 +41,8 @@ export default _nextConnect
 			.sendMail({
 				from: process.env["MAIL_USER"],
 				to: process.env["MAIL_USER"],
-				html: html(SchoolRegistrationFormBody(data)),
-				subject: `Yêu cầu Đăng ký trường học của "${data.name}"`,
+				html: html(SettlementJobFormBody(data)),
+				subject: `Yêu cầu Đăng ký việc làm định cư của "${data.name}"`,
 				attachments: attachments,
 			})
 			.then((result) => {

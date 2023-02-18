@@ -2,30 +2,72 @@ import { useState } from "react";
 import InputField from "../../Fields/InputField";
 import TitleButton from "../../Buttons/TitleButton";
 import DateField from "../../Fields/DateField";
+import { TInternationalInsuranceForm } from "../types";
+import { isEmailValid, isPhoneValid } from "../../../utils/validator";
+import axios from "axios";
+import { v4 as uuidv4 } from "uuid";
 
 const InternationalInsuranceForm = () => {
-	const [name, setName] = useState<string>("");
+	const [name, setName] = useState<TInternationalInsuranceForm["name"]>();
 	const [isDisplayNameError, setIsDisplayNameError] = useState<boolean>(false);
-	const [birthday, setBirthday] = useState<string>("");
-	const [isDisplayBirthdayError, setIsDisplayBirthdayError] = useState<boolean>(false);
-	const [insurancePeriod, setInsurancePeriod] = useState<string>("");
+	const [doB, setDoB] = useState<TInternationalInsuranceForm["doB"]>();
+	const [isDisplayDoBError, setIsDisplayDoBError] = useState<boolean>(false);
+	const [insurancePeriod, setInsurancePeriod] = useState<TInternationalInsuranceForm["insurancePeriod"]>();
 	const [isDisplayinsurancePeriodError, setIsDisplayinsurancePeriodError] = useState<boolean>(false);
-	const [phone, setPhone] = useState<string>("");
+	const [phone, setPhone] = useState<TInternationalInsuranceForm["phone"]>();
 	const [isDisplayPhoneError, setIsDisplayPhoneError] = useState<boolean>(false);
-	const [address, setAddress] = useState<string>("");
+	const [address, setAddress] = useState<TInternationalInsuranceForm["address"]>();
 	const [isDisplayAddressError, setIsDisplayAddressError] = useState<boolean>(false);
-	const [email, setEmail] = useState<string>("");
+	const [email, setEmail] = useState<TInternationalInsuranceForm["email"]>();
 	const [isDisplayEmailError, setIsDisplayEmailError] = useState<boolean>(false);
 
-	const fieldContainer = "field-container my-5";
+	const handleSubmit = async () => {
+		setIsDisplayNameError(false);
+		setIsDisplayEmailError(false);
+		setIsDisplayPhoneError(false);
+		setIsDisplayDoBError(false);
+		setIsDisplayinsurancePeriodError(false);
+		setIsDisplayAddressError(false);
+		if (!name) {
+			setIsDisplayNameError(true);
+			return;
+		}
+		if (!email || !isEmailValid(email)) {
+			setIsDisplayEmailError(true);
+			return;
+		}
+		if (!phone || !isPhoneValid(phone)) {
+			setIsDisplayPhoneError(true);
+			return;
+		}
 
-	const handleSubmit = () => {};
+		await axios
+			.post("api/submitInternationalInsuranceForm", {
+				id: uuidv4(),
+				name: name,
+				doB: doB,
+				insurancePeriod: insurancePeriod,
+				phone: phone,
+				address: address,
+				email: email,
+			})
+			.then((response) => {
+				console.log("response");
+				console.log(response);
+			})
+			.catch((error) => {
+				console.log("error");
+				console.log(error);
+			});
+	};
+
+	const fieldContainer = "field-container my-5";
 
 	return (
 		<div id="international-insurance">
 			<div className="international-insurance-form-container flex flex-row justify-center">
-				<div className="image-container w-[35%] bg-no-repeat bg-center bg-cover rounded-[30px] -mr-[2%]"></div>
-				<div className="form-container w-[65%] px-[5%] py-8 bg-white rounded-[30px] -ml-[2%]">
+				<div className="image-container w-[35%] bg-no-repeat bg-center bg-cover rounded-[30px] -mr-[3%]"></div>
+				<div className="form-container w-[65%] px-[5%] py-8 bg-white rounded-[30px] -ml-[3%]">
 					<div className="title-container">
 						<span className="title font-extrabold text-5xl text-strongPink uppercase">Đăng ký việc làm định cư</span>
 					</div>
@@ -46,8 +88,8 @@ const InternationalInsuranceForm = () => {
 									label="Ngày sinh"
 									errorMessage="Ngày sinh chưa phù hợp"
 									isRequired={true}
-									isDisplayErrorMessage={isDisplayBirthdayError}
-									handleChangeValue={setBirthday}
+									isDisplayErrorMessage={isDisplayDoBError}
+									handleChangeValue={setDoB}
 								/>
 							</div>
 							<div className={fieldContainer}>
