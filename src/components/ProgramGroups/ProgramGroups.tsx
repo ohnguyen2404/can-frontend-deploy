@@ -55,22 +55,18 @@ const ProgramGroups: TComponent & TSubComponent = () => {
 	});
 	const timeline = gsap.timeline();
 
-	useEffect(() => {
-		for (let index = itemInRow; index < listCard.length; index++) {
-			const card = listCard[index];
-			gsap.set(`#card-${card.id}`, {
-				y: "100%",
-			});
-			timeline.to(`#card-${card.id}`, {
-				y: 0,
-			});
-		}
-	}, []);
-
 	useLayoutEffect(() => {
-		gsap.registerPlugin(ScrollTrigger);
-		const createScrollTrigger = () => {
-			ScrollTrigger.getById(ID)?.kill();
+		const context = gsap.context(() => {
+			for (let index = itemInRow; index < listCard.length; index++) {
+				const card = listCard[index];
+				gsap.set(`#card-${card.id}`, {
+					y: "100%",
+				});
+				timeline.to(`#card-${card.id}`, {
+					y: 0,
+				});
+			}
+			gsap.registerPlugin(ScrollTrigger);
 			ScrollTrigger.create({
 				id: ID,
 				trigger: "#program-group",
@@ -80,11 +76,10 @@ const ProgramGroups: TComponent & TSubComponent = () => {
 				endTrigger: "#EndTriggerTemp",
 				end: `bottom 5%`,
 				pin: true,
+				invalidateOnRefresh: true,
 			});
-		};
-		createScrollTrigger();
-		window.addEventListener("resize", createScrollTrigger);
-		return () => window.removeEventListener("resize", createScrollTrigger);
+		});
+		return () => context.revert();
 	}, []);
 
 	return (
