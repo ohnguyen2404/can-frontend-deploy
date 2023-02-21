@@ -1,8 +1,9 @@
 import { useEffect, useLayoutEffect } from "react";
 import { TComponent } from "../../utils/types";
-import ProgramCard, { TProgramCard, TProgramInfo } from "./ProgramCard";
+import ProgramCard, { TProgramCard } from "./ProgramCard";
 import gsap from "gsap/dist/gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
+import { ITEM_IN_ROW, LIST_PROGRAM_INFO, WIDTH_ITEM } from "./setting";
 
 type TSubComponent = {
 	ProgramCard: typeof ProgramCard;
@@ -10,54 +11,20 @@ type TSubComponent = {
 
 const ProgramGroups: TComponent & TSubComponent = () => {
 	const ID = "ProgramGroups_ST";
-	const array: TProgramInfo[] = [
-		{
-			imgSrc: "assets/programGroups/traihe.jpg",
-			imgAlt: "traihe.jpg",
-			title: "Trại hè",
-		},
-		{
-			imgSrc: "assets/programGroups/vieclam.jpg",
-			imgAlt: "vieclam.jpg",
-			title: "Việc làm",
-		},
-		{
-			imgSrc: "assets/programGroups/dulich.jpg",
-			imgAlt: "dulich.jpg",
-			title: "Du lịch",
-		},
-		{
-			imgSrc: "assets/programGroups/dinhcu.jpg",
-			imgAlt: "dinhcu.jpg",
-			title: "Định cư",
-		},
-		{
-			imgSrc: "assets/programGroups/duhoc.jpg",
-			imgAlt: "duhoc.jpg",
-			title: "Du học",
-		},
-		{
-			imgSrc: "assets/programGroups/pathway.jpg",
-			imgAlt: "pathway.jpg",
-			title: "Pathway",
-		},
-	];
-	const itemInRow = 3;
-	const widthItem = "33%";
-	const listCard: TProgramCard[] = array.map((cardInfo, index) => {
+	const listCard: TProgramCard[] = LIST_PROGRAM_INFO.map((cardInfo, index) => {
 		return {
 			id: index,
-			width: widthItem,
+			width: WIDTH_ITEM,
 			imgSrc: cardInfo.imgSrc,
 			imgAlt: cardInfo.imgAlt,
 			title: cardInfo.title,
 		} as TProgramCard;
 	});
-	const timeline = gsap.timeline();
-
+	
 	useLayoutEffect(() => {
 		const context = gsap.context(() => {
-			for (let index = itemInRow; index < listCard.length; index++) {
+			const timeline = gsap.timeline();
+			for (let index = ITEM_IN_ROW; index < listCard.length; index++) {
 				const card = listCard[index];
 				gsap.set(`#card-${card.id}`, {
 					y: "100%",
@@ -89,12 +56,12 @@ const ProgramGroups: TComponent & TSubComponent = () => {
 			<div
 				id="container-1"
 				className="flex flex-row justify-center absolute top-0 left-0 right-0">
-				{listCard.slice(0, itemInRow).map((card) => {
+				{listCard.slice(0, ITEM_IN_ROW).map((card) => {
 					return (
 						<ProgramGroups.ProgramCard
 							key={card.id}
 							id={card.id}
-							width={widthItem}
+							width={WIDTH_ITEM}
 							imgSrc={card.imgSrc}
 							imgAlt={card.imgAlt}
 							title={card.title}
@@ -105,12 +72,12 @@ const ProgramGroups: TComponent & TSubComponent = () => {
 			<div
 				id="container-2"
 				className="flex flex-row justify-center absolute top-0 left-0 right-0">
-				{listCard.slice(itemInRow).map((card) => {
+				{listCard.slice(ITEM_IN_ROW).map((card) => {
 					return (
 						<ProgramGroups.ProgramCard
 							key={card.id}
 							id={card.id}
-							width={widthItem}
+							width={WIDTH_ITEM}
 							imgSrc={card.imgSrc}
 							imgAlt={card.imgAlt}
 							title={card.title}

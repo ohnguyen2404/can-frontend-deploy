@@ -1,11 +1,6 @@
 import { CSSProperties } from "react";
 import CircleButton from "../Buttons/CircleButton";
-
-export type TProgramInfo = {
-	imgSrc: string;
-	imgAlt?: string;
-	title?: string;
-};
+import { TProgramInfo } from "./types";
 
 export type TProgramCard = TProgramInfo & {
 	width: CSSProperties["width"];
