@@ -2,18 +2,22 @@ import Image from "next/image";
 
 const ImageRunner = () => {
 	return (
-		<div className="image-runner h-full flex shrink-0 relative">
-			{[...Array(59).keys()].map((idx) => (
-				<span className="h-full w-fit flex shrink-0 items-center mx-[2vw]">
-					<Image
-						key={idx}
-						src={`/assets/approvalCases/image-${idx}.jpg`}
-						alt={`approvalCases/image-${idx}.jpg`}
-						width={382}
-						height={531}
-					/>
-				</span>
-			))}
+		<div className="image-runner-mask border-b border-silver">
+			<div className="image-runner h-full flex shrink-0 relative py-[2vh]">
+				{[...Array(59).keys()].map((idx) => (
+					<div className="image-container h-full w-fit flex shrink-0 items-center px-4 py-[4vh] border-r border-silver">
+						<div className="inner-image-container h-full aspect-[3/4] border border-strongPink before:absolute before:top-2 before:right-2 before:z-10 before:flex before:justify-center before:items-center before:pb-[1%] before:font-medium before:text-2xl before:border before:border-strongPink before:bg-white">
+							<Image
+								key={idx}
+								src={`/assets/approvalCases/image-${idx}.jpg`}
+								alt={`approvalCases/image-${idx}.jpg`}
+								fill={true}
+								className="image !relative object-contain px-1 py-2"
+							/>
+						</div>
+					</div>
+				))}
+			</div>
 		</div>
 	);
 };
