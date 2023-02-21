@@ -40,7 +40,7 @@ const SeasonalProjectGroups: TComponent & TSubComponent = () => {
 			id="seasonal-project-groups"
 			className="my-10"
 			ref={ref_seft}>
-			<div className={`tag-info-groups-container ${STYLE_GROUPS.flexStart} flex-col w-full py-36 bg-lightBlue rounded-[1.875rem] overflow-hidden`}>
+			<div className={`tag-info-groups-container ${STYLE_GROUPS.flexStart} flex-col w-full py-medium bg-lightBlue rounded-[1.875rem] overflow-hidden`}>
 				<div className="mx-6 pb-1">
 					<TitleButton title="Chi tiết" />
 				</div>

@@ -7,6 +7,7 @@ type TSeasonalProject = {
 };
 
 export const PROJECT_MIN_WIDTH = 680;
+export const PROJECT_MIN_WIDTH_VW = 45;
 
 export const LIST_PROJECT = Assert<TSeasonalProject[]>([
 	{
