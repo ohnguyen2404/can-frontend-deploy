@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
 import { TComponent } from "../../utils/types";
 import ProgramCard, { TProgramCard } from "./ProgramCard";
 import gsap from "gsap/dist/gsap";
@@ -10,7 +10,8 @@ type TSubComponent = {
 };
 
 const ProgramGroups: TComponent & TSubComponent = () => {
-	const ID = "ProgramGroups_ST";
+	const ref_self = useRef<HTMLElement>(null);
+
 	const listCard: TProgramCard[] = LIST_PROGRAM_INFO.map((cardInfo, index) => {
 		return {
 			id: index,
@@ -20,28 +21,28 @@ const ProgramGroups: TComponent & TSubComponent = () => {
 			title: cardInfo.title,
 		} as TProgramCard;
 	});
-	
+
 	useLayoutEffect(() => {
 		const context = gsap.context(() => {
 			const timeline = gsap.timeline();
 			for (let index = ITEM_IN_ROW; index < listCard.length; index++) {
 				const card = listCard[index];
-				gsap.set(`#card-${card.id}`, {
-					y: "100%",
-				});
+				// gsap.set(`#card-${card.id}`, {
+				// 	y: "100%",
+				// });
 				timeline.to(`#card-${card.id}`, {
-					y: 0,
+					yPercent: -100,
 				});
 			}
 			gsap.registerPlugin(ScrollTrigger);
+			console.log("ref_self.current?.scrollHeight", ref_self.current!.scrollHeight + 240);
+			console.log("ref_self.current?.offsetHeight", ref_self.current?.offsetHeight);
 			ScrollTrigger.create({
-				id: ID,
-				trigger: "#program-group",
+				trigger: ref_self.current,
 				animation: timeline,
 				scrub: true,
 				start: "top 5%",
-				endTrigger: "#EndTriggerTemp",
-				end: `bottom 5%`,
+				end: () => `+=${ref_self.current?.scrollHeight}`,
 				pin: true,
 				invalidateOnRefresh: true,
 			});
@@ -50,12 +51,13 @@ const ProgramGroups: TComponent & TSubComponent = () => {
 	}, []);
 
 	return (
-		<div
+		<section
 			id="program-group"
-			className="program-group-container relative">
+			className="program-group-container flex flex-col my-high"
+			ref={ref_self}>
 			<div
 				id="container-1"
-				className="flex flex-row justify-center absolute top-0 left-0 right-0">
+				className="flex flex-row justify-center">
 				{listCard.slice(0, ITEM_IN_ROW).map((card) => {
 					return (
 						<ProgramGroups.ProgramCard
@@ -71,7 +73,7 @@ const ProgramGroups: TComponent & TSubComponent = () => {
 			</div>
 			<div
 				id="container-2"
-				className="flex flex-row justify-center absolute top-0 left-0 right-0">
+				className="flex flex-row justify-center">
 				{listCard.slice(ITEM_IN_ROW).map((card) => {
 					return (
 						<ProgramGroups.ProgramCard
@@ -85,7 +87,7 @@ const ProgramGroups: TComponent & TSubComponent = () => {
 					);
 				})}
 			</div>
-		</div>
+		</section>
 	);
 };
 

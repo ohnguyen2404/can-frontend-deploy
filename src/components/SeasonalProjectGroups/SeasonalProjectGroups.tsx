@@ -13,7 +13,7 @@ type TSubComponent = {
 };
 
 const SeasonalProjectGroups: TComponent & TSubComponent = () => {
-	const ref_seft = useRef(null);
+	const ref_seft = useRef<HTMLElement>(null);
 	const ref_slider = useRef<HTMLDivElement>(null);
 
 	useLayoutEffect(() => {

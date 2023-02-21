@@ -27,9 +27,6 @@ export default function Home() {
 				<SeasonalProjectGroups />
 				<NewsGroup />
 				<ProgramGroups />
-				<div
-					id="EndTriggerTemp"
-					className="w-full h-[1600px]"></div>
 				<ModalContext.Provider value={{ isOpenModal, handleOpenModal: setIsOpenModal, setModalComponent }}>
 					<ServiceGroups />
 				</ModalContext.Provider>
