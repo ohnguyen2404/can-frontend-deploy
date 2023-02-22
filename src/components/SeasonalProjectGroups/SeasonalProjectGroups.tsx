@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef } from "react";
+import React, { useRef } from "react";
 import { TComponent } from "../../utils/types";
 import STYLE_GROUPS from "../../utils/styles";
 import gsap from "gsap/dist/gsap";
@@ -7,6 +7,7 @@ import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import SeasonalProject from "./SeasonalProject";
 import { LIST_PROJECT } from "./setting";
 import TitleButton from "../Buttons/TitleButton";
+import { useIsomorphicLayoutEffect } from "../../utils/helper";
 
 type TSubComponent = {
 	SeasonalProject: typeof SeasonalProject;
@@ -16,7 +17,7 @@ const SeasonalProjectGroups: TComponent & TSubComponent = () => {
 	const ref_seft = useRef<HTMLElement>(null);
 	const ref_slider = useRef<HTMLDivElement>(null);
 
-	useLayoutEffect(() => {
+	useIsomorphicLayoutEffect(() => {
 		const context = gsap.context(() => {
 			gsap.registerPlugin(ScrollTrigger, Draggable);
 			gsap.to(ref_slider.current, {
