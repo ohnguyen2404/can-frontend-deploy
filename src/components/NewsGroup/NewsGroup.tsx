@@ -1,74 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { TComponent } from "../../utils/types";
 import CircleButton from "../Buttons/CircleButton";
 import LongButton from "../Buttons/LongButton";
 import { Direction } from "../../utils/types";
 import NewsCard from "./NewsCard";
+import axios from "axios";
+import { formatNewsTitle } from "../../utils/helper";
+import { TNews } from "./types";
 
-const MOCK_NEWS = [
-	{
-		title: "SUMMER-CAMP-2023-01-1",
-		imgUrl: "/SUMMER-CAMP-2023-01.png",
-	},
-	{
-		title: "SUMMER-CAMP-2023-02-1",
-		imgUrl: "/SUMMER-CAMP-2023-02.png",
-	},
-	{
-		title: "SUMMER-CAMP-2023-03-1",
-		imgUrl: "/SUMMER-CAMP-2023-03.png",
-	},
-	{
-		title: "SUMMER-CAMP-2023-04-1",
-		imgUrl: "/SUMMER-CAMP-2023-04.png",
-	},
-	{
-		title: "SUMMER-CAMP-2023-01-2",
-		imgUrl: "/SUMMER-CAMP-2023-01.png",
-	},
-	{
-		title: "SUMMER-CAMP-2023-02-2",
-		imgUrl: "/SUMMER-CAMP-2023-02.png",
-	},
-	{
-		title: "SUMMER-CAMP-2023-03-2",
-		imgUrl: "/SUMMER-CAMP-2023-03.png",
-	},
-	{
-		title: "SUMMER-CAMP-2023-04-2",
-		imgUrl: "/SUMMER-CAMP-2023-04.png",
-	},
-	{
-		title: "SUMMER-CAMP-2023-01-3",
-		imgUrl: "/SUMMER-CAMP-2023-01.png",
-	},
-	{
-		title: "SUMMER-CAMP-2023-02-3",
-		imgUrl: "/SUMMER-CAMP-2023-02.png",
-	},
-	{
-		title: "SUMMER-CAMP-2023-03-3",
-		imgUrl: "/SUMMER-CAMP-2023-03.png",
-	},
-	{
-		title: "SUMMER-CAMP-2023-04-3",
-		imgUrl: "/SUMMER-CAMP-2023-04.png",
-	},
-];
+type TNewsGroup = {
+	news: TNews[];
+};
 
-const NewsGroup: TComponent = () => {
+const NewsGroup = ({ news }: TNewsGroup) => {
 	const [curIdx, setCurIdx] = useState(2);
+
 	const onClickPrev = () => {
 		if (curIdx > 0) {
 			setCurIdx((curIdx) => curIdx - 1);
-			if (curIdx < MOCK_NEWS.length - 2) {
+			if (curIdx < news.length - 2) {
 				document.getElementById("news-slider")!.scrollLeft -= 340;
 			}
 		}
 	};
 
 	const onClickNext = () => {
-		if (curIdx < MOCK_NEWS.length - 1) {
+		if (curIdx < news.length - 1) {
 			setCurIdx((curIdx) => curIdx + 1);
 			if (curIdx >= 2) {
 				document.getElementById("news-slider")!.scrollLeft += 340;
@@ -86,11 +43,10 @@ const NewsGroup: TComponent = () => {
 			className="w-full mt-10">
 			<div className="flex flex-row justify-between">
 				<div className="ml-6 font-bold text-4xl uppercase">
-					<span className="float-left">{MOCK_NEWS[curIdx].title.substring(0, MOCK_NEWS[curIdx].title.length - 1)}</span>
-					<span className="flex flex-row items-center float-right">
-						<span className="pr-3">{MOCK_NEWS[curIdx].title.substring(MOCK_NEWS[curIdx].title.length - 1)}</span>
+					{news[curIdx]?.title}
+					<div className="inline-block mb-2 ml-2 align-middle">
 						<CircleButton />
-					</span>
+					</div>
 				</div>
 				<div className="flex flex-row mr-6 justify-between">
 					<LongButton
@@ -108,14 +64,14 @@ const NewsGroup: TComponent = () => {
 			<div
 				id="news-slider"
 				className="w-full mt-16 min-h-[600px] items-center flex flex-row overflow-x-scroll scrollbar-hide">
-				{MOCK_NEWS.map(({ imgUrl }, idx) => (
+				{news.map(({ imgUrl }, idx) => (
 					<NewsCard
 						key={idx}
 						isSelected={idx === curIdx}
 						handleOnClick={() => onClickCard(idx)}
 						imgUrl={imgUrl}
 						idx={idx}
-						newsLength={MOCK_NEWS.length}
+						newsLength={news.length}
 					/>
 				))}
 			</div>

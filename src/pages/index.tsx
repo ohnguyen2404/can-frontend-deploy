@@ -2,8 +2,35 @@ import Head from "next/head";
 import { Banner, Navbar, TagInfoGroups, SeasonalProjectGroups, NewsGroup, ProgramGroups, ServiceGroups, Consultation, AdvisoryGroups, ModalPortal, ApprovalCases, Footer } from "../components";
 import { useState } from "react";
 import ModalContext from "../components/Toolkits/Modal/ModalContext";
+import axios from "axios";
+import { formatNewsTitle } from "../utils/helper";
+import { GetStaticProps, InferGetStaticPropsType } from "next";
 
-export default function Home() {
+export const getStaticProps: GetStaticProps = async (context) => {
+	try {
+		const accessToken = process.env["FB_PAGE_ACCESS_TOKEN"];
+		const FB_URL = `https://graph.facebook.com/v16.0/100184219613847/feed?fields=attachments%2Cmessage&access_token=${accessToken}`;
+		const response = (await axios.get(FB_URL)).data;
+		const news = response.data
+			.filter((data: any) => data.message && data.attachments)
+			.map((data: any) => {
+				return {
+					title: formatNewsTitle(data.message),
+					imgUrl: data.attachments?.data[0]?.media?.image?.src,
+				};
+			});
+		return {
+			props: { news },
+		};
+	} catch (err) {
+		console.log("__getStaticProps error: ", err);
+		return {
+			props: { news: [] },
+		};
+	}
+};
+
+export default function Home({ news }: InferGetStaticPropsType<typeof getStaticProps>) {
 	const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
 	const [modalComponent, setModalComponent] = useState<JSX.Element | null>(null);
 
@@ -25,7 +52,7 @@ export default function Home() {
 				<Banner />
 				<TagInfoGroups />
 				<SeasonalProjectGroups />
-				<NewsGroup />
+				<NewsGroup news={news} />
 				<ProgramGroups />
 				<ModalContext.Provider value={{ isOpenModal, handleOpenModal: setIsOpenModal, setModalComponent }}>
 					<ServiceGroups />

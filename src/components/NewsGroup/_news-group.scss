@@ -3,3 +3,11 @@
   transform: scale(1.3);
   z-index: 2;
 }
+
+.custom-ellipsis-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
