@@ -1,34 +1,36 @@
 #approval-cases {
-    .image-runner {
-        animation: marquee 180s linear infinite;
-        counter-reset: image-counter;
-
-        &:hover {
+    .image-runner-container {
+        &:hover .image-runner {
             animation-play-state: paused;
         }
 
-        .inner-image-container {
-            position: relative;
+        .image-runner {
+            animation: marquee 180s linear infinite;
+            counter-reset: image-counter;
 
-            >div {
-                position: unset !important;
+            .inner-image-container {
+                position: relative;
+
+                >div {
+                    position: unset !important;
+                }
+
+                &::before {
+                    content: counter(image-counter, decimal-leading-zero);
+                    counter-increment: image-counter;
+                    height: 5.5625%;
+                    width: 7.5%;
+                }
             }
 
-            &::before {
-                content: counter(image-counter, decimal-leading-zero);
-                counter-increment: image-counter;
-                height: 5.5625%;
-                width: 7.5%;
-            }
-        }
+            @keyframes marquee {
+                0% {
+                    transform: translateX(0%);
+                }
 
-        @keyframes marquee {
-            0% {
-                transform: translateX(0%);
-            }
-
-            100% {
-                transform: translateX(-100%);
+                100% {
+                    transform: translateX(-100%);
+                }
             }
         }
     }
