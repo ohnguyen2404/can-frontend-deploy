@@ -110,6 +110,7 @@ const NewsGroup: TComponent = () => {
 				className="w-full mt-16 min-h-[600px] items-center flex flex-row overflow-x-scroll scrollbar-hide">
 				{MOCK_NEWS.map(({ imgUrl }, idx) => (
 					<NewsCard
+						key={idx}
 						isSelected={idx === curIdx}
 						handleOnClick={() => onClickCard(idx)}
 						imgUrl={imgUrl}

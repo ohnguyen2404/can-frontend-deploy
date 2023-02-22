@@ -5,13 +5,15 @@ const ImageRunner = () => {
 		<div className="image-runner-mask border-b border-silver">
 			<div className="image-runner h-full flex shrink-0 relative py-[2vh]">
 				{[...Array(59).keys()].map((idx) => (
-					<div className="image-container h-full w-fit flex shrink-0 items-center px-4 py-[4vh] border-r border-silver">
+					<div
+						key={idx}
+						className="image-container h-full w-fit flex shrink-0 items-center px-4 py-[4vh] border-r border-silver">
 						<div className="inner-image-container h-full aspect-[3/4] border border-strongPink before:absolute before:top-2 before:right-2 before:z-10 before:flex before:justify-center before:items-center before:pb-[1%] before:font-medium before:text-2xl before:border before:border-strongPink before:bg-white">
 							<Image
-								key={idx}
 								src={`/assets/approvalCases/image-${idx}.jpg`}
 								alt={`approvalCases/image-${idx}.jpg`}
 								fill={true}
+								sizes="30vw"
 								className="image !relative object-contain px-1 py-2"
 							/>
 						</div>
