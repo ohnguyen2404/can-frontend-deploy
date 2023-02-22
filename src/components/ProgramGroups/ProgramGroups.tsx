@@ -1,9 +1,10 @@
-import { useEffect, useLayoutEffect, useRef } from "react";
+import { useRef } from "react";
 import { TComponent } from "../../utils/types";
 import ProgramCard, { TProgramCard } from "./ProgramCard";
 import gsap from "gsap/dist/gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import { ITEM_IN_ROW, LIST_PROGRAM_INFO, WIDTH_ITEM } from "./setting";
+import { useIsomorphicLayoutEffect } from "../../utils/helper";
 
 type TSubComponent = {
 	ProgramCard: typeof ProgramCard;
@@ -22,7 +23,7 @@ const ProgramGroups: TComponent & TSubComponent = () => {
 		} as TProgramCard;
 	});
 
-	useLayoutEffect(() => {
+	useIsomorphicLayoutEffect(() => {
 		const context = gsap.context(() => {
 			const timeline = gsap.timeline();
 			for (let index = ITEM_IN_ROW; index < listCard.length; index++) {
