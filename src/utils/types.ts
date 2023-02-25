@@ -7,3 +7,10 @@ export enum Direction {
 	"Center",
 	"Right",
 }
+
+export enum State {
+	NONE,
+	LOADING,
+	SUCCESS,
+	FAILURE,
+}
