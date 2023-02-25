@@ -133,117 +133,119 @@ const SettlementJobForm = () => {
 
 	return (
 		<div id="settlement-job">
-			{mirrorState !== State.NONE ? (
-				<StateModal
-					name={TITLE}
-					state={mirrorState}
-				/>
-			) : (
-				<div className="settlement-job-form-container flex flex-row justify-center">
-					<div className="image-container w-[35%] bg-no-repeat bg-center bg-cover rounded-[30px] -mr-[3%]"></div>
-					<div className="form-container w-[65%] px-[5%] py-8 bg-white rounded-[30px] -ml-[3%]">
-						<div className="title-container">
-							<span className="title font-extrabold text-5xl text-strongPink uppercase">{TITLE}</span>
-						</div>
-						<div className="form-field-container">
-							<div className="info-field-container">
-								<div className={fieldContainer}>
-									<InputField
-										type="text"
-										placeHolder="Họ & tên"
-										errorMessage="Họ & tên chưa phù hợp"
-										isRequired={true}
-										isDisplayErrorMessage={isDisplayNameError}
-										handleChangeValue={setName}
-									/>
-								</div>
-								<div className={fieldContainer}>
-									<InputField
-										type="email"
-										placeHolder="Email"
-										errorMessage="Email chưa phù hợp"
-										isRequired={true}
-										isDisplayErrorMessage={isDisplayEmailError}
-										handleChangeValue={setEmail}
-									/>
-								</div>
-								<div className={fieldContainer}>
-									<InputField
-										type="tel"
-										placeHolder="Số điện thoại"
-										errorMessage="Số điện thoại chưa phù hợp"
-										isRequired={true}
-										isDisplayErrorMessage={isDisplayPhoneError}
-										handleChangeValue={setPhone}
-									/>
-								</div>
-								<div className={fieldContainer}>
-									<SelectField
-										id={listJobId}
-										list={LIST_JOB}
-										label="Danh sách công việc"
-										placeHolder="--Chọn công việc--"
-										errorMessage="Danh sách công việc chưa phù hợp"
-										isRequired={true}
-										isDisplayErrorMessage={isDisplayJobError}
-										handleChangeValue={setJob}
-									/>
-								</div>
+			<div className="settlement-job-form-container w-[50vw]">
+				{mirrorState !== State.NONE ? (
+					<StateModal
+						name={TITLE}
+						state={mirrorState}
+					/>
+				) : (
+					<div className="inner-settlement-job-form-container flex flex-row justify-center">
+						<div className="image-container w-[35%] bg-no-repeat bg-center bg-cover rounded-[30px] -mr-[3%]"></div>
+						<div className="form-container w-[65%] px-[5%] py-8 bg-white rounded-[30px] -ml-[3%]">
+							<div className="title-container">
+								<span className="title font-extrabold text-5xl text-strongPink uppercase">{TITLE}</span>
 							</div>
-							<div className={fieldContainer}>
-								<div className="input-field-container grid grid-rows-2 grid-cols-2 gap-y-4">
-									<InputFileField
-										id="passport"
-										multiple={true}
-										maxFile={5}
-										accept="application/msword, application/vnd.ms-powerpoint, application/pdf, image/*"
-										label="Passport"
-										handleChangeValue={setPassportFileList}
-									/>
-									<InputFileField
-										id="ielts"
-										multiple={true}
-										maxFile={5}
-										accept="application/msword, application/vnd.ms-powerpoint, application/pdf, image/*"
-										label="IELTS"
-										handleChangeValue={setIeltsFileList}
-									/>
-									<InputFileField
-										id="transcriptsHighSchool"
-										multiple={true}
-										maxFile={5}
-										accept="application/msword, application/vnd.ms-powerpoint, application/pdf, image/*"
-										label="Học bạ và bằng tốt nghiệp"
-										handleChangeValue={setTranscriptsHighSchoolFileList}
-									/>
-									<InputFileField
-										id="transcriptsCollege"
-										multiple={true}
-										maxFile={5}
-										accept="application/msword, application/vnd.ms-powerpoint, application/pdf, image/*"
-										label="Học bạ và bằng tốt nghiệp Đại Học/Cao Đẳng"
-										handleChangeValue={setTranscriptsCollegeFileList}
-									/>
-								</div>
-								{isDisplayFileListError && fileListErrorMessage ? (
-									<div className={`${fieldContainer} error-message-container before:content-['\\002A'] before:font-bold`}>
-										<span className="font-bold">{fileListErrorMessage}</span>
+							<div className="form-field-container">
+								<div className="info-field-container">
+									<div className={fieldContainer}>
+										<InputField
+											type="text"
+											placeHolder="Họ & tên"
+											errorMessage="Họ & tên chưa phù hợp"
+											isRequired={true}
+											isDisplayErrorMessage={isDisplayNameError}
+											handleChangeValue={setName}
+										/>
 									</div>
-								) : (
-									<></>
-								)}
-							</div>
-							<div className={fieldContainer}>
-								<TitleButton
-									title="Gửi"
-									buttonColor="strongPink"
-									handleOnClick={handleSubmit}
-								/>
+									<div className={fieldContainer}>
+										<InputField
+											type="email"
+											placeHolder="Email"
+											errorMessage="Email chưa phù hợp"
+											isRequired={true}
+											isDisplayErrorMessage={isDisplayEmailError}
+											handleChangeValue={setEmail}
+										/>
+									</div>
+									<div className={fieldContainer}>
+										<InputField
+											type="tel"
+											placeHolder="Số điện thoại"
+											errorMessage="Số điện thoại chưa phù hợp"
+											isRequired={true}
+											isDisplayErrorMessage={isDisplayPhoneError}
+											handleChangeValue={setPhone}
+										/>
+									</div>
+									<div className={fieldContainer}>
+										<SelectField
+											id={listJobId}
+											list={LIST_JOB}
+											label="Danh sách công việc"
+											placeHolder="--Chọn công việc--"
+											errorMessage="Danh sách công việc chưa phù hợp"
+											isRequired={true}
+											isDisplayErrorMessage={isDisplayJobError}
+											handleChangeValue={setJob}
+										/>
+									</div>
+								</div>
+								<div className={fieldContainer}>
+									<div className="input-field-container grid grid-rows-2 grid-cols-2 gap-y-4">
+										<InputFileField
+											id="passport"
+											multiple={true}
+											maxFile={5}
+											accept="application/msword, application/vnd.ms-powerpoint, application/pdf, image/*"
+											label="Passport"
+											handleChangeValue={setPassportFileList}
+										/>
+										<InputFileField
+											id="ielts"
+											multiple={true}
+											maxFile={5}
+											accept="application/msword, application/vnd.ms-powerpoint, application/pdf, image/*"
+											label="IELTS"
+											handleChangeValue={setIeltsFileList}
+										/>
+										<InputFileField
+											id="transcriptsHighSchool"
+											multiple={true}
+											maxFile={5}
+											accept="application/msword, application/vnd.ms-powerpoint, application/pdf, image/*"
+											label="Học bạ và bằng tốt nghiệp"
+											handleChangeValue={setTranscriptsHighSchoolFileList}
+										/>
+										<InputFileField
+											id="transcriptsCollege"
+											multiple={true}
+											maxFile={5}
+											accept="application/msword, application/vnd.ms-powerpoint, application/pdf, image/*"
+											label="Học bạ và bằng tốt nghiệp Đại Học/Cao Đẳng"
+											handleChangeValue={setTranscriptsCollegeFileList}
+										/>
+									</div>
+									{isDisplayFileListError && fileListErrorMessage ? (
+										<div className={`${fieldContainer} error-message-container before:content-['\\002A'] before:font-bold`}>
+											<span className="font-bold">{fileListErrorMessage}</span>
+										</div>
+									) : (
+										<></>
+									)}
+								</div>
+								<div className={fieldContainer}>
+									<TitleButton
+										title="Gửi"
+										buttonColor="strongPink"
+										handleOnClick={handleSubmit}
+									/>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-			)}
+				)}
+			</div>
 		</div>
 	);
 };

@@ -11,7 +11,7 @@ const ModalPortal = (props: PropsWithChildren<TModalPortal>) => {
 				className="modal-wrap fixed flex h-full w-full justify-center items-center bg-black bg-opacity-50"
 				onClick={() => props.handleOpenModal(false)}>
 				<div
-					className="modal-container z-30 w-1/2 h-3/4 overflow-auto"
+					className="modal-container z-30 max-h-[80%] max-w-[80%] overflow-auto"
 					onClick={(event) => event.stopPropagation()}>
 					{props.children}
 				</div>

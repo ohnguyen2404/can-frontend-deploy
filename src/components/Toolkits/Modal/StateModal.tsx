@@ -8,8 +8,8 @@ type TStateModal = {
 const StateModal = (props: TStateModal) => {
 	return (
 		<div className="state-modal">
-			<div className="modal-container p-[5%] aspect-auto bg-white flex flex-col items-center rounded-[30px]">
-				<div className="title-container">
+			<div className="state-modal-container p-[5%] bg-white aspect-square flex flex-col w-full h-full items-center rounded-[30px]">
+				<div className="title-container text-center">
 					<span className="title font-extrabold text-5xl text-strongPink uppercase">{props.name}</span>
 				</div>
 				<div className="state-container flex flex-col h-full justify-center items-center">
