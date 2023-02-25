@@ -11,8 +11,8 @@ import { v4 as uuidv4 } from "uuid";
 import { FILE_FORM_UPLOAD_NAME, FILE_FORM_UPLOAD_TYPE, InstitutionTypeSchool, LIST_COLLEGE_SCHOOL, LIST_HIGH_SCHOOL_PRIVATE, LIST_HIGH_SCHOOL_PUBLIC, LIST_LANGUAGES_SCHOOL, LIST_UNIVERSITY_SCHOOL, MAX_CONTENT_FILE_SIZE, MAX_NUMBER_FILE, Semester } from "../setting";
 import { TSchoolRegistrationForm } from "../types";
 import { State } from "../../../utils/types";
-import StateModal from "../../Toolkits/Modal/StateModal";
 import FormContext from "./FormContext";
+import { StateModal } from "../../Toolkits";
 
 const SchoolRegistrationForm = () => {
 	const TITLE = "Đăng ký trường học";

@@ -1,7 +1,7 @@
 import Head from "next/head";
-import { Banner, Navbar, TagInfoGroups, SeasonalProjectGroups, NewsGroup, ProgramGroups, ServiceGroups, Consultation, AdvisoryGroups, ModalPortal, ApprovalCases, Footer } from "../components";
+import { Banner, Navbar, TagInfoGroups, SeasonalProjectGroups, NewsGroup, ProgramGroups, ServiceGroups, Consultation, AdvisoryGroups, ApprovalCases, Footer } from "../components";
+import { ModalContext, ModalPortal, Toaster } from "../components/Toolkits";
 import { useState } from "react";
-import ModalContext from "../components/Toolkits/Modal/ModalContext";
 import axios from "axios";
 import { formatNewsTitle } from "../utils/helper";
 import { GetStaticProps, InferGetStaticPropsType } from "next";

@@ -6,10 +6,10 @@ import { TInternationalInsuranceForm } from "../types";
 import { isEmailValid, isPhoneValid } from "../../../utils/validator";
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
-import StateModal from "../../Toolkits/Modal/StateModal";
 import { State } from "../../../utils/types";
 import React from "react";
 import FormContext from "./FormContext";
+import { StateModal } from "../../Toolkits";
 
 const InternationalInsuranceForm = () => {
 	const TITLE = "Bảo hiểm quốc tế";

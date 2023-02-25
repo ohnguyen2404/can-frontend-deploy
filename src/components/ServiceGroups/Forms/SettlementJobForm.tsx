@@ -9,9 +9,9 @@ import { isEmailValid, isPhoneValid } from "../../../utils/validator";
 import { v4 as uuidv4 } from "uuid";
 import { renameFile } from "../../../utils/helper";
 import axios from "axios";
-import StateModal from "../../Toolkits/Modal/StateModal";
 import { State } from "../../../utils/types";
 import FormContext from "./FormContext";
+import { StateModal } from "../../Toolkits";
 
 const SettlementJobForm = () => {
 	const TITLE = "Đăng ký việc làm định cư";
