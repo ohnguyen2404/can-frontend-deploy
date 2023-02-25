@@ -13,6 +13,7 @@ import { TSchoolRegistrationForm } from "../types";
 import { State } from "../../../utils/types";
 import FormContext from "./FormContext";
 import { StateModal } from "../../Toolkits";
+import toast from "react-hot-toast";
 
 const SchoolRegistrationForm = () => {
 	const TITLE = "Đăng ký trường học";
@@ -76,7 +77,7 @@ const SchoolRegistrationForm = () => {
 	const [schoolErrorMessage, setSchoolErrorMessage] = useState<string>("Trường chưa phù hợp");
 	const [isDisplaySchoolError, setIsDisplaySchoolError] = useState<boolean>(false);
 
-	const handleSubmit = async () => {
+	const handleSubmit = () => {
 		setIsDisplayNameError(false);
 		setIsDisplayEmailError(false);
 		setIsDisplayPhoneError(false);
@@ -163,37 +164,43 @@ const SchoolRegistrationForm = () => {
 
 		setMirrorState(State.LOADING);
 		formContext?.setState(State.LOADING);
-
-		await axios
-			.post("api/submitSchoolRegistrationForm", formData, {
-				headers: {
-					"content-type": "multipart/form-data",
-				},
-				onUploadProgress: (process) => {
-					if (!process.total) {
-						return;
-					}
-					console.log((process.loaded * 100) / process.total);
-				},
-			})
-			.then((response) => {
-				console.log("response");
-				console.log(response);
-				setMirrorState(State.SUCCESS);
-				formContext?.setState(State.NONE);
-				setTimeout(() => {
-					setMirrorState(State.NONE);
-				}, TIME_STATE_PRESENT);
-			})
-			.catch((error) => {
-				console.log("error");
-				console.log(error);
-				setMirrorState(State.FAILURE);
-				formContext?.setState(State.NONE);
-				setTimeout(() => {
-					setMirrorState(State.NONE);
-				}, TIME_STATE_PRESENT);
-			});
+		toast.promise(
+			axios
+				.post("api/submitSchoolRegistrationForm", formData, {
+					headers: {
+						"content-type": "multipart/form-data",
+					},
+					onUploadProgress: (process) => {
+						if (!process.total) {
+							return;
+						}
+						console.log((process.loaded * 100) / process.total);
+					},
+				})
+				.then((response) => {
+					console.log("response");
+					console.log(response);
+					setMirrorState(State.SUCCESS);
+					formContext?.setState(State.NONE);
+					setTimeout(() => {
+						setMirrorState(State.NONE);
+					}, TIME_STATE_PRESENT);
+				})
+				.catch((error) => {
+					console.log("error");
+					console.log(error);
+					setMirrorState(State.FAILURE);
+					formContext?.setState(State.NONE);
+					setTimeout(() => {
+						setMirrorState(State.NONE);
+					}, TIME_STATE_PRESENT);
+				}),
+			{
+				loading: `Yêu cầu ${TITLE} đang được xử lý...`,
+				success: `Yêu cầu ${TITLE} thành công!`,
+				error: `Yêu cầu ${TITLE} không thành công. Hãy thử lại.`,
+			},
+		);
 	};
 
 	const fieldContainer = "field-container my-5";

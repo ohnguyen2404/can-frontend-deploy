@@ -10,6 +10,7 @@ import { State } from "../../../utils/types";
 import React from "react";
 import FormContext from "./FormContext";
 import { StateModal } from "../../Toolkits";
+import toast from "react-hot-toast";
 
 const InternationalInsuranceForm = () => {
 	const TITLE = "Bảo hiểm quốc tế";
@@ -31,57 +32,64 @@ const InternationalInsuranceForm = () => {
 	const formContext = useContext(FormContext);
 	const [mirrorState, setMirrorState] = useState<State>(formContext!.state);
 
-	const handleSubmit = async () => {
+	const handleSubmit = () => {
 		setIsDisplayNameError(false);
 		setIsDisplayEmailError(false);
 		setIsDisplayPhoneError(false);
 		setIsDisplayDoBError(false);
 		setIsDisplayinsurancePeriodError(false);
 		setIsDisplayAddressError(false);
-		if (!name) {
-			setIsDisplayNameError(true);
-			return;
-		}
-		if (!email || !isEmailValid(email)) {
-			setIsDisplayEmailError(true);
-			return;
-		}
-		if (!phone || !isPhoneValid(phone)) {
-			setIsDisplayPhoneError(true);
-			return;
-		}
+		// if (!name) {
+		// 	setIsDisplayNameError(true);
+		// 	return;
+		// }
+		// if (!email || !isEmailValid(email)) {
+		// 	setIsDisplayEmailError(true);
+		// 	return;
+		// }
+		// if (!phone || !isPhoneValid(phone)) {
+		// 	setIsDisplayPhoneError(true);
+		// 	return;
+		// }
 
 		setMirrorState(State.LOADING);
 		formContext?.setState(State.LOADING);
 
-		await axios
-			.post("api/submitInternationalInsuranceForm", {
-				id: uuidv4(),
-				name: name,
-				doB: doB,
-				insurancePeriod: insurancePeriod,
-				phone: phone,
-				address: address,
-				email: email,
-			})
-			.then((response) => {
-				console.log("response");
-				console.log(response);
-				setMirrorState(State.SUCCESS);
-				formContext?.setState(State.NONE);
-				setTimeout(() => {
-					setMirrorState(State.NONE);
-				}, TIME_STATE_PRESENT);
-			})
-			.catch((error) => {
-				console.log("error");
-				console.log(error);
-				setMirrorState(State.FAILURE);
-				formContext?.setState(State.NONE);
-				setTimeout(() => {
-					setMirrorState(State.NONE);
-				}, TIME_STATE_PRESENT);
-			});
+		toast.promise(
+			axios
+				.post("api/submitInternationalInsuranceForm", {
+					id: uuidv4(),
+					name: name,
+					doB: doB,
+					insurancePeriod: insurancePeriod,
+					phone: phone,
+					address: address,
+					email: email,
+				})
+				.then((response) => {
+					console.log("response");
+					console.log(response);
+					setMirrorState(State.SUCCESS);
+					formContext?.setState(State.NONE);
+					setTimeout(() => {
+						setMirrorState(State.NONE);
+					}, TIME_STATE_PRESENT);
+				})
+				.catch((error) => {
+					console.log("error");
+					console.log(error);
+					setMirrorState(State.FAILURE);
+					formContext?.setState(State.NONE);
+					setTimeout(() => {
+						setMirrorState(State.NONE);
+					}, TIME_STATE_PRESENT);
+				}),
+			{
+				loading: `Yêu cầu ${TITLE} đang được xử lý...`,
+				success: `Yêu cầu ${TITLE} thành công!`,
+				error: `Yêu cầu ${TITLE} không thành công. Hãy thử lại.`,
+			},
+		);
 	};
 
 	const fieldContainer = "field-container my-5";
