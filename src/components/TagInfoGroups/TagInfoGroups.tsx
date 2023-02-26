@@ -18,8 +18,8 @@ const TagInfoGroups: TComponent & TSubComponent = () => {
 					<TagInfoGroups.TagInfo
 						key="Thị trường"
 						header="Thị trường"
-						imgSrc="assets/tagInfoGroups/market.png"
-						imgAlt="market.png"
+						imgSrc="/assets/tagInfoGroups/market.svg"
+						imgAlt="market.svg"
 						bgColor="blue"
 						listContent={["Việt Nam, Phillipine, Ấn Độ,", "Trung Quốc, Hong Kong"]}
 					/>
@@ -28,8 +28,8 @@ const TagInfoGroups: TComponent & TSubComponent = () => {
 					<TagInfoGroups.TagInfo
 						key="Khách hàng"
 						header="Khách hàng"
-						imgSrc="assets/tagInfoGroups/customer.png"
-						imgAlt="customer.png"
+						imgSrc="/assets/tagInfoGroups/customer.svg"
+						imgAlt="customer.svg"
 						bgColor="pink"
 						listContent={["Hỗ trợ hơn 10 000", "khách hàng"]}
 					/>
@@ -40,8 +40,8 @@ const TagInfoGroups: TComponent & TSubComponent = () => {
 					<TagInfoGroups.TagInfo
 						key="Hồ sơ"
 						header="Hồ sơ"
-						imgSrc="assets/tagInfoGroups/profile.png"
-						imgAlt="profile.png"
+						imgSrc="/assets/tagInfoGroups/profile.svg"
+						imgAlt="profile.svg"
 						bgColor="blue"
 						listContent={["Hơn 3000 hồ sơ", "nhận được PR"]}
 					/>
@@ -50,8 +50,8 @@ const TagInfoGroups: TComponent & TSubComponent = () => {
 					<TagInfoGroups.TagInfo
 						key="Tỷ lệ"
 						header="Tỷ lệ"
-						imgSrc="assets/tagInfoGroups/percent.png"
-						imgAlt="percent.png"
+						imgSrc="/assets/tagInfoGroups/percent.svg"
+						imgAlt="percent.svg"
 						bgColor="pink"
 						listContent={["97% tỷ lệ đậu hồ sơ PR", "và Visa du học"]}
 					/>
