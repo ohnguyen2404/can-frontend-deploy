@@ -10,7 +10,13 @@ export const getStaticProps: GetStaticProps = async (context) => {
 	try {
 		const accessToken = process.env["FB_PAGE_ACCESS_TOKEN"];
 		const FB_URL = `https://graph.facebook.com/v16.0/100184219613847/feed?fields=attachments%2Cmessage&access_token=${accessToken}`;
-		const response = (await axios.get(FB_URL)).data;
+		const response = (
+			await axios.get(FB_URL, {
+				headers: {
+					"Accept-Encoding": "gzip",
+				},
+			})
+		).data;
 		const news = response.data
 			.filter((data: any) => data.message && data.attachments)
 			.map((data: any) => {
