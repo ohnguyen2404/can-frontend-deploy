@@ -1,20 +1,37 @@
-.approval-cases {
-  &:hover .image-runner {
-      animation-play-state: paused;
-  }
+#approval-cases {
+    .image-runner-container {
+        &:hover .image-runner {
+            animation-play-state: paused;
+        }
 
-  .image-runner {
+        .image-runner {
+            animation: marquee 180s linear infinite;
+            counter-reset: image-counter;
 
-      animation: marquee 180s linear infinite;
+            .inner-image-container {
+                position: relative;
 
-      @keyframes marquee {
-          0% {
-              transform: translateX(0%);
-          }
+                >div {
+                    position: unset !important;
+                }
 
-          100% {
-              transform: translateX(-100%);
-          }
-      }
-  }
+                &::before {
+                    content: counter(image-counter, decimal-leading-zero);
+                    counter-increment: image-counter;
+                    height: 5.5625%;
+                    width: 7.5%;
+                }
+            }
+
+            @keyframes marquee {
+                0% {
+                    transform: translateX(0%);
+                }
+
+                100% {
+                    transform: translateX(-100%);
+                }
+            }
+        }
+    }
 }

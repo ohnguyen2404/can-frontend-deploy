@@ -1,19 +1,19 @@
 #service-groups {}
 
 #school-registration {
-    .school-registration-form-container .image-container {
+    .inner-school-registration-form-container .image-container {
         background-image: url("../../../public/assets/serviceGroups/form/SchoolRegistration.jpg");
     }
 }
 
 #settlement-job {
-    .settlement-job-form-container .image-container {
+    .inner-settlement-job-form-container .image-container {
         background-image: url("../../../public/assets/serviceGroups/form/SettlemenJob.jpg");
     }
 }
 
 #international-insurance {
-    .international-insurance-form-container .image-container {
+    .inner-international-insurance-form-container .image-container {
         background-image: url("../../../public/assets/serviceGroups/form/InternationalInsurance.jpg");
     }
 }

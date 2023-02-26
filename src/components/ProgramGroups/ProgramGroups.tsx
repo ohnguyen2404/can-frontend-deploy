@@ -1,105 +1,70 @@
-import { useEffect, useLayoutEffect } from "react";
+import { useRef } from "react";
 import { TComponent } from "../../utils/types";
-import ProgramCard, { TProgramCard, TProgramInfo } from "./ProgramCard";
+import ProgramCard, { TProgramCard } from "./ProgramCard";
 import gsap from "gsap/dist/gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
+import { ITEM_IN_ROW, LIST_PROGRAM_INFO, WIDTH_ITEM } from "./setting";
+import { useIsomorphicLayoutEffect } from "../../utils/helper";
 
 type TSubComponent = {
 	ProgramCard: typeof ProgramCard;
 };
 
 const ProgramGroups: TComponent & TSubComponent = () => {
-	const ID = "ProgramGroups_ST";
-	const array: TProgramInfo[] = [
-		{
-			imgSrc: "assets/programGroups/traihe.jpg",
-			imgAlt: "traihe.jpg",
-			title: "Trại hè",
-		},
-		{
-			imgSrc: "assets/programGroups/vieclam.jpg",
-			imgAlt: "vieclam.jpg",
-			title: "Việc làm",
-		},
-		{
-			imgSrc: "assets/programGroups/dulich.jpg",
-			imgAlt: "dulich.jpg",
-			title: "Du lịch",
-		},
-		{
-			imgSrc: "assets/programGroups/dinhcu.jpg",
-			imgAlt: "dinhcu.jpg",
-			title: "Định cư",
-		},
-		{
-			imgSrc: "assets/programGroups/duhoc.jpg",
-			imgAlt: "duhoc.jpg",
-			title: "Du học",
-		},
-		{
-			imgSrc: "assets/programGroups/pathway.jpg",
-			imgAlt: "pathway.jpg",
-			title: "Pathway",
-		},
-	];
-	const itemInRow = 3;
-	const widthItem = "33%";
-	const listCard: TProgramCard[] = array.map((cardInfo, index) => {
+	const ref_self = useRef<HTMLElement>(null);
+
+	const listCard: TProgramCard[] = LIST_PROGRAM_INFO.map((cardInfo, index) => {
 		return {
 			id: index,
-			width: widthItem,
+			width: WIDTH_ITEM,
 			imgSrc: cardInfo.imgSrc,
 			imgAlt: cardInfo.imgAlt,
 			title: cardInfo.title,
 		} as TProgramCard;
 	});
-	const timeline = gsap.timeline();
 
-	useEffect(() => {
-		for (let index = itemInRow; index < listCard.length; index++) {
-			const card = listCard[index];
-			gsap.set(`#card-${card.id}`, {
-				y: "100%",
-			});
-			timeline.to(`#card-${card.id}`, {
-				y: 0,
-			});
-		}
-	}, []);
-
-	useLayoutEffect(() => {
-		gsap.registerPlugin(ScrollTrigger);
-		const createScrollTrigger = () => {
-			ScrollTrigger.getById(ID)?.kill();
+	useIsomorphicLayoutEffect(() => {
+		const context = gsap.context(() => {
+			const timeline = gsap.timeline();
+			for (let index = ITEM_IN_ROW; index < listCard.length; index++) {
+				const card = listCard[index];
+				// gsap.set(`#card-${card.id}`, {
+				// 	y: "100%",
+				// });
+				timeline.to(`#card-${card.id}`, {
+					yPercent: -100,
+				});
+			}
+			gsap.registerPlugin(ScrollTrigger);
+			console.log("ref_self.current?.scrollHeight", ref_self.current!.scrollHeight + 240);
+			console.log("ref_self.current?.offsetHeight", ref_self.current?.offsetHeight);
 			ScrollTrigger.create({
-				id: ID,
-				trigger: "#program-group",
+				trigger: ref_self.current,
 				animation: timeline,
 				scrub: true,
 				start: "top 5%",
-				endTrigger: "#EndTriggerTemp",
-				end: `bottom 5%`,
+				end: () => `+=${ref_self.current?.scrollHeight}`,
 				pin: true,
+				invalidateOnRefresh: true,
 			});
-		};
-		createScrollTrigger();
-		window.addEventListener("resize", createScrollTrigger);
-		return () => window.removeEventListener("resize", createScrollTrigger);
+		});
+		return () => context.revert();
 	}, []);
 
 	return (
-		<div
+		<section
 			id="program-group"
-			className="program-group-container relative">
+			className="program-group-container flex flex-col my-high"
+			ref={ref_self}>
 			<div
 				id="container-1"
-				className="flex flex-row justify-center absolute top-0 left-0 right-0">
-				{listCard.slice(0, itemInRow).map((card) => {
+				className="flex flex-row justify-center">
+				{listCard.slice(0, ITEM_IN_ROW).map((card) => {
 					return (
 						<ProgramGroups.ProgramCard
 							key={card.id}
 							id={card.id}
-							width={widthItem}
+							width={WIDTH_ITEM}
 							imgSrc={card.imgSrc}
 							imgAlt={card.imgAlt}
 							title={card.title}
@@ -109,13 +74,13 @@ const ProgramGroups: TComponent & TSubComponent = () => {
 			</div>
 			<div
 				id="container-2"
-				className="flex flex-row justify-center absolute top-0 left-0 right-0">
-				{listCard.slice(itemInRow).map((card) => {
+				className="flex flex-row justify-center">
+				{listCard.slice(ITEM_IN_ROW).map((card) => {
 					return (
 						<ProgramGroups.ProgramCard
 							key={card.id}
 							id={card.id}
-							width={widthItem}
+							width={WIDTH_ITEM}
 							imgSrc={card.imgSrc}
 							imgAlt={card.imgAlt}
 							title={card.title}
@@ -123,7 +88,7 @@ const ProgramGroups: TComponent & TSubComponent = () => {
 					);
 				})}
 			</div>
-		</div>
+		</section>
 	);
 };
 

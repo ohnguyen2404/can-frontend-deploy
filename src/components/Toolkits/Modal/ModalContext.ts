@@ -1,10 +1,10 @@
-import React, { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, createContext } from "react";
 
-type IModalContext = {
+type TModalContext = {
 	isOpenModal: boolean;
 	handleOpenModal: Dispatch<SetStateAction<boolean>>;
 	setModalComponent: Dispatch<SetStateAction<JSX.Element | null>>;
 };
 
-const ModalContext = React.createContext<IModalContext | null>(null);
+const ModalContext = createContext<TModalContext | null>(null);
 export default ModalContext;

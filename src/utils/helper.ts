@@ -1,3 +1,4 @@
+import { useEffect, useLayoutEffect } from "react";
 // formatBytes credit goes to the community "https://stackoverflow.com/questions/15900485/correct-way-to-convert-size-in-bytes-to-kb-mb-gb-in-javascript"
 export const formatBytes = (bytes: number, decimals = 2) => {
 	if (!bytes) return "0 Bytes";
@@ -25,3 +26,12 @@ export const renameFile = (originalFile: File, newName: string) => {
 		lastModified: originalFile.lastModified,
 	});
 };
+
+export const formatNewsTitle = (message: string) => {
+	const TITLE_MAX_LENGTH = 200;
+	const title = message.split("\n")[0];
+
+	return title.length > TITLE_MAX_LENGTH ? title.slice(0, TITLE_MAX_LENGTH).concat("...") : title;
+};
+
+export const useIsomorphicLayoutEffect = typeof window !== "undefined" ? useLayoutEffect : useEffect;

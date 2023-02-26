@@ -1,10 +1,11 @@
-import React, { useContext } from "react";
-import { Direction, TComponent } from "../../utils/types";
+import { useContext, useState } from "react";
+import { Direction, State, TComponent } from "../../utils/types";
 import SubServiceSection from "./SubServiceSection";
 import ModalContext from "../Toolkits/Modal/ModalContext";
 import SchoolRegistrationForm from "./Forms/SchoolRegistrationForm";
 import SettlementJobForm from "./Forms/SettlementJobForm";
 import InternationalInsuranceForm from "./Forms/InternationalInsuranceForm";
+import FormContext from "./Forms/FormContext";
 
 type TSubComponent = {
 	SubServiceSection: typeof SubServiceSection;
@@ -13,25 +14,53 @@ type TSubComponent = {
 const ServiceGroups: TComponent & TSubComponent = () => {
 	const modalContext = useContext(ModalContext);
 
+	const [stateProcessSchoolRegistration, setStateProcessSchoolRegistration] = useState<State>(State.NONE);
+	const [stateProcessSettlementJob, setStateProcessSettlementJob] = useState<State>(State.NONE);
+	const [stateProcessInternationalInsurance, setStateInternationalInsurance] = useState<State>(State.NONE);
+
 	const handleSchoolRegistration = () => {
-		modalContext?.setModalComponent(<SchoolRegistrationForm />);
+		modalContext?.setModalComponent(
+			<FormContext.Provider
+				value={{
+					state: stateProcessSchoolRegistration,
+					setState: setStateProcessSchoolRegistration,
+				}}>
+				<SchoolRegistrationForm />
+			</FormContext.Provider>,
+		);
 		modalContext?.handleOpenModal(true);
 	};
 
 	const handleSettlementJob = () => {
-		modalContext?.setModalComponent(<SettlementJobForm />);
+		modalContext?.setModalComponent(
+			<FormContext.Provider
+				value={{
+					state: stateProcessSettlementJob,
+					setState: setStateProcessSettlementJob,
+				}}>
+				<SettlementJobForm />
+			</FormContext.Provider>,
+		);
 		modalContext?.handleOpenModal(true);
 	};
 	const handleInternationalInsurance = () => {
-		modalContext?.setModalComponent(<InternationalInsuranceForm />);
+		modalContext?.setModalComponent(
+			<FormContext.Provider
+				value={{
+					state: stateProcessInternationalInsurance,
+					setState: setStateInternationalInsurance,
+				}}>
+				<InternationalInsuranceForm />
+			</FormContext.Provider>,
+		);
 		modalContext?.handleOpenModal(true);
 	};
 
 	const subSection = "sub-section border-b-2 border-solid border-silver";
 	return (
 		<section id="service-groups">
-			<div className="sub-section title-section uppercase">Dịch vụ</div>
-			<div className="sub-section-container">
+			<div className="sub-section title-section font-bold text-strongBlue text-4xl uppercase my-8 mx-8">Dịch vụ</div>
+			<div className="sub-section-container my-8">
 				<div className={`${subSection} school-registration border-t-2`}>
 					<SubServiceSection
 						order="01"

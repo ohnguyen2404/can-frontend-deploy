@@ -8,7 +8,7 @@ const AdvisoryGroups = () => {
 	return (
 		<section
 			id="advisory"
-			className="w-full">
+			className="w-full my-high">
 			<div className="w-full pl-6 flex flex-row justify-between items-center">
 				<p className="text-4xl font-bold text-strongBlue">LỘ TRÌNH TƯ VẤN</p>
 				<div className="flex flex-row border-b-gray-400 border-b">

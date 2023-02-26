@@ -3,7 +3,7 @@ export type supportBgColors = "blue" | "pink";
 export type TTagInfo = {
 	header: string;
 	imgSrc: string;
-	imgAlt?: string;
+	imgAlt: string;
 	bgColor: supportBgColors;
 	listContent: string[];
 };
@@ -19,13 +19,13 @@ const bgStyles: TBgStyles = {
 
 const TagInfo = (props: TTagInfo) => {
 	return (
-		<div className={`tag-info ${bgStyles[props.bgColor]} flex flex-col justify-between items-center mx-3 rounded-lg shadow-lg`}>
+		<div className={`tag-info ${bgStyles[props.bgColor]} flex flex-col w-full justify-between items-center mx-3 rounded-lg shadow-lg`}>
 			<h2 className={`${props.bgColor === "blue" ? "text-strongBlue" : "text-strongPink"} my-8 text-3xl font-semibold`}>{props.header}</h2>
 			<div className="image-container w-3/4">
 				<img
 					src={props.imgSrc}
 					alt={props.imgAlt}
-					className="object-scale-down"
+					className="object-contain"
 				/>
 			</div>
 			<div className="paragraph-container text-center border border-t-gray-400 border-transparent my-8 pt-2 w-[90%] text-xl leading-5">

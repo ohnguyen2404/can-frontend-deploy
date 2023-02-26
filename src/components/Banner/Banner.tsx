@@ -17,8 +17,8 @@ const Banner: TComponent & TSubComponent = () => {
 				loop
 				playsInline></video>
 			<div className="sash-ribbon-wrap w-full h-[10%] bg-white absolute bottom-[10%] flex flex-row overflow-hidden">
-				<Banner.SashRibbon />
-				<Banner.SashRibbon />
+				<Banner.SashRibbon key={1}/>
+				<Banner.SashRibbon key={2}/>
 			</div>
 			<div className="title-container flex flex-col text-white absolute top-[20%] right-[10%] text-4xl font-medium">
 				<span className="title">

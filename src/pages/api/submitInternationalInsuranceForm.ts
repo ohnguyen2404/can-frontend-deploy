@@ -12,7 +12,7 @@ export default _nextConnect.post(async (request: NextApiRequest, response: NextA
 			from: process.env["MAIL_USER"],
 			to: process.env["MAIL_USER"],
 			html: html(InternationalInsuranceFormBody(data)),
-			subject: `Yêu cầu Đăng ký việc làm định cư của "${data.name}"`,
+			subject: `Yêu cầu Bảo hiểm quốc tế của "${data.name}"`,
 		})
 		.then((result) => {
 			console.log(result);
