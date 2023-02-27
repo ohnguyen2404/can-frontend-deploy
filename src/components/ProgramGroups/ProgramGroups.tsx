@@ -56,6 +56,9 @@ const ProgramGroups: TComponent & TSubComponent = () => {
 			id="program-group"
 			className="program-group-container flex flex-col my-high"
 			ref={ref_self}>
+			<div className="title-container flex items-center justify-center w-40 h-10 border rounded-full border-black my-8 mx-8">
+				<span className="font-bold text-2xl mb-1">Chương trình</span>
+			</div>
 			<div
 				id="container-1"
 				className="flex flex-row justify-center">
