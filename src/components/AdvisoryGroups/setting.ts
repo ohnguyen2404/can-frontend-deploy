@@ -13,7 +13,7 @@ export const STUDY_ABOARD_ADVISORY_STEPS: TAdvisoryStep[] = [
 		imgSrc: "/assets/advisory/icon-CAN-02.png",
 	},
 	{
-		title: "Thu thập và thụ lý hồ sơ",
+		title: "Tiếp nhận hồ sơ",
 		imgSrc: "/assets/advisory/icon-CAN-03.png",
 	},
 	{
