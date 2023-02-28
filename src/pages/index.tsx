@@ -21,6 +21,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 			.filter((data: any) => data.message && data.attachments)
 			.map((data: any) => {
 				return {
+          id: data.id,
 					title: formatNewsTitle(data.message),
 					imgUrl: data.attachments?.data[0]?.media?.image?.src,
 				};

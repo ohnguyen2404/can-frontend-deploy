@@ -1,18 +1,17 @@
-import React, { useState, useEffect } from "react";
-import { TComponent } from "../../utils/types";
+import React, { useState } from "react";
 import CircleButton from "../Buttons/CircleButton";
 import LongButton from "../Buttons/LongButton";
 import { Direction } from "../../utils/types";
 import NewsCard from "./NewsCard";
-import axios from "axios";
-import { formatNewsTitle } from "../../utils/helper";
 import { TNews } from "./types";
+import { useRouter } from "next/router";
 
 type TNewsGroup = {
 	news: TNews[];
 };
 
 const NewsGroup = ({ news }: TNewsGroup) => {
+	const router = useRouter();
 	const [curIdx, setCurIdx] = useState(2);
 
 	const onClickPrev = () => {
@@ -37,6 +36,17 @@ const NewsGroup = ({ news }: TNewsGroup) => {
 		setCurIdx(idx);
 	};
 
+	const onClickButton = () => {
+		console.log("11111", news[curIdx]);
+
+		router.push({
+			pathname: "/posts/[post-id]",
+			query: {
+				"post-id": news[curIdx].id,
+			},
+		});
+	};
+
 	return (
 		<section
 			id="news"
@@ -45,7 +55,7 @@ const NewsGroup = ({ news }: TNewsGroup) => {
 				<div className="ml-6 font-bold text-4xl uppercase">
 					{news[curIdx]?.title}
 					<div className="inline-block mb-2 ml-2 align-middle">
-						<CircleButton />
+						<CircleButton handleOnClick={() => onClickButton()} />
 					</div>
 				</div>
 				<div className="flex flex-row mr-6 justify-between">
