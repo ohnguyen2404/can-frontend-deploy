@@ -19,7 +19,7 @@ const bgStyles: TBgStyles = {
 
 const TagInfo = (props: TTagInfo) => {
 	return (
-		<div className={`tag-info ${bgStyles[props.bgColor]} flex flex-col w-full justify-between items-center mx-3 rounded-lg shadow-lg`}>
+		<div className={`tag-info ${bgStyles[props.bgColor]} flex flex-col w-full justify-between items-center rounded-lg shadow-lg`}>
 			<h2 className={`${props.bgColor === "blue" ? "text-strongBlue" : "text-strongPink"} my-8 text-3xl font-semibold`}>{props.header}</h2>
 			<div className="image-container w-3/4">
 				<img
