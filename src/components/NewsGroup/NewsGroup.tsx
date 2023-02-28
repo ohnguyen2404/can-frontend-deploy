@@ -38,42 +38,41 @@ const NewsGroup = ({ news }: TNewsGroup) => {
 	};
 
 	return (
-		<section
-			id="news"
-			className="w-full mt-10">
-			<div className="flex flex-row justify-between">
-				<div className="ml-6 font-bold text-4xl uppercase">
-					{news[curIdx]?.title}
-					<div className="inline-block mb-2 ml-2 align-middle">
-						<CircleButton />
+		<section id="news">
+			<div className="news-container my-high">
+				<div className="flex flex-row justify-between mx-8">
+					<div className="font-bold text-4xl uppercase">
+						{news[curIdx]?.title}
+						<div className="inline-block mb-2 ml-2 align-middle">
+							<CircleButton />
+						</div>
+					</div>
+					<div className="flex flex-row justify-between">
+						<LongButton
+							direction={Direction.Left}
+							handleOnClick={onClickPrev}
+						/>
+						<div className="w-4"></div>
+						<LongButton
+							direction={Direction.Right}
+							handleOnClick={onClickNext}
+						/>
 					</div>
 				</div>
-				<div className="flex flex-row mr-6 justify-between">
-					<LongButton
-						direction={Direction.Left}
-						handleOnClick={onClickPrev}
-					/>
-					<div className="w-4"></div>
-					<LongButton
-						direction={Direction.Right}
-						handleOnClick={onClickNext}
-					/>
+				<div
+					id="news-slider"
+					className="w-full mt-16 min-h-[600px] items-center flex flex-row overflow-x-scroll scrollbar-hide">
+					{news.map(({ imgUrl }, idx) => (
+						<NewsCard
+							key={idx}
+							isSelected={idx === curIdx}
+							handleOnClick={() => onClickCard(idx)}
+							imgUrl={imgUrl}
+							idx={idx}
+							newsLength={news.length}
+						/>
+					))}
 				</div>
-			</div>
-
-			<div
-				id="news-slider"
-				className="w-full mt-16 min-h-[600px] items-center flex flex-row overflow-x-scroll scrollbar-hide">
-				{news.map(({ imgUrl }, idx) => (
-					<NewsCard
-						key={idx}
-						isSelected={idx === curIdx}
-						handleOnClick={() => onClickCard(idx)}
-						imgUrl={imgUrl}
-						idx={idx}
-						newsLength={news.length}
-					/>
-				))}
 			</div>
 		</section>
 	);

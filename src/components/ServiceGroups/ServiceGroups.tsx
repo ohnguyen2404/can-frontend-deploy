@@ -59,48 +59,50 @@ const ServiceGroups: TComponent & TSubComponent = () => {
 	const subSection = "sub-section border-b-2 border-solid border-silver";
 	return (
 		<section id="service-groups">
-			<div className="sub-section title-section flex items-center justify-center w-40 h-10 border rounded-full border-black my-8 mx-8">
-				<span className="font-bold text-2xl mb-1">Dịch vụ</span>
-			</div>
-			<div className="sub-section-container my-8">
-				<div className={`${subSection} school-registration border-t-2`}>
-					<SubServiceSection
-						order="01"
-						title="Đăng ký trường học"
-						subtitle="Đăng ký"
-						direction={Direction.Left}
-						firstImgSrc="assets/serviceGroups/section/SchoolRegistration-1.jpg"
-						firstImgAlt="SchoolRegistration-1.jpg"
-						secondImgSrc="assets/serviceGroups/section/SchoolRegistration-2.jpg"
-						secondImgAlt="SchoolRegistration-2.jpg"
-						handleOnClick={handleSchoolRegistration}
-					/>
+			<div className="service-groups-container my-high">
+				<div className="sub-section title-section flex items-center justify-center w-40 h-10 border rounded-full border-black my-8 mx-8">
+					<span className="font-bold text-2xl mb-1">Dịch vụ</span>
 				</div>
-				<div className={`${subSection} settlement-job`}>
-					<SubServiceSection
-						order="02"
-						title="Đăng ký việc làm định cư"
-						subtitle="Đăng ký"
-						direction={Direction.Center}
-						firstImgSrc="assets/serviceGroups/section/SettlementJob-1.jpg"
-						firstImgAlt="SettlementJob-1.jpg"
-						secondImgSrc="assets/serviceGroups/section/SettlementJob-2.jpg"
-						secondImgAlt="SettlementJob-2.jpg"
-						handleOnClick={handleSettlementJob}
-					/>
-				</div>
-				<div className={`${subSection} international-insurance`}>
-					<SubServiceSection
-						order="03"
-						title="Bảo hiểm quốc tế"
-						subtitle="Đăng ký"
-						direction={Direction.Right}
-						firstImgSrc="assets/serviceGroups/section/InternationalInsurance-1.jpg"
-						firstImgAlt="InternationalInsurance-1.jpg"
-						secondImgSrc="assets/serviceGroups/section/InternationalInsurance-2.jpg"
-						secondImgAlt="InternationalInsurance-2.jpg"
-						handleOnClick={handleInternationalInsurance}
-					/>
+				<div className="sub-section-container my-8">
+					<div className={`${subSection} school-registration border-t-2`}>
+						<SubServiceSection
+							order="01"
+							title="Đăng ký trường học"
+							subtitle="Đăng ký"
+							direction={Direction.Left}
+							firstImgSrc="assets/serviceGroups/section/SchoolRegistration-1.jpg"
+							firstImgAlt="SchoolRegistration-1.jpg"
+							secondImgSrc="assets/serviceGroups/section/SchoolRegistration-2.jpg"
+							secondImgAlt="SchoolRegistration-2.jpg"
+							handleOnClick={handleSchoolRegistration}
+						/>
+					</div>
+					<div className={`${subSection} settlement-job`}>
+						<SubServiceSection
+							order="02"
+							title="Đăng ký việc làm định cư"
+							subtitle="Đăng ký"
+							direction={Direction.Center}
+							firstImgSrc="assets/serviceGroups/section/SettlementJob-1.jpg"
+							firstImgAlt="SettlementJob-1.jpg"
+							secondImgSrc="assets/serviceGroups/section/SettlementJob-2.jpg"
+							secondImgAlt="SettlementJob-2.jpg"
+							handleOnClick={handleSettlementJob}
+						/>
+					</div>
+					<div className={`${subSection} international-insurance`}>
+						<SubServiceSection
+							order="03"
+							title="Bảo hiểm quốc tế"
+							subtitle="Đăng ký"
+							direction={Direction.Right}
+							firstImgSrc="assets/serviceGroups/section/InternationalInsurance-1.jpg"
+							firstImgAlt="InternationalInsurance-1.jpg"
+							secondImgSrc="assets/serviceGroups/section/InternationalInsurance-2.jpg"
+							secondImgAlt="InternationalInsurance-2.jpg"
+							handleOnClick={handleInternationalInsurance}
+						/>
+					</div>
 				</div>
 			</div>
 		</section>

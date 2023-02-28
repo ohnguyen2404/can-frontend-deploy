@@ -14,7 +14,7 @@ type TSubComponent = {
 };
 
 const SeasonalProjectGroups: TComponent & TSubComponent = () => {
-	const ref_seft = useRef<HTMLElement>(null);
+	const ref_seft = useRef<HTMLDivElement>(null);
 	const ref_slider = useRef<HTMLDivElement>(null);
 
 	useIsomorphicLayoutEffect(() => {
@@ -37,19 +37,18 @@ const SeasonalProjectGroups: TComponent & TSubComponent = () => {
 	}, []);
 
 	return (
-		<section
-			id="seasonal-project-groups"
-			className="my-10"
-			ref={ref_seft}>
-			<div className={`tag-info-groups-container ${STYLE_GROUPS.flexStart} flex-col w-full py-medium bg-lightBlue rounded-[1.875rem] overflow-hidden`}>
-				<div className="mx-6 pb-1">
+		<section id="seasonal-project-groups">
+			<div
+				className={`seasonal-project-groups-container ${STYLE_GROUPS.flexStart} flex-col my-high py-medium bg-lightBlue rounded-[30px] overflow-hidden`}
+				ref={ref_seft}>
+				<div className="mx-8">
 					<TitleButton title="Chi tiết" />
 				</div>
-				<div className="mx-6 text-[80px] text-strongBlue font-bold mt-8">
+				<div className="mx-8 text-[80px] text-strongBlue font-bold mt-8">
 					<h1>HOẠT ĐỘNG THEO MÙA</h1>
 				</div>
 				<div
-					className="flex flex-row mt-4 mx-6"
+					className="flex flex-row mt-4 mx-8"
 					id="slider"
 					ref={ref_slider}>
 					{LIST_PROJECT.map((project, index) => (

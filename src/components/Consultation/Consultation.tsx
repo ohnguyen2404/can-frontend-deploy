@@ -52,7 +52,7 @@ const Consultation = () => {
 
 	return (
 		<section id="consultation">
-			<div className="consultation-container grid grid-cols-4 grid-rows-2 my-high px-6">
+			<div className="consultation-container grid grid-cols-4 grid-rows-2 my-high mx-8">
 				<div className="image-container col-span-1">
 					<img
 						src="assets/consultation.jpg"
