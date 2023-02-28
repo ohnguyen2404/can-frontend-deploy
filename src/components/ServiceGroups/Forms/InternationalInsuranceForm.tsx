@@ -39,18 +39,18 @@ const InternationalInsuranceForm = () => {
 		setIsDisplayDoBError(false);
 		setIsDisplayinsurancePeriodError(false);
 		setIsDisplayAddressError(false);
-		// if (!name) {
-		// 	setIsDisplayNameError(true);
-		// 	return;
-		// }
-		// if (!email || !isEmailValid(email)) {
-		// 	setIsDisplayEmailError(true);
-		// 	return;
-		// }
-		// if (!phone || !isPhoneValid(phone)) {
-		// 	setIsDisplayPhoneError(true);
-		// 	return;
-		// }
+		if (!name) {
+			setIsDisplayNameError(true);
+			return;
+		}
+		if (!email || !isEmailValid(email)) {
+			setIsDisplayEmailError(true);
+			return;
+		}
+		if (!phone || !isPhoneValid(phone)) {
+			setIsDisplayPhoneError(true);
+			return;
+		}
 
 		setMirrorState(State.LOADING);
 		formContext?.setState(State.LOADING);
