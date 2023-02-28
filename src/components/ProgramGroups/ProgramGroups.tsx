@@ -1,10 +1,7 @@
 import { useRef } from "react";
 import { Direction, TComponent } from "../../utils/types";
-import ProgramCard, { TProgramCard } from "./ProgramCard";
-import gsap from "gsap/dist/gsap";
-import ScrollTrigger from "gsap/dist/ScrollTrigger";
-import { ITEM_IN_ROW, LIST_PROGRAM_INFO, WIDTH_ITEM } from "./setting";
-import { useIsomorphicLayoutEffect } from "../../utils/helper";
+import ProgramCard from "./ProgramCard";
+import { LIST_PROGRAM_INFO } from "./setting";
 import ProgramSubGroup from "./ProgramSubGroup";
 
 type TSubComponent = {

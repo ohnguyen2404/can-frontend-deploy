@@ -1,5 +1,4 @@
 import React from "react";
-import STYLE_GROUPS from "../../utils/styles";
 import CircleButton from "../Buttons/CircleButton";
 import { PROJECT_MIN_WIDTH_VW } from "./setting";
 

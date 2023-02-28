@@ -32,6 +32,3 @@ export const LIST_PROGRAM_INFO: TProgramInfo[] = [
 		title: "Pathway",
 	},
 ];
-
-export const ITEM_IN_ROW = 3;
-export const WIDTH_ITEM = "33%";
