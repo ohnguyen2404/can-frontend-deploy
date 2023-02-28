@@ -21,12 +21,12 @@ const SeasonalProjectGroups: TComponent & TSubComponent = () => {
 		const context = gsap.context(() => {
 			gsap.registerPlugin(ScrollTrigger, Draggable);
 			gsap.to(ref_slider.current, {
-				xPercent: -100,
+				x: () => -(ref_slider.current!.scrollWidth - ref_slider.current!.offsetWidth),
 				ease: "none",
 				scrollTrigger: {
 					trigger: ref_seft.current,
 					start: "top 5%",
-					end: () => `+=${ref_slider.current!.offsetWidth}`,
+					end: () => `+=${ref_slider.current!.scrollWidth - ref_slider.current!.offsetWidth}`,
 					scrub: 1,
 					invalidateOnRefresh: true,
 					pin: true,
