@@ -6,16 +6,15 @@ type TSeasonalProject = {
 	id: string;
 	title: string;
 	imgSrc: string;
-	isLastChild: boolean;
 };
 
-const SeasonalProject = ({ id, title, imgSrc, isLastChild }: TSeasonalProject) => {
+const SeasonalProject = ({ id, title, imgSrc }: TSeasonalProject) => {
 	return (
 		<div
 			key={id}
-			className={`${!isLastChild && "mr-3"} flex flex-col`}
+			className="flex flex-col mr-3 last:mr-0"
 			style={{
-				minWidth: `${PROJECT_MIN_WIDTH_VW}vw`
+				minWidth: `${PROJECT_MIN_WIDTH_VW}vw`,
 			}}>
 			<div className="flex flex-row items-center">
 				<span className="text-4xl mb-3 mr-2">{title}</span>
