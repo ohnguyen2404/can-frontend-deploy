@@ -57,7 +57,6 @@ const SeasonalProjectGroups: TComponent & TSubComponent = () => {
 							id={project.id}
 							title={project.title}
 							imgSrc={project.imgSrc}
-							isLastChild={index === LIST_PROJECT.length - 1}
 						/>
 					))}
 				</div>

@@ -365,4 +365,20 @@ export const LIST_HIGH_SCHOOL_PRIVATE = [
 	"Urban International School, Toronto, Ontario",
 ];
 
-export const LIST_JOB = ["job 1", "job 2", "job 3"];
+export const LIST_JOB = [
+	"Nails", //
+	"Cook",
+	"Carpenter",
+	"Caregiver",
+	"Farm Workers",
+	"Food Supervisor",
+	"Autobody Technician",
+	"Housekeeper",
+	"Kitchen Helper",
+	"Baker",
+	"Warehouse Worker",
+	"Packaging Worker",
+	"Construction Worker",
+	"Small Truck Driver",
+	"Security Supervisor",
+];

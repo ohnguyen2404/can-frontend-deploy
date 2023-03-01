@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import AdvisoryGroup from "./AdvisoryGroup";
-import { AdvisoryType } from "./types";
+import AdvisoryContext, { TAdvisoryContext } from "./AdvisoryContext";
+import { SETTLED_ADVISORY_STEPS, STUDY_ABOARD_ADVISORY_STEPS } from "./setting";
 
 const AdvisoryGroups = () => {
-	const [curTab, setCurTab] = useState(AdvisoryType.StudyAbroad);
+	const [data, setData] = useState<TAdvisoryContext["data"]>(STUDY_ABOARD_ADVISORY_STEPS);
+	const [color, setColor] = useState<TAdvisoryContext["color"]>("blue");
 
 	return (
 		<section id="advisory">
@@ -14,18 +16,30 @@ const AdvisoryGroups = () => {
 					</div>
 					<div className="flex flex-row border-b-gray-400 border-b">
 						<span
-							className={`text-4xl font-bold px-10 py-4 rounded-t-3xl cursor-pointer hover:text-lightPink hover:bg-strongPink ${curTab === AdvisoryType.Settled ? "text-lightPink bg-strongPink" : "text-strongPink bg-lightPink"} `}
-							onClick={() => setCurTab(AdvisoryType.Settled)}>
+							className={`text-4xl font-bold px-10 py-4 rounded-t-3xl cursor-pointer hover:text-lightPink hover:bg-strongPink ${color === "pink" ? "text-lightPink bg-strongPink" : "text-strongPink bg-lightPink"} `}
+							onClick={() => {
+								setData(SETTLED_ADVISORY_STEPS);
+								setColor("pink");
+							}}>
 							ĐỊNH CƯ
 						</span>
 						<span
-							className={`text-4xl font-bold px-10 py-4 rounded-t-3xl cursor-pointer hover:text-lightBlue hover:bg-strongBlue ${curTab === AdvisoryType.StudyAbroad ? "text-lightBlue bg-strongBlue" : "text-strongBlue bg-lightBlue"}`}
-							onClick={() => setCurTab(AdvisoryType.StudyAbroad)}>
+							className={`text-4xl font-bold px-10 py-4 rounded-t-3xl cursor-pointer hover:text-lightBlue hover:bg-strongBlue ${color === "blue" ? "text-lightBlue bg-strongBlue" : "text-strongBlue bg-lightBlue"}`}
+							onClick={() => {
+								setData(STUDY_ABOARD_ADVISORY_STEPS);
+								setColor("blue");
+							}}>
 							DU HỌC
 						</span>
 					</div>
 				</div>
-				<AdvisoryGroup type={curTab} />
+				<AdvisoryContext.Provider
+					value={{
+						data,
+						color,
+					}}>
+					<AdvisoryGroup />
+				</AdvisoryContext.Provider>
 			</div>
 		</section>
 	);
