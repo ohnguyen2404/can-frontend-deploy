@@ -2,32 +2,13 @@ import Head from "next/head";
 import { Banner, Navbar, TagInfoGroups, SeasonalProjectGroups, NewsGroup, ProgramGroups, ServiceGroups, Consultation, AdvisoryGroups, ApprovalCases, Footer } from "../components";
 import { ModalContext, ModalPortal, Toaster } from "../components/Toolkits";
 import { useState } from "react";
-import axios from "axios";
-import { formatNewsTitle } from "../utils/helper";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
+import { getPageNews } from "../services/facebook-api";
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getStaticProps: GetStaticProps = async () => {
 	try {
-		const accessToken = process.env["FB_PAGE_ACCESS_TOKEN"];
-		const FB_URL = `https://graph.facebook.com/v16.0/100184219613847/feed?fields=attachments%2Cmessage&access_token=${accessToken}`;
-		const response = (
-			await axios.get(FB_URL, {
-				headers: {
-					"Accept-Encoding": "gzip",
-				},
-			})
-		).data;
-		const news = response.data
-			.filter((data: any) => data.message && data.attachments)
-			.map((data: any) => {
-				return {
-          id: data.id,
-					title: formatNewsTitle(data.message),
-					imgUrl: data.attachments?.data[0]?.media?.image?.src,
-				};
-			});
 		return {
-			props: { news },
+			props: { news: await getPageNews() },
 		};
 	} catch (err) {
 		console.log("__getStaticProps error: ", err);
