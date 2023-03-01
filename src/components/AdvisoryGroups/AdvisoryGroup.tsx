@@ -1,29 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import StepsRow from "./StepsRow";
-import { STUDY_ABOARD_ADVISORY_STEPS, SETTLED_ADVISORY_STEPS } from "./setting";
-import { AdvisoryType } from "./types";
+import AdvisoryContext from "./AdvisoryContext";
 
-export type TAdvisoryGroup = {
-	type: AdvisoryType;
-};
-
-const AdvisoryGroup = ({ type }: TAdvisoryGroup) => {
-	const dataArray = type === AdvisoryType.Settled ? SETTLED_ADVISORY_STEPS : STUDY_ABOARD_ADVISORY_STEPS;
-	const bgColor = type === AdvisoryType.Settled ? "lightPink" : "lightBlue";
-	const tripleSetCounts = [...Array(Math.ceil(dataArray.length / 3)).keys()];
+const AdvisoryGroup = () => {
+	const STEP_IN_ROW = 3;
+	const context = useContext(AdvisoryContext);
 
 	return (
-		<>
-			{tripleSetCounts.map((count, idx) => (
+		<div className="advisory-group-container">
+			{[...Array(STEP_IN_ROW)].map((_, index) => (
 				<StepsRow
-					key={idx}
-					rowCounts={tripleSetCounts.length}
-					rowIdx={idx}
-					bgColor={(count + 1) % 2 === 0 ? "white" : bgColor}
-					steps={dataArray.slice(count * 3, count * 3 + 3)}
+					key={index}
+					rowIdx={index}
+					steps={context!.data.slice(index * STEP_IN_ROW, index * STEP_IN_ROW + STEP_IN_ROW)}
 				/>
 			))}
-		</>
+		</div>
 	);
 };
 

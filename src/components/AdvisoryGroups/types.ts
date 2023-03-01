@@ -1,4 +1,4 @@
-export enum AdvisoryType {
-	"Settled",
-	"StudyAbroad",
-}
+export type TAdvisoryStep = {
+	title: string;
+	imgSrc: string;
+};

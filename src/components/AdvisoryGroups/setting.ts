@@ -1,7 +1,4 @@
-export type TAdvisoryStep = {
-	title: string;
-	imgSrc: string;
-};
+import { TAdvisoryStep } from "./types";
 
 export const STUDY_ABOARD_ADVISORY_STEPS: TAdvisoryStep[] = [
 	{

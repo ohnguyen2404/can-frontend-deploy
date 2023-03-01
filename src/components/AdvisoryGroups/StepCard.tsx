@@ -6,17 +6,17 @@ export type TStepCard = {
 	imgSrc: string;
 };
 
-const StepCard = ({ order, title, imgSrc }: TStepCard) => {
+const StepCard = (props: TStepCard) => {
 	return (
-		<div className="py-8 flex flex-col">
-			<div className="flex flex-row">
-				<span className="pb-1 h-8 w-8 text-2xl rounded-full border-black border flex items-center justify-center mr-2">{order + 1}</span>
-				<span className="text-xl">{title}</span>
+		<div className="step-card-container grid grid-rows-4">
+			<div className="title-container row-span-1 flex mx-auto items-center justify-center">
+				<span className="order-container flex items-center justify-center pb-1 h-8 w-8 text-2xl font-medium rounded-full border-black border">{props.order + 1}</span>
+				<span className="title font-medium text-xl mx-3">{props.title}</span>
 			</div>
-			<div className="mt-8 w-3/4 mx-auto">
+			<div className="image-container row-span-3 mt-8">
 				<img
-					className="max-w-[185px] max-h-[110px]"
-					src={imgSrc}
+					className="h-28 object-contain mx-auto"
+					src={props.imgSrc}
 				/>
 			</div>
 		</div>
