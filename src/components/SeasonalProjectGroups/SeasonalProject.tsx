@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import CircleButton from "../Buttons/CircleButton";
 import { PROJECT_MIN_WIDTH_VW } from "./setting";
 
@@ -9,16 +9,22 @@ type TSeasonalProject = {
 };
 
 const SeasonalProject = ({ id, title, imgSrc }: TSeasonalProject) => {
+	const [hoverState, setHoverState] = useState<boolean>(false);
 	return (
 		<div
 			key={id}
-			className="flex flex-col mr-3 last:mr-0"
+			className="flex flex-col mr-3 last:mr-0 cursor-pointer"
 			style={{
 				minWidth: `${PROJECT_MIN_WIDTH_VW}vw`,
-			}}>
+			}}
+			onMouseEnter={() => setHoverState(true)}
+			onMouseLeave={() => setHoverState(false)}>
 			<div className="flex flex-row items-center">
 				<span className="text-4xl mb-3 mr-2">{title}</span>
-				<CircleButton />
+				<CircleButton
+					useExternal
+					hoverState={hoverState}
+				/>
 			</div>
 			<div className="image-container flex w-full">
 				<img
