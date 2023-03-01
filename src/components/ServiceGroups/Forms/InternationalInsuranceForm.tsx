@@ -19,13 +19,10 @@ const InternationalInsuranceForm = () => {
 	const [name, setName] = useState<TInternationalInsuranceForm["name"]>();
 	const [isDisplayNameError, setIsDisplayNameError] = useState<boolean>(false);
 	const [doB, setDoB] = useState<TInternationalInsuranceForm["doB"]>();
-	const [isDisplayDoBError, setIsDisplayDoBError] = useState<boolean>(false);
 	const [insurancePeriod, setInsurancePeriod] = useState<TInternationalInsuranceForm["insurancePeriod"]>();
-	const [isDisplayinsurancePeriodError, setIsDisplayinsurancePeriodError] = useState<boolean>(false);
 	const [phone, setPhone] = useState<TInternationalInsuranceForm["phone"]>();
 	const [isDisplayPhoneError, setIsDisplayPhoneError] = useState<boolean>(false);
 	const [address, setAddress] = useState<TInternationalInsuranceForm["address"]>();
-	const [isDisplayAddressError, setIsDisplayAddressError] = useState<boolean>(false);
 	const [email, setEmail] = useState<TInternationalInsuranceForm["email"]>();
 	const [isDisplayEmailError, setIsDisplayEmailError] = useState<boolean>(false);
 
@@ -36,9 +33,6 @@ const InternationalInsuranceForm = () => {
 		setIsDisplayNameError(false);
 		setIsDisplayEmailError(false);
 		setIsDisplayPhoneError(false);
-		setIsDisplayDoBError(false);
-		setIsDisplayinsurancePeriodError(false);
-		setIsDisplayAddressError(false);
 		if (!name) {
 			setIsDisplayNameError(true);
 			return;
@@ -125,8 +119,6 @@ const InternationalInsuranceForm = () => {
 										<DateField
 											label="Ngày sinh"
 											errorMessage="Ngày sinh chưa phù hợp"
-											isRequired={true}
-											isDisplayErrorMessage={isDisplayDoBError}
 											handleChangeValue={setDoB}
 										/>
 									</div>
@@ -134,8 +126,6 @@ const InternationalInsuranceForm = () => {
 										<DateField
 											label="Thời gian bảo hiểm"
 											errorMessage="Thời gian bảo hiểm chưa phù hợp"
-											isRequired={true}
-											isDisplayErrorMessage={isDisplayinsurancePeriodError}
 											handleChangeValue={setInsurancePeriod}
 										/>
 									</div>
@@ -144,8 +134,6 @@ const InternationalInsuranceForm = () => {
 											type="tel"
 											placeHolder="Số điện thoại"
 											errorMessage="Số điện thoại chưa phù hợp"
-											isRequired={true}
-											isDisplayErrorMessage={isDisplayPhoneError}
 											handleChangeValue={setPhone}
 										/>
 									</div>
@@ -154,8 +142,6 @@ const InternationalInsuranceForm = () => {
 											type="text"
 											placeHolder="Địa chỉ"
 											errorMessage="Địa chỉ chưa phù hợp"
-											isRequired={true}
-											isDisplayErrorMessage={isDisplayAddressError}
 											handleChangeValue={setAddress}
 										/>
 									</div>
