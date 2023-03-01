@@ -7,7 +7,8 @@
         border-color;
     transition-timing-function: ease-in-out;
 
-    &:hover {
+    &.internal-effect:hover,
+    &.external-effect {
         background-color: $strongPink;
         border-color: $strongPink;
 
@@ -18,34 +19,43 @@
         }
     }
 
+    &.long-button {
 
-    &.long-button:hover .icon-container svg {
-        animation: moveArrowLeft 500ms ease-in-out;
+        &.internal-effect:hover,
+        &.external-effect {
+            .icon-container svg {
+                animation: moveArrowLeft 500ms ease-in-out;
 
-        @keyframes moveArrowLeft {
-            0% {
-                transform: translateX(0);
-            }
+                @keyframes moveArrowLeft {
+                    0% {
+                        transform: translateX(0);
+                    }
 
-            50% {
-                transform: translateX(-110%);
-            }
+                    50% {
+                        transform: translateX(-110%);
+                    }
 
-            51% {
-                opacity: 0;
-                transform: translateX(110%);
-            }
+                    51% {
+                        opacity: 0;
+                        transform: translateX(110%);
+                    }
 
-            52% {
-                opacity: 1;
+                    52% {
+                        opacity: 1;
+                    }
+                }
             }
         }
     }
 
     &.circle-button,
     &.title-button {
-        &:hover .icon-container svg {
-            animation: moveArrowTopRight 500ms ease-in-out;
+
+        &.internal-effect:hover,
+        &.external-effect {
+            .icon-container svg {
+                animation: moveArrowTopRight 500ms ease-in-out;
+            }
         }
     }
 
