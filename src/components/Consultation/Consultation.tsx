@@ -61,7 +61,7 @@ const Consultation = () => {
 				</div>
 				<div className="title-container col-span-3 flex flex-col justify-center text-center text-strongPink">
 					<span className="title text-[80px] font-bold uppercase">Tư vấn miễn phí</span>
-					<span className="description text-3xl leading-[38px] font-semibold mx-[10%]">Hãy để chuyên viên tư của Can Immigration Vietnam giúp bạn chinh phục giấc mơ đặt chân đến Canada nhé!</span>
+					<span className="description text-3xl leading-[38px] font-semibold mx-[10%]">Hãy để chuyên viên tư vấn của Can Immigration Vietnam giúp bạn chinh phục giấc mơ đặt chân đến Canada nhé!</span>
 				</div>
 				<div className="form-container col-span-3 col-start-2">
 					<div className="group-field-container">
