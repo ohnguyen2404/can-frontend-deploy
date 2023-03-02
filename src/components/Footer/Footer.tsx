@@ -15,7 +15,7 @@ const Footer = () => {
 					<div className="sub-section grid col-span-1">
 						<div className="icon-container w-1/2">
 							<img
-								src="logo_red.png"
+								src="/logo/logo_red.svg"
 								alt="logo"
 								className="object-contain"
 							/>

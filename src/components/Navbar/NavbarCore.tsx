@@ -26,7 +26,7 @@ const NavbarCore = (props: TNavbarCore) => {
 	return (
 		<nav className={`w-full flex justify-between items-center`}>
 			<Image
-				src={`/logo_${logoColor}.png`}
+				src={`/logo/logo_${logoColor}.svg`}
 				alt="logo"
 				width={75}
 				height={59}
