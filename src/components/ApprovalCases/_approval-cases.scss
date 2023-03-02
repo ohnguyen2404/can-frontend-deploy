@@ -18,8 +18,6 @@
                 &::before {
                     content: counter(image-counter, decimal-leading-zero);
                     counter-increment: image-counter;
-                    height: 5.5625%;
-                    width: 7.5%;
                 }
             }
 

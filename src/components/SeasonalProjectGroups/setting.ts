@@ -13,21 +13,21 @@ export const LIST_PROJECT = Assert<TSeasonalProject[]>([
 	{
 		id: "summer-camp",
 		title: "Trại hè",
-		imgSrc: "/SUMMER-CAMP-2023-01.png",
+		imgSrc: "/assets/seasonalProject/SUMMER-CAMP-2023-01.jpg",
 	},
 	{
 		id: "winter-camp",
 		title: "Cắm trại mùa đông",
-		imgSrc: "/SUMMER-CAMP-2023-03.png",
+		imgSrc: "/assets/seasonalProject/SUMMER-CAMP-2023-03.jpg",
 	},
 	{
 		id: "summer-camp2",
 		title: "Trại hè 2",
-		imgSrc: "/SUMMER-CAMP-2023-02.png",
+		imgSrc: "/assets/seasonalProject/SUMMER-CAMP-2023-02.jpg",
 	},
 	{
 		id: "winter-camp2",
 		title: "Cắm trại mùa đông 2",
-		imgSrc: "/SUMMER-CAMP-2023-04.png",
+		imgSrc: "/assets/seasonalProject/SUMMER-CAMP-2023-04.jpg",
 	},
 ]);

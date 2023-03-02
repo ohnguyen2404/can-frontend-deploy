@@ -11,26 +11,39 @@ const NavbarCore = (props: TNavbarCore) => {
 	const router = useRouter();
 	const currentPath = router.asPath;
 	const [textColor, setTextColor] = useState<"white" | "black">("white");
-	const [logoColor, setLogoColor] = useState<"white" | "red" | "blue">("white");
 
 	useEffect(() => {
 		if (props.isOutBound) {
 			setTextColor("black");
-			setLogoColor("red");
 		} else {
 			setTextColor("white");
-			setLogoColor("white");
 		}
 	}, [props.isOutBound]);
 
 	return (
 		<nav className={`w-full flex justify-between items-center`}>
-			<Image
-				src={`/logo_${logoColor}.png`}
-				alt="logo"
-				width={75}
-				height={59}
-			/>
+			<div className="image-container">
+				<div className={`${textColor === "white" && "hidden"} logo-red-container h-16 relative`}>
+					<Image
+						src="/logo/logo_red.svg"
+						alt="logo"
+						fill
+						unoptimized
+						sizes=""
+						className="!relative"
+					/>
+				</div>
+				<div className={`${textColor === "black" && "hidden"} logo-white-container h-16 relative`}>
+					<Image
+						src="/logo/logo_white.svg"
+						alt="logo"
+						fill
+						unoptimized
+						sizes=""
+						className="!relative"
+					/>
+				</div>
+			</div>
 			<ul className="flex flex-row flex-1 items-center justify-end">
 				{LINKS.map((link, index) => (
 					<li

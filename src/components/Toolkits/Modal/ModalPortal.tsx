@@ -1,10 +1,19 @@
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, useEffect } from "react";
 
 type TModalPortal = {
 	handleOpenModal: (status: boolean) => void;
 };
 
 const ModalPortal = (props: PropsWithChildren<TModalPortal>) => {
+	const handleEscKey = (event: KeyboardEvent) => {
+		event.key === "Escape" && props.handleOpenModal(false);
+	};
+
+	useEffect(() => {
+		window.addEventListener("keydown", handleEscKey);
+		return () => window.removeEventListener("keydown", handleEscKey);
+	}, []);
+	
 	return (
 		<div className="modal-portal-container z-20 absolute top-0 bottom-0 right-0 left-0">
 			<div
