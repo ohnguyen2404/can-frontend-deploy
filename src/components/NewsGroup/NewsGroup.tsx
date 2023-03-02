@@ -37,8 +37,6 @@ const NewsGroup = ({ news }: TNewsGroup) => {
 	};
 
 	const onClickButton = () => {
-		console.log("11111", news[curIdx]);
-
 		router.push({
 			pathname: "/posts/[post-id]",
 			query: {
