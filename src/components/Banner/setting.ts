@@ -2,63 +2,63 @@ import { TSashRibbonInfo } from "./types";
 
 export const LIST_SASH_RIBBON_INFO: TSashRibbonInfo[] = [
 	{
-		imgSrc: "assets/ribbon/CambrianCollege.jpeg",
-		imgAlt: "CambrianCollege.jpeg",
+		imgSrc: "assets/ribbon/CambrianCollege.png",
+		imgAlt: "CambrianCollege.png",
 	},
 	{
-		imgSrc: "assets/ribbon/CapeBretonUniversity.jpg",
-		imgAlt: "CapeBretonUniversity.jpg",
+		imgSrc: "assets/ribbon/CapeBretonUniversity.png",
+		imgAlt: "CapeBretonUniversity.png",
 	},
 	{
 		imgSrc: "assets/ribbon/CentennialCollege.png",
 		imgAlt: "CentennialCollege.png",
 	},
 	{
-		imgSrc: "assets/ribbon/DouglasCollege.jpg",
-		imgAlt: "DouglasCollege.jpg",
+		imgSrc: "assets/ribbon/DouglasCollege.png",
+		imgAlt: "DouglasCollege.png",
 	},
 	{
-		imgSrc: "assets/ribbon/LangaraCollege.jpg",
-		imgAlt: "LangaraCollege.jpg",
+		imgSrc: "assets/ribbon/LangaraCollege.png",
+		imgAlt: "LangaraCollege.png",
 	},
 	{
-		imgSrc: "assets/ribbon/BowValleyCollenge.png",
-		imgAlt: "BowValleyCollenge.png",
+		imgSrc: "assets/ribbon/BowValleyCollenge.svg",
+		imgAlt: "BowValleyCollenge.svg",
 	},
 	{
-		imgSrc: "assets/ribbon/ColumbiaCollege.png",
-		imgAlt: "ColumbiaCollege.png",
+		imgSrc: "assets/ribbon/ColumbiaCollege.jpg",
+		imgAlt: "ColumbiaCollege.jpg",
 	},
 	{
 		imgSrc: "assets/ribbon/UniversityofSaskatchewan.png",
 		imgAlt: "UniversityofSaskatchewan.png",
 	},
 	{
-		imgSrc: "assets/ribbon/GeorgeBrownCollege.png",
-		imgAlt: "GeorgeBrownCollege.png",
+		imgSrc: "assets/ribbon/GeorgeBrownCollege.svg",
+		imgAlt: "GeorgeBrownCollege.svg",
 	},
 	{
-		imgSrc: "assets/ribbon/UniversityofRegina.jpg",
-		imgAlt: "UniversityofRegina.jpg",
+		imgSrc: "assets/ribbon/UniversityofRegina.png",
+		imgAlt: "UniversityofRegina.png",
 	},
 	{
-		imgSrc: "assets/ribbon/ThompsonRiversUniversity.png",
-		imgAlt: "ThompsonRiversUniversity.png",
+		imgSrc: "assets/ribbon/ThompsonRiversUniversity.jpg",
+		imgAlt: "ThompsonRiversUniversity.jpg",
 	},
 	{
 		imgSrc: "assets/ribbon/SaskatchewanPolytechnic.png",
 		imgAlt: "SaskatchewanPolytechnic.png",
 	},
 	{
-		imgSrc: "assets/ribbon/SAIT.jpg",
-		imgAlt: "SAIT.jpg",
+		imgSrc: "assets/ribbon/SAIT.png",
+		imgAlt: "SAIT.png",
 	},
 	{
-		imgSrc: "assets/ribbon/GeorgianCollege.png",
-		imgAlt: "GeorgianCollege.png",
+		imgSrc: "assets/ribbon/GeorgianCollege.jpg",
+		imgAlt: "GeorgianCollege.jpg",
 	},
 	{
-		imgSrc: "assets/ribbon/CollegeofNewCaledonia.png",
-		imgAlt: "CollegeofNewCaledonia.png",
+		imgSrc: "assets/ribbon/CollegeofNewCaledonia.jpg",
+		imgAlt: "CollegeofNewCaledonia.jpg",
 	},
 ];
