@@ -51,7 +51,9 @@ export default function Home({ news }: InferGetStaticPropsType<typeof getStaticP
 					/>
 					<link
 						rel="icon"
-						href="/favicon.ico"
+						type="image/svg+xml"
+						sizes="any"
+						href="/logo/logo_red.svg"
 					/>
 				</Head>
 				<Navbar />
