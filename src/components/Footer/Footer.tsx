@@ -13,11 +13,14 @@ const Footer = () => {
 			<div className="footer-container-wrap bg-lightBlue rounded-t-[30px] mt-high">
 				<div className="footer-container grid grid-cols-5 py-10 mx-8 pr-20">
 					<div className="sub-section grid col-span-1">
-						<div className="icon-container w-1/2">
-							<img
+						<div className="icon-container relative w-1/2">
+							<Image
 								src="/logo/logo_red.svg"
 								alt="logo"
-								className="object-contain"
+								fill
+								sizes=""
+								unoptimized
+								className="!h-auto !w-auto"
 							/>
 						</div>
 					</div>
