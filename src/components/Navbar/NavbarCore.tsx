@@ -23,7 +23,7 @@ const NavbarCore = (props: TNavbarCore) => {
 	return (
 		<nav className={`w-full flex justify-between items-center`}>
 			<div className="image-container">
-				<div className={`${textColor === "white" && "hidden"} logo-red-container h-16 relative`}>
+				<div className={`${textColor === "white" && "hidden"} logo-red-container h-12 relative`}>
 					<Image
 						src="/logo/logo_red.svg"
 						alt="logo"
@@ -33,7 +33,7 @@ const NavbarCore = (props: TNavbarCore) => {
 						className="!relative"
 					/>
 				</div>
-				<div className={`${textColor === "black" && "hidden"} logo-white-container h-16 relative`}>
+				<div className={`${textColor === "black" && "hidden"} logo-white-container h-12 relative`}>
 					<Image
 						src="/logo/logo_white.svg"
 						alt="logo"
