@@ -9,13 +9,9 @@ type TSubComponent = {
 };
 
 const ProgramGroups: TComponent & TSubComponent = () => {
-	const ref_self = useRef<HTMLElement>(null);
-
 	return (
-		<section
-			id="program-group"
-			ref={ref_self}>
-			<div className="program-group-container flex flex-col my-high mx-8">
+		<section id="program-groups">
+			<div className="program-groups-container flex flex-col my-high mx-8">
 				<div className="title-container flex items-center justify-center w-40 h-10 border rounded-full border-black my-8">
 					<span className="font-bold text-2xl mb-1">Chương trình</span>
 				</div>

@@ -49,7 +49,7 @@ export const SETTLED_ADVISORY_STEPS: TAdvisoryStep[] = [
 		imgSrc: "/assets/advisory/icon-CAN-10.png",
 	},
 	{
-		title: "Xây dựng hồ sơ xin Giấy phép lao động",
+		title: "Xây dựng hồ sơ xin giấy phép lao động",
 		imgSrc: "/assets/advisory/icon-CAN-08.png",
 	},
 	{

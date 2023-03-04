@@ -53,15 +53,19 @@ const Consultation = () => {
 	return (
 		<section id="consultation">
 			<div className="consultation-container grid grid-cols-4 grid-rows-2 my-high mx-8">
-				<div className="image-container col-span-1">
+				<div className="image-container col-span-1 row-span-2 rounded-r-[30px] overflow-hidden">
 					<img
-						src="assets/consultation.jpg"
-						alt="consultation.jpg"
+						src="assets/consultation/banner.jpg"
+						alt="banner.jpg"
+						className="w-full h-full object-cover"
 					/>
 				</div>
 				<div className="title-container col-span-3 flex flex-col justify-center text-center text-strongPink">
 					<span className="title text-[80px] font-bold uppercase">Tư vấn miễn phí</span>
-					<span className="description text-3xl leading-[38px] font-semibold mx-high">Hãy để chuyên viên tư vấn của Can Immigration Vietnam giúp bạn chinh phục giấc mơ đặt chân đến Canada nhé!</span>
+					<div className="description-container">
+						<span className="description block text-3xl leading-[38px] font-semibold mx-high">Hãy để chuyên viên tư vấn của Can Immigration Vietnam</span>
+						<span className="description block text-3xl leading-[38px] font-semibold mx-high">giúp bạn chinh phục giấc mơ đặt chân đến Canada nhé!</span>
+					</div>
 				</div>
 				<div className="form-container col-span-3 col-start-2 mx-medium">
 					<div className="group-field-container">

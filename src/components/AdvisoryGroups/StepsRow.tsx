@@ -18,7 +18,7 @@ const StepsRow = (props: TStepRows) => {
 				{props.steps.map((step, idx) => (
 					<div
 						key={idx}
-						className="step-card-wrap col-span-2 grid justify-self-center">
+						className="step-card-wrap w-full col-span-2 grid justify-self-center">
 						<StepCard
 							order={idx + 3 * props.rowIdx}
 							title={step.title}

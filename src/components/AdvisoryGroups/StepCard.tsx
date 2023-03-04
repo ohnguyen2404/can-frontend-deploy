@@ -9,9 +9,9 @@ export type TStepCard = {
 const StepCard = (props: TStepCard) => {
 	return (
 		<div className="step-card-container grid grid-rows-4">
-			<div className="title-container row-span-1 flex mx-auto items-center justify-center">
+			<div className="title-container row-span-1 flex mx-4 items-center">
 				<span className="order-container flex items-center justify-center pb-1 h-8 w-8 text-2xl font-medium rounded-full border-black border">{props.order + 1}</span>
-				<span className="title font-medium text-xl mx-3">{props.title}</span>
+				<span className="title font-medium text-xl text-center mx-3">{props.title}</span>
 			</div>
 			<div className="image-container row-span-3 mt-8">
 				<img

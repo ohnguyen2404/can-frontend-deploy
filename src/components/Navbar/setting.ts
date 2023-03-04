@@ -10,19 +10,19 @@ type TLinks = TLink[];
 export const HEIGHT = 80;
 export const LINKS = Assert<TLinks>([
 	{
-		id: "feeds",
+		id: "news",
 		title: "Tin tức",
 	},
 	{
-		id: "program",
+		id: "program-groups",
 		title: "Chương trình",
 	},
 	{
-		id: "service",
+		id: "service-groups",
 		title: "Dịch vụ",
 	},
 	{
-		id: "consult",
+		id: "advisory",
 		title: "Lộ trình tư vấn",
 	},
 	{
@@ -30,7 +30,7 @@ export const LINKS = Assert<TLinks>([
 		title: "Văn phòng",
 	},
 	{
-		id: "register",
+		id: "consultation",
 		title: "Đăng ký",
 	},
 ]);
