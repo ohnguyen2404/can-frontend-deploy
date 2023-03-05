@@ -43,26 +43,28 @@ export const convertMonthToText = (month: number) => {
       return prefix + 'Một'
     case 2:
       return prefix + 'Hai'
-    case 1:
+    case 3:
       return prefix + 'Ba'
-    case 2:
+    case 4:
       return prefix + 'Tư'
-    case 1:
+    case 5:
       return prefix + 'Năm'
-    case 2:
+    case 6:
       return prefix + 'Sáu'
-    case 1:
+    case 7:
       return prefix + 'Bảy'
-    case 2:
+    case 8:
       return prefix + 'Tám'
-    case 1:
+    case 9:
       return prefix + 'Chín'
-    case 2:
+    case 10:
       return prefix + 'Mười'
-    case 1:
+    case 11:
       return prefix + 'Mười Một'
-    case 2:
+    case 12:
       return prefix + 'Mười Hai'
+    default:
+      return ''
   }
 }
 
