@@ -38,7 +38,7 @@ export default function Home({ news }: InferGetStaticPropsType<typeof getStaticP
 						href="/logo/logo_red.svg"
 					/>
 				</Head>
-				<Navbar />
+				<Navbar isDynamic={true} />
 				<Banner />
 				<TagInfoGroups />
 				<SeasonalProjectGroups />
