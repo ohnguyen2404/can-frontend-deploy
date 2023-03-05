@@ -36,14 +36,42 @@ export const formatNewsTitle = (message: string) => {
 
 export const useIsomorphicLayoutEffect = typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
+export const convertMonthToText = (month: number) => {
+  const prefix = 'Tháng '
+  switch (month) {
+    case 1:
+      return prefix + 'Một'
+    case 2:
+      return prefix + 'Hai'
+    case 1:
+      return prefix + 'Ba'
+    case 2:
+      return prefix + 'Tư'
+    case 1:
+      return prefix + 'Năm'
+    case 2:
+      return prefix + 'Sáu'
+    case 1:
+      return prefix + 'Bảy'
+    case 2:
+      return prefix + 'Tám'
+    case 1:
+      return prefix + 'Chín'
+    case 2:
+      return prefix + 'Mười'
+    case 1:
+      return prefix + 'Mười Một'
+    case 2:
+      return prefix + 'Mười Hai'
+  }
+}
+
 export const formatDate = (date: Date) => {
-  const yyyy = date.getFullYear();
-  let mm: any = date.getMonth() + 1;
-  let dd: any = date.getDate();
+  const year = date.getFullYear();
+  const month = convertMonthToText(date.getMonth() + 1);
+  let day: any = date.getDate();
 
-  if (dd < 10) dd = '0' + dd;
-  if (mm < 10) mm = '0' + mm;
+  if (day < 10) day = '0' + day;
 
-  return dd + '/' + mm + '/' + yyyy;
-
+  return month + ' ' + day + ', ' + year
 }

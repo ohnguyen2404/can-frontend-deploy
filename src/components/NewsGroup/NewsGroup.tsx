@@ -37,12 +37,14 @@ const NewsGroup = ({ news }: TNewsGroup) => {
 	};
 
 	const onClickButton = () => {
-		router.push({
-			pathname: "/posts/[post-id]",
-			query: {
-				"post-id": news[curIdx].id,
-			},
-		});
+		const curUrl = window.location.href;
+		window.open(`${curUrl}/posts/${news[curIdx].id}`);
+		//router.push({
+		//	pathname: "/posts/[post-id]",
+		//	query: {
+		//		"post-id": news[curIdx].id,
+		//	},
+		//});
 	};
 
 	return (
