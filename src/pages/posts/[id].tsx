@@ -1,6 +1,7 @@
 import { GetServerSideProps } from "next";
 import { getPostById } from "../../services/facebook-api";
 import { formatDate, formatNewsTitle } from "../../utils/helper";
+import { Navbar, Footer } from "../../components";
 
 export type TPost = {
 	id: string;
@@ -34,19 +35,20 @@ export default function FBPost({ post }: TFBPost) {
 
 	return (
 		<div className="w-full">
-			<div className="flex flex-col w-[80%] mx-auto">
-				<span className="text-2xl text-gray-400 font-semibold">{formatDate(new Date(post.createdTime))}</span>
-				<div className="w-[80%] flex flex-col items-left mt-2 mx-auto">
-					<span className="text-4xl font-bold uppercase mb-8 text-center">{title}</span>
-					<img
-						className="object-fit rounded-3xl mb-8"
-						src={post.imgUrl}
-					/>
-					{paragraphs.map((paragraph) => (
-						<span className="text-xl">{paragraph}</span>
-					))}
-				</div>
+			<Navbar isDynamic={false} />
+			<div className={`h-[80px]`} />
+			<div className="w-[60%] flex flex-col items-left mt-8 mx-auto">
+				<span className="text-7xl font-bold uppercase mb-6 text-center">{title}</span>
+				<span className="text-2xl font-semibold uppercase mb-6 text-center">{formatDate(new Date(post.createdTime))}</span>
+				<img
+					className="object-fit rounded-3xl mb-16"
+					src={post.imgUrl}
+				/>
+				{paragraphs.map((paragraph) => (
+					<span className="text-xl">{paragraph}</span>
+				))}
 			</div>
+			<Footer />
 		</div>
 	);
 }

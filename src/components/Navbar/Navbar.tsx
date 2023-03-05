@@ -8,7 +8,11 @@ type TSubComponent = {
 	NavbarCore: typeof NavbarCore;
 };
 
-const Navbar: TComponent & TSubComponent = () => {
+type TNavbar = {
+	isDynamic: boolean;
+};
+
+const Navbar = ({ isDynamic = true }: TNavbar) => {
 	const [isOutBound, setIsOutBound] = useState<boolean>(false);
 	const [prevScrollPos, setPrevScrollPos] = useState<number>(0);
 	const [isScrollUp, setIsScrollUp] = useState<boolean>(true);
@@ -39,9 +43,9 @@ const Navbar: TComponent & TSubComponent = () => {
 	return (
 		<div className={`z-10 w-full flex flex-col navbar ${isScrollUp ? "show" : "hide"} ${isOutBound ? "fixed" : "absolute"}`}>
 			<div className={`px-8 py-2 ${STYLE_GROUPS.flexCenter} ${isOutBound ? "bg-white" : "bg-transparent"}`}>
-				<Navbar.NavbarCore isOutBound={isOutBound} />
+				<Navbar.NavbarCore isOutBound={isOutBound || !isDynamic} />
 			</div>
-			<div className={` ${STYLE_GROUPS.flexCenter} ${isOutBound ? "bg-red-600 w-[95%] h-1 self-center" : "bg-white w-[100%] h-[2px]"}`}></div>
+			<div className={` ${STYLE_GROUPS.flexCenter} ${isOutBound || !isDynamic ? "bg-red-600 w-[95%] h-1 self-center" : "bg-white w-[100%] h-[2px]"}`}></div>
 		</div>
 	);
 };

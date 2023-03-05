@@ -7,7 +7,7 @@ const ACCESS_TOKEN = process.env["FB_PAGE_ACCESS_TOKEN"];
 const PAGE_ID = process.env["FB_PAGE_ID"]
 
 export const getPageNews = async (): Promise<TNews[]> => {
-  const queryURL = `https://graph.facebook.com/v16.0/${PAGE_ID}/feed?fields=attachments%2Cmessage&access_token=${ACCESS_TOKEN}`;
+  const queryURL = `https://graph.facebook.com/v16.0/${PAGE_ID}/feed?fields=attachments%2Cmessage&access_token=${ACCESS_TOKEN}&limit=15`;
 
   const response = (
     await axiosClient.get(queryURL)
