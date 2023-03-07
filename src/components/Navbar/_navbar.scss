@@ -1,4 +1,4 @@
-.navbar {
+#navbar {
   $NAVBAR_HEIGHT: 80;
   transition: top 0.3s ease-in-out;
 
@@ -8,5 +8,26 @@
 
   &.hide {
     top: -($NAVBAR_HEIGHT - 4px);
+  }
+
+  nav div.hamburger {
+    $hamburger-height: 0.625rem;
+    height: $hamburger-height;
+
+    &::before {
+      content: "";
+      height: 1px;
+      margin-bottom: $hamburger-height;
+      position: absolute;
+      width: 100%;
+    }
+
+    &::after {
+      content: "";
+      height: 1px;
+      margin-top: $hamburger-height;
+      position: absolute;
+      width: 100%;
+    }
   }
 }
