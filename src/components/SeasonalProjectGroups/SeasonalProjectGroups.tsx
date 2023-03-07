@@ -39,7 +39,7 @@ const SeasonalProjectGroups: TComponent & TSubComponent = () => {
 	return (
 		<section id="seasonal-project-groups">
 			<div
-				className={`seasonal-project-groups-container ${STYLE_GROUPS.flexStart} flex-col my-high py-medium bg-lightBlue rounded-[30px] overflow-hidden`}
+				className={`seasonal-project-groups-container ${STYLE_GROUPS.flexStart} flex-col my-25 py-17.5 bg-lightBlue rounded-[30px] overflow-hidden`}
 				ref={ref_seft}>
 				<div className="mx-8">
 					<TitleButton title="Chi tiết" />

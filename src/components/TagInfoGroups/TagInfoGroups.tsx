@@ -12,7 +12,7 @@ const TagInfoGroups: TComponent & TSubComponent = () => {
 
 	return (
 		<section id="tag-info-groups">
-			<div className="tag-info-groups-container flex flex-col lg:flex-row my-high justify-center mx-8 bg-white">
+			<div className="tag-info-groups-container flex flex-col lg:flex-row my-25 justify-center mx-8 bg-white">
 				<div className={`media-wrap ${mediaWrap}`}>
 					<div className={`media-sub-wrap ${mediaSubWrap}`}>
 						<TagInfoGroups.TagInfo

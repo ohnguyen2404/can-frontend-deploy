@@ -47,7 +47,7 @@ const NewsGroup = ({ news }: TNewsGroup) => {
 
 	return (
 		<section id="news">
-			<div className="news-container my-high">
+			<div className="news-container my-25">
 				<div className="flex flex-row justify-between mx-8">
 					<div className="font-bold text-4xl uppercase">
 						{news[curIdx]?.title}

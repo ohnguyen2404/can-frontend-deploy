@@ -9,7 +9,7 @@ const AdvisoryGroups = () => {
 
 	return (
 		<section id="advisory">
-			<div className="advisory-container my-high">
+			<div className="advisory-container my-25">
 				<div className="flex flex-row justify-between">
 					<div className="title-container flex items-center justify-center w-44 h-10 ml-8 border rounded-full border-black">
 						<span className="font-bold text-2xl mb-1">Lộ trình tư vấn</span>
