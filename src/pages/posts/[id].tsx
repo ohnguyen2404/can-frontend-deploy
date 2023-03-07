@@ -1,5 +1,5 @@
-import { GetServerSideProps } from "next";
-import { getPostById } from "../../services/facebook-api";
+import { GetStaticProps } from "next";
+import { getPostById, getPageNews } from "../../services/facebook-api";
 import { formatDate, formatNewsTitle } from "../../utils/helper";
 import { Navbar, Footer } from "../../components";
 
@@ -14,7 +14,20 @@ type TFBPost = {
 	post: TPost;
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+export async function getStaticPaths() {
+	const paths = (await getPageNews()).map((post) => {
+		return {
+			params: { id: post.id },
+		};
+	});
+
+	return {
+		paths,
+		fallback: false,
+	};
+}
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
 	try {
 		return {
 			props: {
@@ -22,7 +35,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 			},
 		};
 	} catch (err) {
-		console.log("__posts/[id].tsx getServerSideProps error: ", err);
+		console.log("__posts/[id].tsx getStaticProps error: ", err);
 		return {
 			props: { post: {} },
 		};
