@@ -9,14 +9,14 @@ const AdvisoryGroups = () => {
 
 	return (
 		<section id="advisory">
-			<div className="advisory-container my-25">
+			<div className="advisory-container my-17.5 md:my-25">
 				<div className="flex flex-row justify-between">
-					<div className="title-container flex items-center justify-center w-44 h-10 ml-8 border rounded-full border-black">
-						<span className="font-bold text-2xl mb-1">Lộ trình tư vấn</span>
+					<div className="title-container flex items-center justify-center w-28 md:w-44 h-6 md:h-10 ml-15 md:ml-8 border rounded-full border-black">
+						<span className="font-bold text-xs md:text-2xl mb-0.5 md:mb-1">Lộ trình tư vấn</span>
 					</div>
 					<div className="flex flex-row border-b-gray-400 border-b">
 						<span
-							className={`text-4xl font-bold px-10 py-4 rounded-t-3xl cursor-pointer hover:text-lightPink hover:bg-strongPink ${color === "pink" ? "text-lightPink bg-strongPink" : "text-strongPink bg-lightPink"} `}
+							className={`text-base md:text-4xl font-bold px-4.5 md:px-10 py-2 md:py-4 rounded-t-xl md:rounded-t-3xl cursor-pointer hover:text-lightPink hover:bg-strongPink ${color === "pink" ? "text-lightPink bg-strongPink" : "text-strongPink bg-lightPink"} `}
 							onClick={() => {
 								setData(SETTLED_ADVISORY_STEPS);
 								setColor("pink");
@@ -24,7 +24,7 @@ const AdvisoryGroups = () => {
 							ĐỊNH CƯ
 						</span>
 						<span
-							className={`text-4xl font-bold px-10 py-4 rounded-t-3xl cursor-pointer hover:text-lightBlue hover:bg-strongBlue ${color === "blue" ? "text-lightBlue bg-strongBlue" : "text-strongBlue bg-lightBlue"}`}
+							className={`text-base md:text-4xl font-bold px-4.5 md:px-10 py-2 md:py-4 rounded-t-xl md:rounded-t-3xl cursor-pointer hover:text-lightBlue hover:bg-strongBlue ${color === "blue" ? "text-lightBlue bg-strongBlue" : "text-strongBlue bg-lightBlue"}`}
 							onClick={() => {
 								setData(STUDY_ABOARD_ADVISORY_STEPS);
 								setColor("blue");
