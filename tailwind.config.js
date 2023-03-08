@@ -11,6 +11,7 @@ module.exports = {
 				silver: "#B9B7B7",
 			},
 			spacing: {
+				0.5: "0.125rem",
 				2.5: "0.625rem",
 				3.5: "0.875rem",
 				25: "6.25rem",
