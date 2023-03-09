@@ -19,8 +19,8 @@ const bgStyles: TBgStyles = {
 
 const TagInfo = (props: TTagInfo) => {
 	return (
-		<div className={`tag-info ${bgStyles[props.bgColor]} flex flex-col w-full justify-between items-center rounded-lg shadow-lg`}>
-			<h2 className={`${props.bgColor === "blue" ? "text-strongBlue" : "text-strongPink"} my-8 text-3xl font-semibold`}>{props.header}</h2>
+		<div className={`tag-info ${bgStyles[props.bgColor]} flex flex-col w-full justify-between items-center rounded-lg shadow-lg aspect-[7/10]`}>
+			<h2 className={`title ${props.bgColor === "blue" ? "text-strongBlue" : "text-strongPink"} my-4.5 md:my-8 text-2xl md:text-3xl font-bold`}>{props.header}</h2>
 			<div className="image-container w-3/4 h-3/6">
 				<img
 					src={props.imgSrc}
@@ -28,7 +28,7 @@ const TagInfo = (props: TTagInfo) => {
 					className="w-full h-full object-contain object-bottom"
 				/>
 			</div>
-			<div className="paragraph-container text-center border border-t-gray-400 border-transparent my-8 pt-2 w-[90%] text-xl leading-5">
+			<div className="paragraph-container text-lg md:text-xl leading-4.5 md:leading-5 font-medium text-center border border-t-silver border-transparent my-4.5 md:my-8 pt-2 w-[90%]">
 				{props.listContent.map((item, idx) => {
 					return <p key={idx}>{item}</p>;
 				})}
