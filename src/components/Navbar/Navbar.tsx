@@ -118,6 +118,7 @@ const Navbar = () => {
 								gsap.to(window, {
 									scrollTo: `#${link.id}`,
 								});
+								setIsActive(false);
 							}}>
 							{link.title}
 						</a>
