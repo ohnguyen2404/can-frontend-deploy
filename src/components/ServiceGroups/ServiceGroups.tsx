@@ -59,9 +59,9 @@ const ServiceGroups: TComponent & TSubComponent = () => {
 	const subSection = "sub-section border-b-2 border-solid border-silver";
 	return (
 		<section id="service-groups">
-			<div className="service-groups-container my-25">
-				<div className="sub-section title-section flex items-center justify-center w-40 h-10 border rounded-full border-black my-8 mx-8">
-					<span className="font-bold text-2xl mb-1">Dịch vụ</span>
+			<div className="service-groups-container my-17.5 md:my-25">
+				<div className="sub-section title-section flex items-center justify-center w-25 md:w-40 h-6 md:h-10 border rounded-full border-black my-8 mx-15 md:mx-8">
+					<span className="font-bold text-xs md:text-2xl mb-0.5 md:mb-1">Dịch vụ</span>
 				</div>
 				<div className="sub-section-container my-8">
 					<div className={`${subSection} school-registration border-t-2`}>
