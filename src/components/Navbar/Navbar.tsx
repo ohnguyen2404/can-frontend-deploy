@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap/dist/gsap";
 import ScrollToPlugin from "gsap/dist/ScrollToPlugin";
@@ -50,10 +50,19 @@ const Navbar = () => {
 		}
 	}, [isOutBound, isActive]);
 
+	const ref_self = useRef<HTMLDivElement>(null);
+
+	const handleClickOutside = () => {
+		setIsActive(false);
+	};
+
+	useOutsideAlerter(ref_self, handleClickOutside);
+
 	return (
 		<div
 			id="navbar"
-			className={`flex flex-col z-10 w-full ${isScrollUp ? "show" : "hide"} ${isOutBound ? "fixed" : "absolute"}`}>
+			className={`flex flex-col z-10 w-full ${isScrollUp ? "show" : "hide"} ${isOutBound ? "fixed" : "absolute"}`}
+			ref={ref_self}>
 			<div className={`${STYLE_GROUPS.flexCenter} ${isContrastStyle ? "bg-white" : "bg-transparent"} px-6 sm:px-8 py-2`}>
 				<nav className="w-full flex justify-between items-center">
 					<div className="image-container">
@@ -119,5 +128,19 @@ const Navbar = () => {
 		</div>
 	);
 };
+
+function useOutsideAlerter(ref: React.MutableRefObject<any>, callback: () => void) {
+	useEffect(() => {
+		const handleClickOutside = (event: MouseEvent) => {
+			if (ref.current && !ref.current.contains(event.target)) {
+				callback();
+			}
+		};
+		document.addEventListener("mousedown", handleClickOutside);
+		return () => {
+			document.removeEventListener("mousedown", handleClickOutside);
+		};
+	}, [ref]);
+}
 
 export default Navbar;
