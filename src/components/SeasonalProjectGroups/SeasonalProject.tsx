@@ -13,14 +13,14 @@ const SeasonalProject = ({ id, title, imgSrc }: TSeasonalProject) => {
 	return (
 		<div
 			key={id}
-			className="flex flex-col mr-3 last:mr-0 cursor-pointer"
+			className="flex flex-col mr-4 last:mr-0 cursor-pointer"
 			style={{
 				minWidth: `${PROJECT_MIN_WIDTH_VW}vw`,
 			}}
 			onMouseEnter={() => setHoverState(true)}
 			onMouseLeave={() => setHoverState(false)}>
-			<div className="flex flex-row items-center">
-				<span className="text-4xl mb-3 mr-2">{title}</span>
+			<div className="flex flex-row items-end mb-2 md:mb-3">
+				<span className="text-2xl md:text-4xl leading-none mr-2 overflow-hidden text-ellipsis whitespace-nowrap">{title}</span>
 				<CircleButton
 					useExternal
 					hoverState={hoverState}
