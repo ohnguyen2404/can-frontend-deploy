@@ -17,7 +17,7 @@ export const LIST_PROJECT = Assert<TSeasonalProject[]>([
 	},
 	{
 		id: "winter-camp",
-		title: "Cắm trại mùa đông",
+		title: "Trại đông",
 		imgSrc: "/assets/seasonalProject/SUMMER-CAMP-2023-03.jpg",
 	},
 	{
@@ -27,7 +27,7 @@ export const LIST_PROJECT = Assert<TSeasonalProject[]>([
 	},
 	{
 		id: "winter-camp2",
-		title: "Cắm trại mùa đông 2",
+		title: "Trại đông 2",
 		imgSrc: "/assets/seasonalProject/SUMMER-CAMP-2023-04.jpg",
 	},
 ]);
