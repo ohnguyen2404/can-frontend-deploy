@@ -75,24 +75,25 @@ const ProgramSubGroup = (props: TProgramSubGroup) => {
 	return (
 		<div className="program-sub-group-container flex flex-row h-full justify-between">
 			<div
-				className="program-card-outer-container bg-red-300"
+				className="program-card-outer-container bg-red-300 mr-2"
 				ref={ref_cardLeft}
 				onMouseEnter={props.direction === Direction.Right ? handleMouseEnterEnter : handleMouseEnterReverse}>
 				<ProgramCard
 					imgSrc={props.cardLeft.imgSrc}
 					imgAlt={props.cardLeft.imgAlt}
 					title={props.cardLeft.title}
+					direction={props.cardLeft.direction}
 				/>
 			</div>
-			<div className="seperator w-4"></div>
 			<div
-				className="program-card-outer-container bg-blue-300"
+				className="program-card-outer-container bg-blue-300 ml-2"
 				ref={ref_cardRight}
 				onMouseEnter={props.direction === Direction.Right ? handleMouseEnterReverse : handleMouseEnterEnter}>
 				<ProgramCard
 					imgSrc={props.cardRight.imgSrc}
 					imgAlt={props.cardRight.imgAlt}
 					title={props.cardRight.title}
+					direction={props.cardRight.direction}
 				/>
 			</div>
 		</div>
