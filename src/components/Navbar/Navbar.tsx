@@ -55,8 +55,20 @@ const Navbar = () => {
 	const handleClickOutside = () => {
 		setIsActive(false);
 	};
-
 	useOutsideAlerter(ref_self, handleClickOutside);
+
+	const updateCSSVariableHeightNavbar = () => {
+		ref_self.current?.style.setProperty("--navbar-height", `-${ref_self.current?.offsetHeight - 4}px`);
+	};
+
+	useEffect(() => {
+		updateCSSVariableHeightNavbar();
+	}, [ref_self]);
+
+	useEffect(() => {
+		window.addEventListener("resize", updateCSSVariableHeightNavbar);
+		return () => window.removeEventListener("resize", updateCSSVariableHeightNavbar);
+	}, []);
 
 	return (
 		<div
@@ -125,7 +137,7 @@ const Navbar = () => {
 					</li>
 				))}
 			</ul>
-			<div className={`${STYLE_GROUPS.flexCenter} ${isOutBound || isActive ? "bg-red-600 w-[95%] h-1 self-center" : "bg-white w-[100%] h-[2px]"}`}></div>
+			<div className={`${STYLE_GROUPS.flexCenter} ${isOutBound || isActive ? "bg-red-600 w-[95%] h-1 self-center" : "bg-white w-[100%] h-0.5"}`}></div>
 		</div>
 	);
 };
