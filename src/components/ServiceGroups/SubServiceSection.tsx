@@ -148,7 +148,7 @@ const SubServiceSection = (props: TSubServiceSection) => {
 				className={maskContent}
 				ref={ref_maskContentFirst}></div>
 			<span
-				className="sub-title font-bold text-2xl uppercase z-0"
+				className="sub-title font-bold text-xs md:text-lg lg:text-2xl uppercase z-0"
 				ref={ref_subTitle}>
 				{props.subtitle}
 			</span>
@@ -161,11 +161,11 @@ const SubServiceSection = (props: TSubServiceSection) => {
 			onMouseEnter={handleMouseEnter}
 			onMouseLeave={handleMouseLeave}
 			onClick={props.handleOnClick}>
-			<div className="title-container flex flex-col justify-center mx-8 absolute top-0 left-0 bottom-0 right-0 z-[2]">
+			<div className="title-container flex flex-col justify-center mx-15 md:mx-8 absolute top-0 left-0 bottom-0 right-0 z-[2]">
 				<div className="inner-title-container overflow-hidden">
 					{props.order ? (
 						<div
-							className="order-container font-medium text-2xl"
+							className="order-container font-medium text-xs md:text-lg lg:text-2xl"
 							ref={ref_order}>
 							{props.order}
 						</div>
@@ -175,7 +175,7 @@ const SubServiceSection = (props: TSubServiceSection) => {
 					<div
 						className="sub-inner-title-container"
 						ref={ref_title}>
-						<span className="title font-bold text-[80px] uppercase">{props.title}</span>
+						<span className="title font-bold text-[40px] md:text-[60px] lg:text-[80px] uppercase">{props.title}</span>
 					</div>
 				</div>
 			</div>
