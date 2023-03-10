@@ -41,29 +41,32 @@ const NewsGroup = ({ news }: TNewsGroup) => {
 
 	return (
 		<section id="news">
-			<div className="news-container my-25">
-				<div className="flex flex-row justify-between mx-8">
-					<div className="font-bold text-4xl uppercase">
+			<div className="news-container my-17.5 md:my-25">
+				<div className="flex flex-row justify-between mx-15 md:mx-8">
+					<div className="font-bold text-2xl md:text-4xl uppercase">
 						{news[curIdx]?.title}
-						<div className="inline-block mb-2 ml-2 align-middle">
+						<div className="inline-block mb-1 md:mb-2 ml-1 md:ml-2 align-middle">
 							<CircleButton handleOnClick={onClickButton} />
 						</div>
 					</div>
-					<div className="flex flex-row justify-between">
-						<LongButton
-							direction={Direction.Left}
-							handleOnClick={onClickPrev}
-						/>
-						<div className="w-4"></div>
-						<LongButton
-							direction={Direction.Right}
-							handleOnClick={onClickNext}
-						/>
+					<div className="above-navigator hidden md:flex flex-row justify-between">
+						<div className="long-button-left-container mx-1 md:mx-2">
+							<LongButton
+								direction={Direction.Left}
+								handleOnClick={onClickPrev}
+							/>
+						</div>
+						<div className="long-button-right-container mx-1 md:mx-2">
+							<LongButton
+								direction={Direction.Right}
+								handleOnClick={onClickNext}
+							/>
+						</div>
 					</div>
 				</div>
 				<div
 					id="news-slider"
-					className="w-full mt-16 min-h-[600px] items-center flex flex-row overflow-x-scroll scrollbar-hide">
+					className="w-full mt-16 md:mt-36 mb-6 md:mb-16 min-h-[600px] items-center flex flex-row overflow-x-scroll scrollbar-hide">
 					{news.map(({ imgUrl }, idx) => (
 						<NewsCard
 							key={idx}
