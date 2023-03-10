@@ -57,8 +57,12 @@ export default function FBPost({ post }: TFBPost) {
 					className="object-fit rounded-3xl mb-16"
 					src={post.imgUrl}
 				/>
-				{paragraphs.map((paragraph) => (
-					<span className="text-xl">{paragraph}</span>
+				{paragraphs.map((paragraph, index) => (
+					<span
+						key={index}
+						className="text-xl">
+						{paragraph}
+					</span>
 				))}
 			</div>
 			<Footer />
