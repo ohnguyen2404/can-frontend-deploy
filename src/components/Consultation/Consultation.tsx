@@ -14,8 +14,6 @@ const Consultation = () => {
 	const [phone, setPhone] = useState<string>();
 	const [isDisplayPhoneError, setIsDisplayPhoneError] = useState<boolean>(false);
 
-	const fieldContainer = "field-container my-8";
-
 	const handleSubmit = async () => {
 		setIsDisplayNameError(false);
 		setIsDisplayEmailError(false);
@@ -50,24 +48,26 @@ const Consultation = () => {
 			});
 	};
 
+	const fieldContainer = "field-container my-8";
+
 	return (
 		<section id="consultation">
-			<div className="consultation-container grid grid-cols-4 grid-rows-2 my-high mx-8">
-				<div className="image-container col-span-1 row-span-2 rounded-r-[30px] overflow-hidden">
+			<div className="consultation-container grid grid-cols-4 grid-rows-2 my-17.5 md:my-25 mx-15 md:mx-8">
+				<div className="image-container lg:row-span-2 rounded-r-[30px] overflow-hidden">
 					<img
 						src="assets/consultation/banner.jpg"
 						alt="banner.jpg"
 						className="w-full h-full object-cover"
 					/>
 				</div>
-				<div className="title-container col-span-3 flex flex-col justify-center text-center text-strongPink">
-					<span className="title text-[80px] font-bold uppercase">Tư vấn miễn phí</span>
-					<div className="description-container">
-						<span className="description block text-3xl leading-[38px] font-semibold mx-high">Hãy để chuyên viên tư vấn của Can Immigration Vietnam</span>
-						<span className="description block text-3xl leading-[38px] font-semibold mx-high">giúp bạn chinh phục giấc mơ đặt chân đến Canada nhé!</span>
+				<div className="title-container col-span-3 flex flex-col justify-center items-center text-center text-strongPink">
+					<span className="title text-[40px] md:text-[80px] font-bold uppercase">Tư vấn miễn phí</span>
+					<div className="description-container flex flex-col mx-4">
+						<span className="description md:text-3xl md:leading-[38px] font-semibold">Hãy để chuyên viên tư vấn của Can Immigration Vietnam</span>
+						<span className="description md:text-3xl md:leading-[38px] font-semibold">giúp bạn chinh phục giấc mơ đặt chân đến Canada nhé!</span>
 					</div>
 				</div>
-				<div className="form-container col-span-3 col-start-2 mx-medium">
+				<div className="form-container lg:col-start-2 col-span-full lg:col-span-3 lg:mx-17.5">
 					<div className="group-field-container">
 						<div className={fieldContainer}>
 							<InputField
@@ -100,7 +100,7 @@ const Consultation = () => {
 							/>
 						</div>
 					</div>
-					<div className="button-container flex justify-center mt-16">
+					<div className="button-container flex justify-center mt-10 md:mt-16">
 						<TitleButton
 							buttonColor="strongPink"
 							title="Đặt hẹn"

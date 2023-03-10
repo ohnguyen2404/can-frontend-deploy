@@ -14,7 +14,7 @@ type TSelectField = {
 const SelectField = (props: TSelectField) => {
 	return (
 		<div className="select-field-container w-full overflow-hidden">
-			<label className="label w-fit font-medium text-strongPink text-xl after:content-[':'] after:ml-[0.125rem] after:mr-1">{props.label}</label>
+			<label className="label w-fit font-medium text-strongPink text-base md:text-xl after:content-[':'] after:ml-[0.125rem] after:mr-1">{props.label}</label>
 			<select
 				id={props.id}
 				onChange={(event) => props.handleChangeValue(event.target.value)}>
@@ -25,7 +25,7 @@ const SelectField = (props: TSelectField) => {
 			</select>
 			{props.isRequired && props.errorMessage && props.isDisplayErrorMessage ? (
 				<div className="error-message-container flex items-center before:content-['\002A'] before:font-bold">
-					<span className="font-bold">{props.errorMessage}</span>
+					<span className="font-bold md:">{props.errorMessage}</span>
 				</div>
 			) : (
 				<></>

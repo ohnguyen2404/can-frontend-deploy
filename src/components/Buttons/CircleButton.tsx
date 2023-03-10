@@ -9,7 +9,7 @@ const CircleButton = (props: TCircleButton) => {
 	const buttonColor = props.buttonColor ? props.buttonColor : "black";
 	return (
 		<div
-			className={`${!props.useExternal ? "internal-effect" : props.hoverState && "external-effect"} button circle-button border-${buttonColor} h-8 w-8 rounded-full border flex items-center justify-center overflow-hidden`}
+			className={`${!props.useExternal ? "internal-effect" : props.hoverState && "external-effect"} button circle-button border-${buttonColor} min-h-[18px] md:min-h-[32px] min-w-[18px] md:min-w-[32px] rounded-full border flex items-center justify-center overflow-hidden`}
 			onClick={props.handleOnClick}>
 			<div className={`icon-container stroke-${buttonColor} w-2/5 h-2/5`}>
 				<svg

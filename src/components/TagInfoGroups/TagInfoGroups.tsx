@@ -2,64 +2,54 @@ import React from "react";
 import { TComponent } from "../../utils/types";
 import TagInfo from "./TagInfo";
 
-type TSubComponent = {
-	TagInfo: typeof TagInfo;
-};
-
-const TagInfoGroups: TComponent & TSubComponent = () => {
-	const mediaWrap = "flex flex-col sm:flex-row lg:my-0 mb-10 w-full";
-	const mediaSubWrap = "flex sm:my-0 mb-10 mx-2 w-full";
+const TagInfoGroups: TComponent = () => {
 
 	return (
 		<section id="tag-info-groups">
-			<div className="tag-info-groups-container flex flex-col lg:flex-row my-high justify-center mx-8 bg-white">
-				<div className={`media-wrap ${mediaWrap}`}>
-					<div className={`media-sub-wrap ${mediaSubWrap}`}>
-						<TagInfoGroups.TagInfo
-							key="Thị trường"
-							header="Thị trường"
-							imgSrc="/assets/tagInfoGroups/market.svg"
-							imgAlt="market.svg"
-							bgColor="blue"
-							listContent={["Việt Nam, Phillipine, Ấn Độ,", "Trung Quốc, Hong Kong"]}
-						/>
-					</div>
-					<div className={`media-sub-wrap ${mediaSubWrap}`}>
-						<TagInfoGroups.TagInfo
-							key="Khách hàng"
-							header="Khách hàng"
-							imgSrc="/assets/tagInfoGroups/customer.svg"
-							imgAlt="customer.svg"
-							bgColor="pink"
-							listContent={["Hỗ trợ hơn 10 000", "khách hàng"]}
-						/>
-					</div>
+			<div className="tag-info-groups-container grid grid-cols-2 lg:grid-cols-4 grid-rows-2 lg:grid-rows-none gap-x-4 gap-y-10 lg:gap-y-0 justify-center my-17.5 md:my-25 mx-15 md:mx-8 bg-white">
+				<div className="tag-info-wrap flex">
+					<TagInfo
+						key="Thị trường"
+						header="Thị trường"
+						imgSrc="/assets/tagInfoGroups/market.svg"
+						imgAlt="market.svg"
+						bgColor="blue"
+						listContent={["Việt Nam, Phillipine, Ấn Độ,", "Trung Quốc, Hong Kong"]}
+					/>
 				</div>
-				<div className={`media-wrap media-wrap-last ${mediaWrap}`}>
-					<div className={`media-sub-wrap ${mediaSubWrap}`}>
-						<TagInfoGroups.TagInfo
-							key="Hồ sơ"
-							header="Hồ sơ"
-							imgSrc="/assets/tagInfoGroups/profile.svg"
-							imgAlt="profile.svg"
-							bgColor="blue"
-							listContent={["Hơn 3000 hồ sơ", "nhận được PR"]}
-						/>
-					</div>
-					<div className={`media-sub-wrap media-wrap-last ${mediaSubWrap}`}>
-						<TagInfoGroups.TagInfo
-							key="Tỷ lệ"
-							header="Tỷ lệ"
-							imgSrc="/assets/tagInfoGroups/percent.svg"
-							imgAlt="percent.svg"
-							bgColor="pink"
-							listContent={["97% tỷ lệ đậu hồ sơ PR", "và Visa du học"]}
-						/>
-					</div>
+				<div className="tag-info-wrap flex">
+					<TagInfo
+						key="Khách hàng"
+						header="Khách hàng"
+						imgSrc="/assets/tagInfoGroups/customer.svg"
+						imgAlt="customer.svg"
+						bgColor="pink"
+						listContent={["Hỗ trợ hơn 10 000", "khách hàng"]}
+					/>
+				</div>
+				<div className="tag-info-wrap flex">
+					<TagInfo
+						key="Hồ sơ"
+						header="Hồ sơ"
+						imgSrc="/assets/tagInfoGroups/profile.svg"
+						imgAlt="profile.svg"
+						bgColor="blue"
+						listContent={["Hơn 3000 hồ sơ", "nhận được PR"]}
+					/>
+				</div>
+				<div className="tag-info-wrap flex">
+					<TagInfo
+						key="Tỷ lệ"
+						header="Tỷ lệ"
+						imgSrc="/assets/tagInfoGroups/percent.svg"
+						imgAlt="percent.svg"
+						bgColor="pink"
+						listContent={["97% tỷ lệ đậu hồ sơ PR", "và Visa du học"]}
+					/>
 				</div>
 			</div>
 		</section>
 	);
 };
-TagInfoGroups.TagInfo = TagInfo;
+
 export default TagInfoGroups;

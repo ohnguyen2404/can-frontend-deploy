@@ -90,7 +90,7 @@ const InternationalInsuranceForm = () => {
 
 	return (
 		<div id="international-insurance">
-			<div className="international-insurance-form-container w-[50vw]">
+			<div className="international-insurance-form-container">
 				{mirrorState !== State.NONE ? (
 					<StateModal
 						name={TITLE}
@@ -98,10 +98,16 @@ const InternationalInsuranceForm = () => {
 					/>
 				) : (
 					<div className="inner-international-insurance-form-container flex flex-row justify-center">
-						<div className="image-container w-[35%] bg-no-repeat bg-center bg-cover rounded-[30px] -mr-[3%]"></div>
-						<div className="form-container w-[65%] px-[5%] py-8 bg-white rounded-[30px] -ml-[3%]">
+						<div className="image-container hidden md:block w-[40%] -mr-[3%] bg-no-repeat bg-center bg-cover rounded-[30px] overflow-hidden">
+							<img
+								src="/assets/serviceGroups/form/InternationalInsurance.jpg"
+								alt="InternationalInsurance.jpg"
+								className="h-full object-cover"
+							/>
+						</div>
+						<div className="form-container w-full md:w-[60%] px-[5%] py-8 ml-0 md:-ml-[3%] bg-white rounded-[30px] min-w-min z-40">
 							<div className="title-container">
-								<span className="title font-extrabold text-5xl text-strongPink uppercase">{TITLE}</span>
+								<span className="title font-extrabold text-4xl lg:text-5xl text-strongPink uppercase whitespace-nowrap">{TITLE}</span>
 							</div>
 							<div className="form-field-container">
 								<div className="info-field-container">
@@ -157,7 +163,7 @@ const InternationalInsuranceForm = () => {
 									</div>
 								</div>
 								<div className={`${fieldContainer} mt-11`}>
-									<span className="description font-medium text-xl text-strongPink">Sau khi đăng kí đầy đủ thông tin, CAN Immigration sẽ gửi email và cách thức thanh toán bảo hiểm.</span>
+									<span className="description font-medium text-base md:text-xl text-strongPink">Sau khi đăng kí đầy đủ thông tin, CAN Immigration sẽ gửi email và cách thức thanh toán bảo hiểm.</span>
 								</div>
 								<div className={fieldContainer}>
 									<TitleButton
