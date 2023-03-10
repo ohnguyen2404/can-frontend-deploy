@@ -19,8 +19,12 @@ const SelectField = (props: TSelectField) => {
 				id={props.id}
 				onChange={(event) => props.handleChangeValue(event.target.value)}>
 				<option value={""}>{props.placeHolder}</option>
-				{props.list.map((item) => (
-					<option value={item}>{item}</option>
+				{props.list.map((item, index) => (
+					<option
+						key={index}
+						value={item}>
+						{item}
+					</option>
 				))}
 			</select>
 			{props.isRequired && props.errorMessage && props.isDisplayErrorMessage ? (
