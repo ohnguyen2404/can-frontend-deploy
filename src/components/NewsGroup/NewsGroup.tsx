@@ -4,14 +4,12 @@ import LongButton from "../Buttons/LongButton";
 import { Direction } from "../../utils/types";
 import NewsCard from "./NewsCard";
 import { TNews } from "./types";
-import { useRouter } from "next/router";
 
 type TNewsGroup = {
 	news: TNews[];
 };
 
 const NewsGroup = ({ news }: TNewsGroup) => {
-	const router = useRouter();
 	const [curIdx, setCurIdx] = useState(2);
 
 	const onClickPrev = () => {
@@ -39,12 +37,6 @@ const NewsGroup = ({ news }: TNewsGroup) => {
 	const onClickButton = () => {
 		const curUrl = window.location.href;
 		window.open(`${curUrl}/posts/${news[curIdx].id}`);
-		//router.push({
-		//	pathname: "/posts/[post-id]",
-		//	query: {
-		//		"post-id": news[curIdx].id,
-		//	},
-		//});
 	};
 
 	return (
@@ -54,7 +46,7 @@ const NewsGroup = ({ news }: TNewsGroup) => {
 					<div className="font-bold text-4xl uppercase">
 						{news[curIdx]?.title}
 						<div className="inline-block mb-2 ml-2 align-middle">
-							<CircleButton handleOnClick={() => onClickButton()} />
+							<CircleButton handleOnClick={onClickButton} />
 						</div>
 					</div>
 					<div className="flex flex-row justify-between">
