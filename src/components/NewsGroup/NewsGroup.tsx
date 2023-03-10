@@ -78,6 +78,23 @@ const NewsGroup = ({ news }: TNewsGroup) => {
 						/>
 					))}
 				</div>
+				<div className="below-navigator-container flex md:hidden my-6 justify-center">
+					<div className="below-navigator flex flex-row">
+						<div className="long-button-left-container mx-1 md:mx-2">
+							<LongButton
+								direction={Direction.Left}
+								handleOnClick={onClickPrev}
+							/>
+						</div>
+						<div className="long-button-right-container mx-1 md:mx-2">
+							<LongButton
+								direction={Direction.Right}
+								handleOnClick={onClickNext}
+							/>
+						</div>
+					</div>
+				</div>
+				<div className="separate-line h-[1px] w-full bg-silver"></div>
 			</div>
 		</section>
 	);
