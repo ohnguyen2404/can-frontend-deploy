@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import CircleButton from "../Buttons/CircleButton";
 import LongButton from "../Buttons/LongButton";
 import { Direction } from "../../utils/types";
-import NewsCard from "./NewsCard";
 import { TNews } from "./types";
 
 type TNewsGroup = {
@@ -10,6 +9,7 @@ type TNewsGroup = {
 };
 
 const NewsGroup = ({ news }: TNewsGroup) => {
+	const [titleHoverState, setTitleHoverState] = useState<boolean>(false);
 	const [curIdx, setCurIdx] = useState(2);
 
 	const onClickPrev = () => {
@@ -30,23 +30,33 @@ const NewsGroup = ({ news }: TNewsGroup) => {
 		}
 	};
 
-	const onClickCard = (idx: number) => {
-		setCurIdx(idx);
+	const handleOpenPost = () => {
+		window.open(`${window.location.href}/posts/${news[curIdx].id}`);
 	};
 
-	const onClickButton = () => {
-		const curUrl = window.location.href;
-		window.open(`${curUrl}/posts/${news[curIdx].id}`);
+	const handleOnClickCard = (idx: number) => {
+		if (curIdx === idx) {
+			handleOpenPost();
+			return;
+		}
+		setCurIdx(idx);
 	};
 
 	return (
 		<section id="news">
 			<div className="news-container my-17.5 md:my-25">
 				<div className="flex flex-row justify-between mx-15 md:mx-8">
-					<div className="font-bold text-2xl md:text-4xl uppercase">
+					<div
+						className="title font-bold text-2xl md:text-4xl uppercase cursor-pointer"
+						onClick={handleOpenPost}
+						onMouseEnter={() => setTitleHoverState(true)}
+						onMouseLeave={() => setTitleHoverState(false)}>
 						{news[curIdx]?.title}
 						<div className="inline-block mb-1 md:mb-2 ml-1 md:ml-2 align-middle">
-							<CircleButton handleOnClick={onClickButton} />
+							<CircleButton
+								useExternal
+								hoverState={titleHoverState}
+							/>
 						</div>
 					</div>
 					<div className="above-navigator hidden md:flex flex-row justify-between">
@@ -66,15 +76,18 @@ const NewsGroup = ({ news }: TNewsGroup) => {
 				</div>
 				<div
 					id="news-slider"
-					className="w-full mt-16 md:mt-36 mb-6 md:mb-16 min-h-[600px] items-center flex flex-row overflow-x-scroll scrollbar-hide">
+					className="w-full mt-16 md:mt-36 mb-6 md:mb-16 items-center flex flex-row overflow-x-scroll scrollbar-hide">
 					{news.map(({ imgUrl }, idx) => (
-						<NewsCard
-							key={idx}
-							isSelected={idx === curIdx}
-							handleOnClick={() => onClickCard(idx)}
-							imgUrl={imgUrl}
-							idx={idx}
-							newsLength={news.length}
+						<img
+							className={`${idx === curIdx && "selected-news-card"} w-[332px] h-[380px] object-cover mx-2 last:mr-0 cursor-pointer opacity-60`}
+							src={imgUrl}
+							onClick={() => handleOnClickCard(idx)}
+							onMouseEnter={() => {
+								if (idx === curIdx) setTitleHoverState(true);
+							}}
+							onMouseLeave={() => {
+								if (idx === curIdx) setTitleHoverState(false);
+							}}
 						/>
 					))}
 				</div>
