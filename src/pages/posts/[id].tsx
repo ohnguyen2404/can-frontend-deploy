@@ -48,15 +48,15 @@ export default function FBPost({ post }: TFBPost) {
 	return (
 		<div className="w-full">
 			<Navbar isDynamic={false} />
-			<div className="post-container-wrap w-[80%] mx-auto mt-36">
-				<div className="title-container text-center mb-5">
-					<span className="title text-[80px] font-bold uppercase">{title}</span>
+			<div className="post-container-wrap w-[80%] mx-auto mt-36 mb-6 md:mb-5">
+				<div className="title-container text-center mb-6 md:mb-5">
+					<span className="title text-[40px] md:text-[60px] lg:text-[80px] font-bold uppercase">{title}</span>
 				</div>
-				<div className="date-container w-fit mb-5 mx-auto">
+				<div className="date-container w-fit mx-auto">
 					<span className="text-2xl font-bold uppercase text-center">{formatDate(new Date(post.createdTime))}</span>
 				</div>
 			</div>
-			<div className="image-container-wrap relative mb-20 after:content-[''] after:absolute after:-z-10 after:w-full after:h-[100vh] after:bg-lightBlue after:bottom-1/2">
+			<div className="image-container-wrap relative mb-10 md:mb-20 after:content-[''] after:absolute after:-z-10 after:w-full after:h-[100vh] after:bg-lightBlue after:bottom-1/2">
 				<div className="image-container w-[90%] mx-auto">
 					<img
 						className="w-full h-full object-contain"
