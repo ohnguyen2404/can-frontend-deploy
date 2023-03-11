@@ -10,7 +10,7 @@ const Banner: TComponent & TSubComponent = () => {
 		<section className="banner">
 			<div className="banner-container relative">
 				<video
-					src="assets/videos/canada-video.mp4"
+					src="/assets/videos/canada-video.mp4"
 					className="object-cover w-full h-[60vh] sm:h-fit"
 					autoPlay
 					muted
