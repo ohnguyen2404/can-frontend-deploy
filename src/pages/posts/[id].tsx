@@ -44,26 +44,36 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
 export default function FBPost({ post }: TFBPost) {
 	const title = formatNewsTitle(post.message);
-	const paragraphs = post.message.split("\n");
-
+	const paragraphs = post.message.split("\n\n");
 	return (
 		<div className="w-full">
 			<Navbar isDynamic={false} />
-			<div className={`h-[80px]`} />
-			<div className="w-[60%] flex flex-col items-left mt-8 mx-auto">
-				<span className="text-7xl font-bold uppercase mb-6 text-center">{title}</span>
-				<span className="text-2xl font-semibold uppercase mb-6 text-center">{formatDate(new Date(post.createdTime))}</span>
-				<img
-					className="object-fit rounded-3xl mb-16"
-					src={post.imgUrl}
-				/>
-				{paragraphs.map((paragraph, index) => (
-					<span
-						key={index}
-						className="text-xl">
-						{paragraph}
-					</span>
-				))}
+			<div className="post-container-wrap w-[80%] mx-auto mt-36">
+				<div className="title-container text-center mb-5">
+					<span className="title text-[80px] font-bold uppercase">{title}</span>
+				</div>
+				<div className="date-container w-fit mb-5 mx-auto">
+					<span className="text-2xl font-bold uppercase text-center">{formatDate(new Date(post.createdTime))}</span>
+				</div>
+			</div>
+			<div className="image-container-wrap relative mb-20 after:content-[''] after:absolute after:-z-10 after:w-full after:h-[100vh] after:bg-lightBlue after:bottom-1/2">
+				<div className="image-container w-[90%] mx-auto">
+					<img
+						className="w-full h-full object-contain"
+						src={post.imgUrl}
+					/>
+				</div>
+			</div>
+			<div className="post-container-wrap w-[80%] mx-auto">
+				<div className="content-container w-[80%] mx-auto">
+					{paragraphs.map((paragraph, index) => (
+						<span
+							key={index}
+							className="block text-xl font-medium mb-4">
+							{paragraph}
+						</span>
+					))}
+				</div>
 			</div>
 			<Footer />
 		</div>
