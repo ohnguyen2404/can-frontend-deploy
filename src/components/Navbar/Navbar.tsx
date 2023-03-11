@@ -77,7 +77,7 @@ const Navbar = ({ isDynamic = true }: TNavbar) => {
 	return (
 		<div
 			id="navbar"
-			className={`flex flex-col z-10 w-full ${isScrollUp ? "show" : "hide"} ${isOutBound || !isDynamic ? "fixed" : "absolute"}`}
+			className={`${isScrollUp ? "show" : "hide"} flex flex-col z-10 w-full fixed`}
 			ref={ref_self}>
 			<div className={`${STYLE_GROUPS.flexCenter} ${isContrastStyle ? "bg-white" : "bg-transparent"} px-6 sm:px-8 py-2`}>
 				<nav className="w-full flex justify-between items-center">

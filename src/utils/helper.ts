@@ -28,7 +28,7 @@ export const renameFile = (originalFile: File, newName: string) => {
 };
 
 export const formatNewsTitle = (message: string) => {
-  const TITLE_MAX_LENGTH = 200;
+  const TITLE_MAX_LENGTH = 100;
   const title = message.split("\n")[0];
 
   return title.length > TITLE_MAX_LENGTH ? title.slice(0, TITLE_MAX_LENGTH).concat("...") : title;
