@@ -26,7 +26,7 @@ export const LINKS = Assert<TLinks>([
 		title: "Lộ trình tư vấn",
 	},
 	{
-		id: "office",
+		id: "footer",
 		title: "Văn phòng",
 	},
 	{
