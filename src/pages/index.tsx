@@ -56,6 +56,7 @@ export default function Home({ news }: InferGetStaticPropsType<typeof getStaticP
 					className="hidden text-white stroke-white stroke-strongPink mr-2"></div>
 			</div>
 			{isOpenModal ? <ModalPortal handleOpenModal={setIsOpenModal}>{modalComponent}</ModalPortal> : <></>}
+			<Toaster/>
 		</>
 	);
 }
