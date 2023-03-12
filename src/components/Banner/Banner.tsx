@@ -10,12 +10,20 @@ const Banner: TComponent & TSubComponent = () => {
 		<section className="banner">
 			<div className="banner-container relative">
 				<video
-					src="/assets/videos/canada-video.mp4"
 					className="object-cover w-full h-[60vh] sm:h-fit"
 					autoPlay
 					muted
 					loop
-					playsInline></video>
+					playsInline>
+					<source
+						src="/assets/videos/canada-video_x265.mp4"
+						type="video/mp4; codecs=avc1"
+					/>
+					<source
+						src="/assets/videos/canada-video_x264.mp4"
+						type="video/mp4; codecs=hvc1"
+					/>
+				</video>
 				<div className="sash-ribbon-wrap w-full h-[7.5%] sm:h-[10%] bg-white absolute bottom-[10%] flex flex-row overflow-hidden">
 					<Banner.SashRibbon key={1} />
 					<Banner.SashRibbon key={2} />
