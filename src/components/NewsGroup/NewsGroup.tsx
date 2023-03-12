@@ -77,10 +77,11 @@ const NewsGroup = ({ news }: TNewsGroup) => {
 				<div
 					id="news-slider"
 					className="w-full mt-16 md:mt-36 mb-6 md:mb-16 items-center flex flex-row overflow-x-scroll scrollbar-hide">
-					{news.map(({ imgUrl }, idx) => (
+					{news.map((item, idx) => (
 						<img
+							key={item.id}
 							className={`${idx === curIdx && "selected-news-card"} w-[332px] h-[380px] object-cover mx-2 last:mr-0 cursor-pointer opacity-60`}
-							src={imgUrl}
+							src={item.imgUrl}
 							onClick={() => handleOnClickCard(idx)}
 							onMouseEnter={() => {
 								if (idx === curIdx) setTitleHoverState(true);
